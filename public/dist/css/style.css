@@ -1,0 +1,54 @@
+.bg-img
+{
+    background-image: url('/dist/img/poster.jpg');
+    background-size: 100% 100%;
+    height: 600px;
+ 
+ 
+}
+.text{
+    text-align: center;
+    padding-top: 100px;
+color: white;
+}
+.text b
+{
+font-weight: bold;
+font-size: 25px;;
+}
+.content
+{
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    margin-top: 10px;   
+      
+}
+.content b{
+    font-size: 30px;
+}
+.content img{
+    width: 130px;
+}
+.login
+{
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    margin-top: 10px;   
+    
+}
+.login input{
+    margin-bottom: 20px;
+}
+/* forbusinessdetails */
+
+#regiration_form fieldset:not(:first-of-type) {
+  display: none;
+}
+.login{
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  margin-top: 10px; 
+}
