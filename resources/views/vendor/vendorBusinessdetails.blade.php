@@ -216,8 +216,8 @@ of modern day shopping. OneClick presents in front of you, a unique
   <fieldset>
     <h2>Step 4: Bank Details</h2>
     <div class="form-group">
-    <label for="vendorname">Your name in bank documents</label>
-    <input type="text" class="form-control" id="vendorname" placeholder="Name..." name="vendorname">
+    <label for="nameinbank">Your name in bank documents</label>
+    <input type="text" class="form-control" id="nameinbank" placeholder="Name..." name="nameinbank">
     </div>
     <div class="form-group">
     <label for="actype">Account Type</label>

@@ -2,7 +2,6 @@
 @extends('vendor.vendordas')
 @section('body')
 
-@foreach($result as $value)
 
 
 
@@ -31,30 +30,31 @@
           <div class="col-md-6">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">My Products  </h3><a href="/addproduct/{{session('sesid')}}">
-                    Add More +</a>
+                <h3 class="card-title">My Products  </h3><a href="/viewproduct/{{session('sesid')}}">
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                 Add More +</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table class="table table-bordered">
                   
                   <tbody>
+                  @foreach($result as $value)
                     <tr>
                       <td>1.</td>
                       <td>Name</td>
-                      <td>{{$value->name}}</td>
+                      <td>Description</td>
                       </tr>
                       <tr>
                       <td>2.</td>
-                      <td>Mobile No.</td>
-                      <td>{{$value->mob}}</td>
+                      <td>{{$value->name}}</td>
+                      <td>{{$value->description}}</td>
                     </tr>
-                    <tr>
-                      <td>3.</td>
-                      <td>E-mail</td>
-                      <td>{{$value->email}}</td>
-                    </tr>
-
+                    </html>
+@endforeach                    
                   </tbody>
                 </table>
               </div>
@@ -102,8 +102,7 @@
 
 </body>
 
-</html>
-@endforeach
+
 @endsection
 
 

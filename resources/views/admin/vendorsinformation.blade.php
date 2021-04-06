@@ -69,11 +69,11 @@
 </td>
 @if($value->adminstatus==2)
  <td>
-Done
+ <font color="Green"><b>Done</b></font>
  </td>
  @else
  <td>
-Remaining
+ <font color="Red"><b>Remaining</b></font>
  </td>                  
 @endif
 <td><a href="/viewvendordetail/{{$value->id}}">See More...</a></td>
@@ -81,8 +81,14 @@ Remaining
 <!-- <td><a href = 'delete/{{ $value->id }}'>Delete</a></td> -->
 
 </tr>
-@endforeach
 </tbody>
-                </table>
+</table>
 </div>
+
+</div>
+</div>
+</div>
+</div>
+@endforeach
+
 @endsection

@@ -60,4 +60,11 @@ Route::post('/businessdetails/{id}', [vendorcontroller::class,'businessdetails']
 Route:: get('/vendorbody',[vendorcontroller::class,'vendorbody']);
 
 Route:: get('/vendorproduct',[vendorcontroller::class,'vendorproduct']);
-Route:: get('/addproduct/{id}',[vendorcontroller::class,'addproduct']);
+Route:: get('/viewproduct/{id}',[vendorcontroller::class,'viewproduct']);
+Route:: post('/addproduct/{id}',[vendorcontroller::class,'addproduct']);
+    
+
+
+
+
+Route::get('/customer', [customercontroller::class,'customerindex']);

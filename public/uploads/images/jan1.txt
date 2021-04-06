@@ -1,0 +1,10 @@
+Basis for Comparison	E-commerce								E-business
+Meaning			Trading of merchandise, over the internet is known as E-commerce.	Running business using the internet is known as E-business.
+What is it?		Subset									Superset
+Is it limited to monetary transactions?	Yes							No
+What they carry out?	Commercial transactions							Business transactions
+Approach		Extroverted								Ambiverted
+Requires		Website									Website, CRM, ERP, etc.
+Which network is used?	Internet								Internet, Intranet and Extranet.
+
+

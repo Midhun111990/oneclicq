@@ -148,7 +148,7 @@
                     <tr>
                       <td>3.</td>
                       <td>Store Logo</td>
-                      <td>{{$value->storelogo}}</td>
+                      <td><a href="{{asset('uploads/images/'.$value->storelogo)}}">VIEW</a></td>
                     </tr>
                     
                   </tbody>
@@ -179,27 +179,27 @@
                       <tr>
                       <td>2.</td>
                       <td>Account type</td>
-                      <td>{{$value->sellingcat}}</td>
+                      <td>{{$value->accounttype}}</td>
                     </tr>
                     <tr>
                       <td>3.</td>
                       <td>Bank account number</td>
-                      <td>{{$value->storelogo}}</td>
+                      <td>{{$value->accountno}}</td>
                     </tr>
                     <tr>
                       <td>4.</td>
                       <td>IFSC Code</td>
-                      <td>{{$value->gstdocument}}</td>
+                      <td>{{$value->ifsccode}}</td>
                     </tr>
                     <tr>
                       <td>5.</td>
                       <td>Canceled cheque</td>
-                      <td>{{$value->panno}}</td>
+                     <td><a href="{{asset('uploads/images/'.$value->cancelledcheque)}}">VIEW</a></td>
                     </tr>
                     <tr>
                       <td>6.</td>
                       <td>Signature</td>
-                      <td>{{$value->pandocument}}</td>
+                      <td><a href="{{asset('uploads/images/'.$value->signature)}}">VIEW</a></td>
                     </tr>
                   </tbody>
                 </table>
@@ -228,7 +228,7 @@
                       <tr>
                       <td>2.</td>
                       <td>Trade Licence Document</td>
-                      <td>{{$value->tradedocument}}</td>
+                      <td><a href="{{asset('uploads/images/'.$value->tradedocument)}}">VIEW</a></td>
                     </tr>
                     <tr>
                       <td>3.</td>
@@ -248,7 +248,7 @@
                     <tr>
                       <td>6.</td>
                       <td>PAN Document</td>
-                      <td>{{$value->pandocument}}</td>
+                      <td><a href="{{asset('uploads/images/'.$value->pandocument)}}">VIEW</a></td>
                     </tr>
                     <tr>
                       <td>7.</td>
@@ -265,9 +265,12 @@
                       <td>Shipping Mode</td>
                       <td>{{$value->shipping }}</td>
                     </tr>
+                    <tr>
+                    <td></td>
                     
-<td>                 <input type="submit" name="submit" class="submit btn btn-success" value="Approve" >
-</td>
+<td>       <center>          <input type="submit" name="submit" class="submit btn btn-success" value="Approve" >
+</center></td>
+</tr>
                   </tbody>
                 </table>
                

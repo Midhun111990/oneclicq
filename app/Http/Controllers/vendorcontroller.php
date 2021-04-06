@@ -65,7 +65,7 @@ return redirect('/vendorVerify');
   public function vendorproduct()
   {
     $id=session('sesid');
-    $data['result']=$this->md1->vendorname('vendordetails',$id);
+    $data['result']=$this->md1->productdetails('product',$id);
 
 
       
@@ -176,7 +176,7 @@ return redirect('/vendorVerify');
   $data['storelogo']=$filename;
 
 
-  $data['vendorname']=$r1->input('vendorname');
+  $data['nameinbank']=$r1->input('nameinbank');
   $data['accounttype']=$r1->input('actype');
   $data['accountno']=$r1->input('accountno');
   $data['ifsccode']=$r1->input('ifsccode');
@@ -207,18 +207,54 @@ return redirect('/vendorVerify');
 // return redirect('/vendorVerify');
   }
 
-
-  public function addproduct($id)
+  public function viewproduct($id)
     {
-        $data['result']=$this->md1->vendorname('vendordetails',$id);
+     
+      $data['result']=$this->md1->viewp('vendordetails',$id);
+     
+      $data['res']=$this->md1->viewbrand('addbrand');//view brand while adding product
+     
+      $data['resl']=$this->md1->viewsubcat('subcategory');//view subcategory while adding product
+     
+      return view('vendor.addproduct',$data);
+    }
+  public function addproduct(Request $r1,$id)
+    {
+  
+  $data['name']=$r1->input('pname');
+  $data['description']=$r1->input('pdes');
+  $data['brandid']=$r1->input('pbrand');
+  $data['otherbrand']=$r1->input('obrand');
+  $data['subcatid']=$r1->input('ptype');
+  $data['gst']=$r1->input('pgst');
+  $data['price']=$r1->input('pprice');
+  $data['mrp']=$r1->input('pmrp');
+  $data['stockunit']=$r1->input('pstock');
+  $data['warrantydetails']=$r1->input('pwar');
+  $data['height']=$r1->input('pheight');
+  $data['weight']=$r1->input('pweight');
+  $data['width']=$r1->input('pwidth');
+  $data['length']=$r1->input('plen');
 
-        return view('vendor.addproduct',$data);
- 
-//         $data['name']=$r1->input('name');
+  $file= $r1->file('pimage');
+  $filename = $file->getClientOriginalName();
+  $file->move(public_path().'/uploads/images', $filename);
+  $data['image']=$filename;
+
+  $data['returnpolicy']=$r1->input('pret');
+  $data['freedelivery']=$r1->input('pdelyes');
+  $data['returnable']=$r1->input('preturn');
   
-//   $this->md1->prodetails('product',$data,$id);
+
+  $data['status']=0;
+  $data['vendorid']=$id;
   
-//    return view('vendor.vendorbody');
+  
+             
+  $this->md1->addproduct('product',$data);
+  
+
+        return redirect('/vendorproduct');
           
     }
 

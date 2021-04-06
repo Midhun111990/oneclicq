@@ -1,0 +1,27 @@
+ public function updateval(Request $r1)
+          {
+
+            $name=$r1->input('Name');    
+            echo $name;
+            exit();
+            
+            $surname=$r1->input('Surname');
+            $course=$r1->input('Course');
+            $phone=$r1->input('Phone');
+            $nationality=$r1->input('Nationality');
+
+            DB::update('update samplebd set name = "$name",surname="$surname",course="$course",phone="$phone",nationality="$nationality" where id = "$id"');
+            echo "Record updated successfully.
+            ";
+            echo 'Click Here to go back.';
+            
+          }
+
+
+
+
+
+<td><a href="/edit/{{$value->id}}">Edit</a></td>
+
+Route::post('/update', [regcontroller::class,'updateval']);
+

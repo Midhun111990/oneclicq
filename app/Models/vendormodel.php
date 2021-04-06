@@ -77,7 +77,51 @@ class vendormodel extends Model
 
     }
 
+
+    function viewp($table,$id)
+    {
+      $data= DB::table($table)->where('id',$id)->get();
+      return $data;
+    }
+
     
+    function addproduct($table,$data)
+
+    {
+        DB::table($table)->insert($data);
+
+    }
+
+    public function viewbrand($table)
+    {
+        
+      return  DB::table($table)->get();
+
+    }
+
+    public function viewsubcat($table)
+    {
+        
+      return  DB::table($table)->get();
+
+    }
+
+
+
+
+    public function productdetails($table,$id)
+    {
+        
+      return  DB::table($table)->where('pid',$id)->get();
+
+    }
+
+
+
+
+
+
+
 
 
 
