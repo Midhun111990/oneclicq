@@ -27,7 +27,7 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-0">
             <div class="card">
               <div class="card-header">
               
@@ -47,8 +47,10 @@
                  
                     <tr>
                     <td>Sr no.</td>
+                      <td>Image</td>
                       <td>Name</td>
                       <td>Description</td>
+                      <td>Price</td>
                       <td>View</td>
                       </tr>
                       <tr>
@@ -56,9 +58,11 @@
                      
                       @foreach($result as $value)       
                       <td>{{$value->pid}}</td>
-
+                      <td><img src="{{asset('uploads/images/'.$value->image)}}"height="100px" width="100px" /></td>
+           
                       <td>{{$value->name}}</td>
                       <td>{{$value->description}}</td>
+                      <td>{{$value->price}}</td>
                       <td><a href="/singleproductinformation/{{$value->pid}}">More</td>
                     </tr>
                     </html>
