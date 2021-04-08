@@ -106,18 +106,50 @@ class vendormodel extends Model
 
     }
 
+    public function viewcat($table)
+    {
+        
+      return  DB::table($table)->get();
+
+    }
+    public function viewbusiness($table)
+    {
+        
+      return  DB::table($table)->get();
+
+    }
+
 
 
 
     public function productdetails($table,$id)
     {
         
-      return  DB::table($table)->where('pid',$id)->get();
+      return  DB::table($table)->where('vendorid',$id)->get();
+
+    }
+    
+    public function vendet($table,$id)
+    {
+        
+      return  DB::table($table)->where('id',$id)->get();
+
+    }
+    
+    
+    public function vendetails($table,$id)
+    {
+        
+      return  DB::table($table)->where('id',$id)->get();
 
     }
 
 
-
+    function viewsingleproduct($table,$id)
+    {
+       $data=DB::table($table)->where('pid',$id)->get();
+        return $data;
+    }
 
 
 

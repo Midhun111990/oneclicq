@@ -64,8 +64,7 @@ of modern day shopping. OneClick presents in front of you, a unique
   
 <a href="/vendorRegister"><b>New Seller Register Now</b></a>
 
-<a href=""></a>
-</form>
+  </form>
 </div>
 </div>
 </div>

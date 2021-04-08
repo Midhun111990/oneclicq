@@ -88,10 +88,68 @@ class adminmodel extends Model
         return $data;
       
     }
+    function proinformation($table)
+    {
+       $data=DB::table($table)->get();
+        return $data;
+    }
+    function viewsingleproduct($table,$id)
+    {
+       $data=DB::table($table)->where('pid',$id)->get();
+        return $data;
+    }
+
+    function proapproved($table,$data,$id)
+    {
+        DB::table($table)->where('pid',$id)->update($data);
+      
+    }
+    
+
+    public function viewbrand($table)
+    {
+        
+      return  DB::table($table)->get();
+
+    }
+
+    public function viewsubcat($table)
+    {
+        
+      return  DB::table($table)->get();
+
+    }
+
+    public function viewcat($table)
+    {
+        
+      return  DB::table($table)->get();
+
+    }
+    public function viewbusiness($table)
+    {
+        
+      return  DB::table($table)->get();
+
+    }
+    function  penproduct($table)
+    {
+       $data=DB::table($table)->get();
+        return $data;
+    
+}
+   
 
 
 
 
 
+
+
+
+
+
+
+    
 
 }

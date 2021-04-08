@@ -15,6 +15,12 @@ class vendorcontroller extends Controller
         $this->md1= new vendormodel;
 
     }
+    public function index()
+    {
+        return view('vendor.vendorsignin');
+    }
+
+
 
     public function vendorlog()
     {
@@ -65,14 +71,25 @@ return redirect('/vendorVerify');
   public function vendorproduct()
   {
     $id=session('sesid');
-    $data['result']=$this->md1->productdetails('product',$id);
-
-
+    $data['res']=$this->md1->productdetails('product',$id);
+    $data['result']=$this->md1->vendet('vendordetails',$id);
       
     return view('vendor.vendorproduct',$data);
       
   }
   
+  public function myinformation()
+  {
+    $id=session('sesid');
+    $data['result']=$this->md1->vendetails('vendordetails',$id);
+
+
+      
+    return view('vendor.myinformation',$data);
+      
+  }
+  
+
 
 
 
@@ -126,6 +143,10 @@ return redirect('/vendorVerify');
     {
     //  $id=$r1->input('pno');
 
+
+     
+
+    
   $data['companyname']=$r1->input('companyname');
       
   $data['officeno']=$r1->input('officeno');
@@ -201,9 +222,11 @@ return redirect('/vendorVerify');
   
              
   $this->md1->bdetails('vendordetails',$data,$id);
+
+$name['result']=  $this->md1->vendet('vendordetails',$id);
+   return view('vendor.vendorbody',$name);
   
-   return view('vendor.vendorbody');
-          
+   
 // return redirect('/vendorVerify');
   }
 
@@ -214,17 +237,31 @@ return redirect('/vendorVerify');
      
       $data['res']=$this->md1->viewbrand('addbrand');//view brand while adding product
      
+      $data['resu']=$this->md1->viewcat('category');//view category while adding product
+     
+
       $data['resl']=$this->md1->viewsubcat('subcategory');//view subcategory while adding product
      
       return view('vendor.addproduct',$data);
     }
-  public function addproduct(Request $r1,$id)
+  // public function viewbusiness($id)
+  //   {
+  
+  //   $data['resul']=$this->md1->viewbusiness('business');//view business while adding company info.
+  //   return view('vendor.vendordetails',$data);
+  // }
+  
+  
+  
+    public function addproduct(Request $r1,$id)
     {
   
   $data['name']=$r1->input('pname');
   $data['description']=$r1->input('pdes');
   $data['brandid']=$r1->input('pbrand');
   $data['otherbrand']=$r1->input('obrand');
+  $data['catid']=$r1->input('pcat');
+  
   $data['subcatid']=$r1->input('ptype');
   $data['gst']=$r1->input('pgst');
   $data['price']=$r1->input('pprice');
@@ -258,7 +295,29 @@ return redirect('/vendorVerify');
           
     }
 
+    public function logout(Request $request)
+    {
+     
+        $request->session()->forget('sesid');
+        return redirect('/');
+    }
+
+    public function  viewmyinformation($id)
+    {
+     
+
+$ven=session('sesid');
+
+       $data['result']=$this->md1->vendet('vendordetails',$ven);
+   
+      $data['res']=$this->md1->viewsingleproduct('product',$id);
+     
+     
+      return view('vendor.vendorsingleproductinformation',$data);
+    }
   
+   
+   
    
 
 

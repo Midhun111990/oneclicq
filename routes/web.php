@@ -18,8 +18,20 @@ use App\Http\Controllers\customercontroller;
 // Route::get('/customer', [customercontroller::class,'customerindex']);
 
 
+
+
+
+
+
+
+
+
+
+//ADMIN
+
 Route::get('/admin', [admincontroller::class,'adminindex']);
 Route::get('/vendorsinformation', [admincontroller::class,'vinfo']);
+
 Route::get('/catinformation', [admincontroller::class,'catinfo']);
 Route::post('/addcat', [admincontroller::class,'addcat']);
 
@@ -40,14 +52,22 @@ Route::post('/addbusiness', [admincontroller::class,'addbusiness']);
 
 Route::get('/viewvendordetail/{id}', [admincontroller::class,'viewvendetail']);
 
+Route::get('/productinformation', [admincontroller::class,'productinformation']);
+
 Route::post('/approved/{id}', [admincontroller::class,'approved']);
 
+Route::post('/proapproved/{id}', [admincontroller::class,'proapproved']);
+
+Route::get('/singleproductinformation/{id}', [admincontroller::class,'viewmyinfo']);
+
+Route::get('/adminpendingproduct', [admincontroller::class,'pendingproduct']);
 
 
 
+//VENDOR
 
 
-Route::get('/', [vendorcontroller::class,'vendorsignin']);
+Route::get('/', [vendorcontroller::class,'index']);
 Route::get('/vendorRegister', [vendorcontroller::class,'vendorlog']);
 Route::post('/signin', [vendorcontroller::class,'vendorsignin']);
 
@@ -56,15 +76,37 @@ Route::post('/vendorotp', [vendorcontroller::class,'vendorotp']);
 Route::get('/vendorVerify', [vendorcontroller::class,'verifyotp']);
 Route::post('/otpcheck', [vendorcontroller::class,'otpcheck']);
 Route::get('/vendordetails', [vendorcontroller::class,'vendordetails']);
+
 Route::post('/businessdetails/{id}', [vendorcontroller::class,'businessdetails']);
 Route:: get('/vendorbody',[vendorcontroller::class,'vendorbody']);
 
 Route:: get('/vendorproduct',[vendorcontroller::class,'vendorproduct']);
+
+Route::get('/vendorsingleproductinformation/{id}', [vendorcontroller::class,'viewmyinformation']);
+
+
+
 Route:: get('/viewproduct/{id}',[vendorcontroller::class,'viewproduct']);
+
 Route:: post('/addproduct/{id}',[vendorcontroller::class,'addproduct']);
+
+Route:: get('/myinformation/{id}',[vendorcontroller::class,'myinformation']);
     
+Route:: get('/logout',[vendorcontroller::class,'logout']);
+
+// Route:: get('/viewbusiness/{id}',[vendorcontroller::class,'viewbusiness']);
 
 
+
+
+
+
+
+
+
+
+
+//CUSTOMER
 
 
 Route::get('/customer', [customercontroller::class,'customerindex']);

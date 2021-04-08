@@ -147,13 +147,48 @@ class admincontroller extends Controller
   
    return redirect()->back();
 
+}
 
+public function  productinformation()
+{
+    $data['result']=$this->md1->proinformation('product');
+     return view('admin.productinformation',$data);
+}
+public function viewmyinfo($id)
+    {
+     
+      $data['result']=$this->md1->viewsingleproduct('product',$id);
+     
+     
+      return view('admin.singleproductinformation',$data);
+    }
+  
+    public function proapproved($id)
+    {
+        // $data['res']=$this->md1->viewbrand('addbrand');//view brand while adding product
+     
+        // $data['resu']=$this->md1->viewcat('category');//view category while adding product
+       
+  
+        // $data['resl']=$this->md1->viewsubcat('subcategory');//view subcategory while adding product
+       
+        $data['status']=1;
+  $this->md1->proapproved('product',$data,$id);
+
+  return redirect('/productinformation');
+ 
     }
 
 
+    public function pendingproduct()
+    {
 
+        $data['result']=$this->md1->penproduct('product');
+        return view('admin.adminpendingproduct',$data);
+    
+ }
 
-
+   
 
 }
 ?>

@@ -82,13 +82,15 @@
 
 </tr>
 </tbody>
+@endforeach
 </table>
+
+
 </div>
 
 </div>
 </div>
 </div>
 </div>
-@endforeach
 
 @endsection

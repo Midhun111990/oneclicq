@@ -104,6 +104,9 @@
           <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
         </div>
       </li>
+      <li>
+      <b><a href="/logout">Logout</a></b>
+      </li>
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
@@ -166,7 +169,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item">
-            <a href="/vendorproduct" class="nav-link">
+            <a href="/myinformation/{{session('sesid')}}" class="nav-link">
               <i class="nav-icon "></i>
               <p>
              <center>   About me </center>
@@ -184,7 +187,15 @@
           </li>
          
           <li class="nav-item">
-            <a href="/vendorproduct" class="nav-link">
+          @if ($value->adminstatus==2)
+          <a href="/vendorproduct" class="nav-link">
+                      @else
+                      <script>
+                      alert('Your application is pending');
+                      </script>
+
+                      @endif</tr>
+           
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Products

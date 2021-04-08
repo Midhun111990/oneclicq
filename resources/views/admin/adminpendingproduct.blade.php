@@ -1,5 +1,5 @@
 
-@extends('vendor.vendordas')
+@extends('admin.admindas')
 @section('body')
 
 
@@ -16,7 +16,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Products</li>
+              <li class="breadcrumb-item active">Pending products</li>
             </ol>
           </div>
         </div>
@@ -32,39 +32,31 @@
               <div class="card-header">
               
 
-                <h3 class="card-title">My Products  </h3><a href="/viewproduct/{{session('sesid')}}">
-                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                 Add More +</a>
+                <h3 class="card-title">Pending products  </h3>
               </div>
+              
               <!-- /.card-header -->
               <div class="card-body">
+            
                 <table class="table table-bordered">
                   
                   <tbody>
                  
                     <tr>
-                    <td>Image</td>
+                    <td>Sr no.</td>
                       <td>Name</td>
                       <td>Description</td>
-                      <td>Price</td>
-                      <td>About</td>
-                </tr>
+                      <td>View</td>
+                      </tr>
                       <tr>
                      
                      
-                      @foreach($res as $value)   
-                      <td><img src="{{asset('uploads/images/'.$value->image)}}"height="100px" width="100px" />
-                   </td>    
+                      @foreach($result as $value)       
+                      <td>{{$value->pid}}</td>
+
                       <td>{{$value->name}}</td>
                       <td>{{$value->description}}</td>
-                      <td>{{$value->price}}</td>
-                      
-                      <td><a href="/vendorsingleproductinformation/{{$value->pid}}">View More.....</a></td>
-               
-                     
+                      <td><a href="/singleproductinformation/{{$value->pid}}">More</td>
                     </tr>
                     </html>
                     @endforeach                   
@@ -72,7 +64,6 @@
                   </tbody>
                 </table>
               </div>
-
               <!-- /.card-body -->
               <div class="card-footer clearfix">
                 
@@ -96,9 +87,9 @@
 
 
               </div>
-              <!-- /.card-body -->
             </div>
             <!-- /.card -->
+
 
         <!-- /.card-header -->
                   </tbody>
@@ -106,10 +97,12 @@
 
               </div>
 </div>
+
 </div>
 
                   </tbody>
                 </table>
+
 
 
 
