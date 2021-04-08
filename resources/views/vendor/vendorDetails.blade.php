@@ -64,6 +64,9 @@ of modern day shopping. OneClick presents in front of you, a unique
     <input type="text" class="form-control" placeholder="E-mail" name="email">
     <input type="text" class="form-control" placeholder="Password" name="pass">
         <input type="text" class="form-control" placeholder="Confirm Password" name="cpass">
+    <!-- confirmed
+    -->
+    
         <input type="hidden" class="form-control"name="regstatus" value="0">
     
     

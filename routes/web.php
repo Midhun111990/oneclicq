@@ -60,7 +60,7 @@ Route::post('/proapproved/{id}', [admincontroller::class,'proapproved']);
 
 Route::get('/singleproductinformation/{id}', [admincontroller::class,'viewmyinfo']);
 
-Route::get('/adminpendingproduct', [admincontroller::class,'pendingproduct']);
+Route::get('/pendingproduct', [admincontroller::class,'pendingproduct']);
 
 
 

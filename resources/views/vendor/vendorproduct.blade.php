@@ -50,6 +50,7 @@
                       <td>Name</td>
                       <td>Description</td>
                       <td>Price</td>
+                      <td>Status</td>
                       <td>About</td>
                 </tr>
                       <tr>
@@ -61,6 +62,12 @@
                       <td>{{$value->name}}</td>
                       <td>{{$value->description}}</td>
                       <td>{{$value->price}}</td>
+                      <td>
+                      @if($value->status==1)
+                      <font color="Green"><b><h4>✔</h4></b></font> 
+                      @else
+                      ❌
+                      @endif</td>
                       
                       <td><a href="/vendorsingleproductinformation/{{$value->pid}}">View More.....</a></td>
                

@@ -30,7 +30,12 @@ class vendorcontroller extends Controller
 
     public function vendorotp(Request $r1)
     {
-$data['phone']=$r1->input('mob');
+      request()->validate([
+        'mob'=>'required',
+        'otp_num'=>'required']
+    );
+
+      $data['phone']=$r1->input('mob');
 $data['otp']=$r1->input('otp_num');
 $this->md1->insert('vendorotp',$data);//function call from model to insert
 return redirect('/vendorVerify');
@@ -130,14 +135,12 @@ return redirect('/vendorVerify');
         $this->md1->vdetails('vendordetails',$data);//function call from model to insert
     //    $name['resultname']=$this->md1->nocheck('vendordetails',$name);
         $pno['result']=$this->md1->nocheck('vendordetails',$mobileno);//function call from model to insert
+        $pno['res']=$this->md1->busdetail('business');
+    
         return view('vendor.vendorBusinessdetails',$pno);
      }
-    //  function busdetail($id)
-    // {
-    //     $data['result']=$this->md1->busdetail('vendordetails',$id);
-    //     return view('vendorBusinessdetails',$data);
+    
 
-    // }
      
     public function businessdetails(Request $r1,$id)
     {

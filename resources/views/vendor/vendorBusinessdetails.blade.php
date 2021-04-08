@@ -133,8 +133,8 @@ of modern day shopping. OneClick presents in front of you, a unique
 <select name="businesstype" id="businesstype" class="form-control">
   
   <option>Choose..</option>
-  <option value="individualsolo">Individual/Solo</option>
-  Partnesrship
+  @foreach($res as $val) <option value="{{$val->id}}">{{$val->name}}</option>
+                      @endforeach
   </select>
 </div>
 

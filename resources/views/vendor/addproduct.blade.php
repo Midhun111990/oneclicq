@@ -225,7 +225,7 @@
                       <td><input type="checkbox" name="preturn" id="pretur"value="1"> YES </td>
                     </tr>
 
-                    <td><input type="submit" name="submit" class="submit btn btn-success" value="Add +" ></td>
+                    <td colspan="3"><center><input type="submit" name="submit" style="height:200px;width:200px"class="submit btn btn-success" value="Add +" ></center></td>
 
                    
                   </tbody>
