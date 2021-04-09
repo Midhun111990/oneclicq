@@ -267,19 +267,22 @@
                       <td>1.</td>
                       <td>Return policy</td>
                       <td><input type="checkbox" name="pret" id="pret" value="1"> YES </td>
+                      <td><input type="checkbox" name="pret" id="pret" value="0"> NO </td>
                       </tr>
                       <tr>
                       <td>2.</td>
                       <td>Free delivery</td>
                       <td><input type="checkbox" name="pdelyes" id="pdelyes"value="1"> YES</td>
+                      <td><input type="checkbox" name="pret" id="pret" value="0"> NO </td>
                     </tr>
                     <tr>
                       <td>3.</td>
                       <td>Returnable</td>
                       <td><input type="checkbox" name="preturn" id="pretur"value="1"> YES </td>
+                      <td><input type="checkbox" name="pret" id="pret" value="0"> NO </td>
                     </tr>
 
-                    <td><input type="submit" name="submit" class="submit btn btn-success" value="Add +" ></td>
+                    <td align ="center"colspan="4"><input type="submit" name="submit" class="submit btn btn-success" value="Add +" style="height:307px;width:490px;font-size: 100px;"></td>
 
                    
                   </tbody>
