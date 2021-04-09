@@ -45,19 +45,34 @@
                     <tr>
                       <td>1.</td>
                       <td>Name</td>
-                      <td><input type="text" name="pname" id="pname"class="form-control"></td>
+                      <td><input type="text" name="pname" id="pname"class="form-control" value="{{old('pname')}}" required/>
+                      @error("pname")
+<p style="color:red">{{$errors->first("pname")}}</p>
+@enderror
+
+                      </td>
                       </tr>
                       <tr>
                       <td>2.</td>
                       <td>Description</td>
-                      <td><textarea name="pdes" id="pdes" class="form-control"></textarea></td>
+                      <td><textarea name="pdes" id="pdes" class="form-control"></textarea>
+                      @error("pdes")
+<p style="color:red">{{$errors->first("pdes")}}</p>
+@enderror
+                      </td>
+                     
                     </tr>
                     <tr>  
                       <td>3.</td>
                       <td>Category</td>
-                      <td><select name="pcat" id="pcat" class="form-control">
-                      @foreach($resu as $vallt) <option value="{{$vallt->catid}}">{{$vallt->catname}}</option>
-                      @endforeach</select></td>
+                      <td><select name="pcat" id="pcat" class="form-control" required>
+                      <option> Choose</option>
+                      @foreach($resu as $vallt) 
+                     <option value="{{$vallt->catid}}">{{$vallt->catname}}</option>
+                      @endforeach</select>
+                      @error("pcat")
+<p style="color:red">{{$errors->first("pcat")}}</p>
+@enderror</td>
                      
                       
                       </select></td>
@@ -66,11 +81,16 @@
                       <td>4.</td>
                       <td>Sub Category</td>
                       <td><select name="ptype" id="ptype" class="form-control">
-                      @foreach($resl as $vall) <option value="{{$vall->subcatid}}">{{$vall->subcatname}}</option>
-                      @endforeach</select></td>
-                     
+                      <option> Choose</option>
+                      @foreach($resl as $vall) 
                       
-                      </select></td>
+                      <option value="{{$vall->subcatid}}">{{$vall->subcatname}}</option>
+                      @endforeach</select>
+                      @error("ptype")
+<p style="color:red">{{$errors->first("ptype")}}</p>
+@enderror
+</td>
+                     
                     </tr>
                    
                     <tr>
@@ -78,14 +98,18 @@
                       <td>Brand</td>
                      
                       <td><select name="pbrand" id="pbrand" class="form-control">
+                      <option> Choose</option>
                       @foreach($res as $val) <option value="{{$val->brandid}}">{{$val->brandname}}</option>
-                      @endforeach</select></td>
-                     
+                      @endforeach</select>
+                      @error("ptype")
+<p style="color:red">{{$errors->first("ptype")}}</p>
+@enderror
+</td>
                     </tr>
                     <tr>
                       <td>6.</td>
                       <td>Other brand</td>
-                      <td><input type="text" name="obrand" id="obrand"class="form-control"></td>
+                      <td><input type="text" name="obrand" id="obrand"class="form-control"placeholder="Optional"></td>
                     </tr>
                     
 
@@ -113,27 +137,42 @@
                     <tr>
                       <td>1.</td>
                       <td>GST</td>
-                      <td><input type="text" name="pgst" id="pgst"class="form-control"></td>
+                      <td><input type="text" name="pgst" id="pgst"class="form-control"value="{{old('pgst')}}">
+                      @error("pgst")
+<p style="color:red">{{$errors->first("pgst")}}</p>
+@enderror</td>
                       </tr>
                       <tr>
                       <td>2.</td>
                       <td>Price</td>
-                      <td><input type="text" name="pprice" id="pprice"class="form-control"></td>
+                      <td><input type="text" name="pprice" id="pprice"class="form-control"value="{{old('pprice')}}">
+                      @error("pprice")
+<p style="color:red">{{$errors->first("pprice")}}</p>
+@enderror</td>
                     </tr>
                     <tr>
                       <td>3.</td>
                       <td>MRP</td>
-                      <td><input type="text" name="pmrp" id="pmrp"class="form-control"></td>
+                      <td><input type="text" name="pmrp" id="pmrp"class="form-control"value="{{old('pmrp')}}">
+                      @error("pmrp")
+<p style="color:red">{{$errors->first("pmrp")}}</p>
+@enderror</td>
                     </tr>
                     <tr>
                       <td>4.</td>
                       <td>Stock Unit</td>
-                      <td><input type="text" name="pstock" id="pstock"class="form-control"></td>
+                      <td><input type="text" name="pstock" id="pstock"class="form-control"value="{{old('pstock')}}">
+                      @error("pstock")
+<p style="color:red">{{$errors->first("pstock")}}</p>
+@enderror</td>
                     </tr>
                     <tr>
                       <td>5.</td>
                       <td>Warranty details</td>
-                      <td><input type="text" name="pwar" id="pwar"class="form-control"></td>
+                      <td><input type="text" name="pwar" id="pwar"class="form-control"value="{{old('pwar')}}">
+                      @error("pwar")
+<p style="color:red">{{$errors->first("pwar")}}</p>
+@enderror</td>
                     </tr>
                    
                   </tbody>
@@ -166,27 +205,42 @@
                     <tr>
                       <td>1.</td>
                       <td>Height</td>
-                      <td><input type="text" name="pheight" id="pheight"class="form-control"></td>
+                      <td><input type="text" name="pheight" id="pheight"class="form-control"value="{{old('pheight')}}">
+                      @error("pheight")
+<p style="color:red">{{$errors->first("pheight")}}</p>
+@enderror</td>
                       </tr>
                       <tr>
                       <td>2.</td>
                       <td>Weight</td>
-                      <td><input type="text" name="pweight" id="pweight"class="form-control"></td>
+                      <td><input type="text" name="pweight" id="pweight"class="form-control"value="{{old('pweight')}}">
+                      @error("pweight")
+<p style="color:red">{{$errors->first("pweight")}}</p>
+@enderror</td>
                     </tr>
                     <tr>
                       <td>3.</td>
                       <td>Width</td>
-                      <td><input type="text" name="pwidth" id="pwidth"class="form-control"></td>
+                      <td><input type="text" name="pwidth" id="pwidth"class="form-control"value="{{old('pwidth')}}">
+                      @error("pwidth")
+<p style="color:red">{{$errors->first("pwidth")}}</p>
+@enderror</td>
                     </tr>
                     <tr>
                       <td>4.</td>
                       <td>Length</td> 
-                      <td><input type="text" name="plen" id="plen"class="form-control"></td>
+                      <td><input type="text" name="plen" id="plen"class="form-control"value="{{old('plength')}}">
+                      @error("plen")
+<p style="color:red">{{$errors->first("plen")}}</p>
+@enderror</td>
                     </tr>
                     <tr>
                       <td>5.</td>
                       <td>Images</td>
-                      <td><input type="file" name="pimage" id="pimage"class="form-control"></td>
+                      <td><input type="file" name="pimage" id="pimage"class="form-control"value="{{old('pimage')}}">
+                      @error("pimage")
+<p style="color:red">{{$errors->first("pimage")}}</p>
+@enderror</td>
                     </tr>
                     
                   </tbody>

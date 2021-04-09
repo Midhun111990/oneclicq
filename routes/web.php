@@ -60,7 +60,7 @@ Route::post('/proapproved/{id}', [admincontroller::class,'proapproved']);
 
 Route::get('/singleproductinformation/{id}', [admincontroller::class,'viewmyinfo']);
 
-Route::get('/adminpendingproduct', [admincontroller::class,'pendingproduct']);
+Route::get('/pendingproduct', [admincontroller::class,'pendingproduct']);
 
 
 
@@ -70,6 +70,10 @@ Route::get('/adminpendingproduct', [admincontroller::class,'pendingproduct']);
 Route::get('/', [vendorcontroller::class,'index']);
 Route::get('/vendorRegister', [vendorcontroller::class,'vendorlog']);
 Route::post('/signin', [vendorcontroller::class,'vendorsignin']);
+
+Route::get('/vendorforgot', [vendorcontroller::class,'vendorpassforgot']);
+
+Route::post('/vendorforgot', [vendorcontroller::class,'vendorforgot']);
 
 Route::get('/logincheck', [vendorcontroller::class,'/logincheck']);
 Route::post('/vendorotp', [vendorcontroller::class,'vendorotp']);

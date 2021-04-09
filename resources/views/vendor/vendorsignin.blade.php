@@ -57,13 +57,23 @@ of modern day shopping. OneClick presents in front of you, a unique
 <form method="post" action="/signin">
 @csrf
     <input type="text" class="form-control" placeholder="Enter your E-mail address" name="email">
+    @error("email")
+<p style="color:red">{{$errors->first("email","E-mail address is required")}}</p>
+@enderror    
     <input type="text" class="form-control" placeholder="Enter Password" name="pass" id="pass">
-    <span style="color:black;text-align:center;" >   <a href=""><b>Forgot Password ?</b></a>
+    @error("pass")
+<p style="color:red">{{$errors->first("pass","Password id required")}}</p>
+@enderror 
+    <span style="color:black;text-align:center;" >   <a href="/vendorforgot"><b>Forgot Password ?</b></a>
 </span>
     <input type="submit" class="btn btn-warning btn-lg btn-block" value="Sign In" id="login">
   
-<a href="/vendorRegister"><b>New Seller Register Now</b></a>
-
+<a href="/vendorRegister"><b>New Seller Register Now !!!</b></a>
+@if(session()->has('error'))
+    <div class="btn btn-warning btn-lg btn-block" >
+        {{ session()->get('error') }}
+    </div>
+@endif
   </form>
 </div>
 </div>

@@ -134,7 +134,7 @@ class adminmodel extends Model
     }
     function  penproduct($table)
     {
-       $data=DB::table($table)->get();
+       $data=DB::table($table)->where('status',0)->get();
         return $data;
     
 }

@@ -87,7 +87,7 @@
                       @foreach($result as $value)
                
                       <tr>
-                      <td>{{$value->catid}}</td>
+                      <td>{{$loop->iteration}}</td> 
                       <td>{{$value->catname}}</td>
                       <td>{{$value->catcommission}}</td>
                  

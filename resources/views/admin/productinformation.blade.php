@@ -51,18 +51,25 @@
                       <td>Name</td>
                       <td>Description</td>
                       <td>Price</td>
+                      <td>Status</td>
                       <td>View</td>
                       </tr>
                       <tr>
                      
                      
                       @foreach($result as $value)       
-                      <td>{{$value->pid}}</td>
+                      <td>{{$loop->iteration}}</td> 
                       <td><img src="{{asset('uploads/images/'.$value->image)}}"height="100px" width="100px" /></td>
            
                       <td>{{$value->name}}</td>
                       <td>{{$value->description}}</td>
                       <td>{{$value->price}}</td>
+                      <td>
+                      @if($value->status==1)
+                      <font color="Green"><b><h4>✔</h4></b></font> 
+                      @else
+                      ❌
+                      @endif</td>
                       <td><a href="/singleproductinformation/{{$value->pid}}">More</td>
                     </tr>
                     </html>

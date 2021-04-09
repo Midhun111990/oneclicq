@@ -52,8 +52,9 @@
                      
                      
                       @foreach($result as $value)       
-                      <td>{{$value->pid}}</td>
-
+                      <td>{{$loop->iteration}}</td> 
+                      <!-- Automatically index
+                       -->
                       <td>{{$value->name}}</td>
                       <td>{{$value->description}}</td>
                       <td><a href="/singleproductinformation/{{$value->pid}}">More</td>

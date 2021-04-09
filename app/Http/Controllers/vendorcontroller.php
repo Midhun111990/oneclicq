@@ -30,7 +30,12 @@ class vendorcontroller extends Controller
 
     public function vendorotp(Request $r1)
     {
-$data['phone']=$r1->input('mob');
+      request()->validate([
+        'mob'=>'required',
+        'otp_num'=>'required']
+    );
+
+      $data['phone']=$r1->input('mob');
 $data['otp']=$r1->input('otp_num');
 $this->md1->insert('vendorotp',$data);//function call from model to insert
 return redirect('/vendorVerify');
@@ -89,12 +94,30 @@ return redirect('/vendorVerify');
       
   }
   
+  public function vendorpassforgot()
+  {
+      return view('vendor.vendorpasswordforgot');
+  }
+
+  public function vendorforgot(Request $r1)
+  {
+
+
+
+
+  }
+
 
 
 
 
     public function vendorsignin(Request $r1)
   {
+
+    request()->validate([
+      'email'=>'required|email',
+      'pass'  =>'required']
+  );
 
     
         $email=$r1->input('email');
@@ -112,7 +135,7 @@ return redirect('/vendorVerify');
     }
    else
        
-       return view('vendor.vendorsignin');
+   return back()->with('error', 'Incorrect username/ password!');
         
 
     }
@@ -255,7 +278,26 @@ $name['result']=  $this->md1->vendet('vendordetails',$id);
   
     public function addproduct(Request $r1,$id)
     {
-  
+ 
+      request()->validate([
+        'pname'=>'required',
+        'pgst'=>'required',
+        'pdes'=>'required',
+        'pcat'=>'required',
+        'ptype'=>'required',
+        'pprice'=>'required',
+        'pmrp'=>'required',
+        'pstock'=>'required',
+        'pwar'=>'required',
+        'pheight'=>'required',
+        'pwidth'=>'required',
+        'pweight'=>'required',
+        'plen'=>'required',
+        'pimage'=>'required',
+        
+        'pbrand'=>'required'
+        ]);
+
   $data['name']=$r1->input('pname');
   $data['description']=$r1->input('pdes');
   $data['brandid']=$r1->input('pbrand');

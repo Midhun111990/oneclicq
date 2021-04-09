@@ -76,7 +76,7 @@
                       @foreach($result as $value)
                
                       <tr>
-                      <td>{{$value->id}}</td>
+                      <td>{{$loop->iteration}}</td> 
                       <td>{{$value->name}}</td>
                       
                     </tr>
