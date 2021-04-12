@@ -28,6 +28,8 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+
 </head>
 <body>
 
@@ -55,7 +57,11 @@ of modern day shopping. OneClick presents in front of you, a unique
 <div class="login">
 <form method="post" action="/vendorotp">
 @csrf
-    <input type="text" class="form-control" placeholder="Enter your Mobile Number" name="mob">
+<i style="color:white" id="moberror"></i>
+    <input type="text" class="form-control" placeholder="Enter your Mobile Number"id="mob" name="mob">
+    @error("mob")
+<p style="color:red">{{$errors->first("mob","Enter your mobile number !")}}</p>
+@enderror
     <input type="hidden" class="form-control"  name="otp_num" id="otp_num">
     <input type="submit" class="btn btn-warning btn-lg btn-block" value="Send OTP" id="otp">
     </form>
@@ -120,5 +126,6 @@ $(document).ready(function(){
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<script src="dist/js/val.js"></script>
 </body>
 </html>

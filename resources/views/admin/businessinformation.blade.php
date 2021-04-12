@@ -43,10 +43,14 @@
                   <tbody>
                     <tr>
                     <td>Name</td>
-                    
+                    <td>Add</td>
                     </tr>
                     <tr>
-                    <td><input type="text" name="businessname" id="businessname" placeholder="Business type"></td>
+                    <td><input type="text" name="businessname" id="businessname" placeholder="Business type">
+                    @error("businessname")
+<p style="color:red">{{$errors->first("businessname","Enter business type name !")}}</p>
+@enderror
+</td>
                     <input type="hidden" name="status" id="status"value="0">
                      
                      <td> <input type="submit" name="submit" class="submit btn btn-success" value="+" >   </td>
@@ -59,7 +63,7 @@
 </form>
 <section class="content">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-12">
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Business Types</h3>
@@ -68,16 +72,20 @@
               <div class="card-body">
                 <table class="table table-bordered">
                   
-                  <tbody>
+                <tbody style="color:white;background-color:black;">
+                  
                     <tr>
-                    <td>ID</td>
-                      <td>Name</td>
+                    <td align="center"><b><h4>ID</h4></b></td>
+                    <td align="center"><b><h4>Name</h4></b></td>
+                    
+                    
+                      
                       </tr>
                       @foreach($result as $value)
                
                       <tr>
-                      <td>{{$loop->iteration}}</td> 
-                      <td>{{$value->name}}</td>
+                      <td align="center">{{$loop->iteration}}</td> 
+                      <td align="center">{{$value->name}}</td>
                       
                     </tr>
                      

@@ -58,8 +58,14 @@
 </select>
                 </td>
                     
-                    <td><input type="text" name="subcatname" id="subcatname" placeholder="Enter name of subcategory"></td>
-                     <td><input type="file" name="subcatimage" id="subcatimage" placeholder="Select Image"></td>
+                    <td><input type="text" name="subcatname" id="subcatname" placeholder="Enter name of subcategory">
+                    @error("subcatname")
+<p style="color:red">{{$errors->first("subcatname","Enter Sub category name !")}}</p>
+@enderror</td>
+                     <td><input type="file" name="subcatimage" id="subcatimage" placeholder="Select Image">
+                     @error("subcatimage")
+<p style="color:red">{{$errors->first("subcatimage","Select image !")}}</p>
+@enderror</td>
                      <td> <input type="submit" name="submit" class="submit btn btn-success" value="+" >   </td>
                     </tr>
                    
@@ -70,7 +76,7 @@
 </form>
 <section class="content">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-12">
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Category</h3>
@@ -79,17 +85,18 @@
               <div class="card-body">
                 <table class="table table-bordered">
                   
-                  <tbody>
+                  <tbody style="color:white;background-color:black;">
                     <tr>
-                    <td>ID</td>
-                      <td>Sub Category</td>
+                    <td align="center"><b><h4>ID</h4></b></td>
+                    <td align="center"><b><h4>Sub Category</h4></b></td>
+                      
                       </tr>
                       @foreach($res as $values)
                
                       <tr>
-                      <td>{{$values->subcatid}}</td>
-                     
-                      <td>{{$values->subcatname}}</td>
+                      <td align="center">{{$loop->iteration}}</td> 
+                      
+                      <td align="center">{{$values->subcatname}}</td>
                       
                     </tr>
                      

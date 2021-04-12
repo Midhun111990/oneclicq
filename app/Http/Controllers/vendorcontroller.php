@@ -30,9 +30,7 @@ class vendorcontroller extends Controller
 
     public function vendorotp(Request $r1)
     {
-      request()->validate([
-        'mob'=>'required',
-        'otp_num'=>'required']
+      request()->validate(['mob'=>'required']
     );
 
       $data['phone']=$r1->input('mob');
@@ -54,12 +52,17 @@ return redirect('/vendorVerify');
     {
         $mobileno=$r1->input('mob');
         $otp=$r1->input('otp');
+
         
+      
        $data['result']=$this->md1->otpcheck('vendorotp',$mobileno,$otp);//function call from model to insert
-   
-       
+   if($data['result']==false)
+   {
+     return redirect('/vendorVerify');
+   }
+   else{
        return view('vendor.vendorDetails',$data);
-        
+   }        
 
     }
   
@@ -142,6 +145,11 @@ return redirect('/vendorVerify');
    
     public function vendordetails(Request $r1)
     {
+      request()->validate(
+        ['name'=>'required','email'=>'required'
+        ,'pass'=>'required','cpass'=>'required'
+        ]
+    );
   
         $data['name']=$r1->input('name');
         $data['mob']=$r1->input('mob');
@@ -153,6 +161,7 @@ return redirect('/vendorVerify');
         $this->md1->vdetails('vendordetails',$data);//function call from model to insert
     //    $name['resultname']=$this->md1->nocheck('vendordetails',$name);
         $pno['result']=$this->md1->nocheck('vendordetails',$mobileno);//function call from model to insert
+        $pno['res']=$this->md1->busdet('business');
         return view('vendor.vendorBusinessdetails',$pno);
      }
     //  function busdetail($id)
@@ -297,6 +306,14 @@ $name['result']=  $this->md1->vendet('vendordetails',$id);
         
         'pbrand'=>'required'
         ]);
+        $name=$r1->input('pname');
+        $price=$r1->input('pprice');
+        $stock=$r1->input('pstock');
+
+        $data1=$this->md1->stockcheck('product',$name,$price);//function call from model to update
+        if(!isset($data1))
+          {
+                 
 
   $data['name']=$r1->input('pname');
   $data['description']=$r1->input('pdes');
@@ -334,10 +351,20 @@ $name['result']=  $this->md1->vendet('vendordetails',$id);
   
 
         return redirect('/vendorproduct');
-          
-    }
-
-    public function logout(Request $request)
+        }  
+else
+{
+  $r1->session()->put(array('pid'=>$data1->pid));
+  $stockinc= session('pid');
+   $this->md1->updatestock('product',$stock,$stockinc);
+ 
+ 
+  return redirect('/vendorproduct');
+}
+      }
+ 
+ 
+        public function logout(Request $request)
     {
      
         $request->session()->forget('sesid');

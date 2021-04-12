@@ -38,10 +38,22 @@ class vendormodel extends Model
 
     }
 
+   
+
+
  public function otpcheck($table,$mobileno,$otp)
     {
         
-      return  DB::table($table)->where('phone',$mobileno)->where('otp',$otp)->get();
+      $data= DB::table($table)->where('phone',$mobileno)->where('otp',$otp)->get();
+$count=$data->count();
+if($count==0)
+{
+ return false; 
+}
+else
+{
+  return $data;
+}
 
     }
 
@@ -51,10 +63,30 @@ class vendormodel extends Model
       return  DB::table($table)->where('email',$email)->where('pass',$pass)->first();
 
     }
+    public function stockcheck($table,$name,$price)
+    {
+        
+      $data=DB::table($table)->where('name',$name)->where('price',$price)->first();
+      return $data;
+      
+    }
+    
+    public function updatestock($table,$stock,$stockinc)
+    {
+      DB::table($table)->where('pid',$stockinc)->increment('stockunit',$stock);
+    }
+
+
     function vdetails($table,$data)
 
     {
         DB::table($table)->insert($data);
+
+    }
+    function busdet($table)
+    {
+        $data=DB::table($table)->get();
+        return $data;
 
     }
 

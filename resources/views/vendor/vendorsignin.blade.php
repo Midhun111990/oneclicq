@@ -60,7 +60,7 @@ of modern day shopping. OneClick presents in front of you, a unique
     @error("email")
 <p style="color:red">{{$errors->first("email","E-mail address is required")}}</p>
 @enderror    
-    <input type="text" class="form-control" placeholder="Enter Password" name="pass" id="pass">
+    <input type="password" class="form-control" placeholder="Enter Password" name="pass" id="pass">
     @error("pass")
 <p style="color:red">{{$errors->first("pass","Password id required")}}</p>
 @enderror 

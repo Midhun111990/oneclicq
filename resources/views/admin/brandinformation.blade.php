@@ -42,13 +42,21 @@
                   
                   <tbody>
                     <tr>
-                    <td>Name</td>
+                    <td>Brand Name</td>
                     <td>Logo</td>
-                    
+                    <td>Add</td>
                     </tr>
                     <tr>
-                    <td><input type="text" name="brandname" id="brandname" placeholder="Enter name of Brand"></td>
-                      <td><input type="file" name="brandimage" id="brandimage" placeholder="Select brand logo"></td>
+                    <td><input type="text" name="brandname" id="brandname" placeholder="Enter name of Brand">
+                    @error("brandname")
+<p style="color:red">{{$errors->first("brandname","Enter brand name !")}}</p>
+@enderror
+</td>
+                      <td><input type="file" name="brandimage" id="brandimage" placeholder="Select brand logo">
+                      @error("brandimage")
+<p style="color:red">{{$errors->first("brandimage","Select brand Logo !")}}</p>
+@enderror
+</td>
                      <td> <input type="submit" name="submit" class="submit btn btn-success" value="+" >   </td>
                     </tr>
                    
@@ -59,7 +67,7 @@
 </form>
 <section class="content">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-12">
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Brands</h3>
@@ -68,16 +76,16 @@
               <div class="card-body">
                 <table class="table table-bordered">
                   
-                  <tbody>
-                    <tr>
-                    <td>ID</td>
-                      <td>Name</td>
+                <tbody style="color:white;background-color:black;">
+                 <tr>
+                    <td align="center"><b><h4>ID</h4></b></td>
+                      <td align="center"><b><h4>Brand Name</h4></b></td>
                       </tr>
                       @foreach($result as $value)
                
                       <tr>
-                      <td>{{$value->brandid}}</td>
-                      <td>{{$value->brandname}}</td>
+                      <td align="center">{{$value->brandid}}</td>
+                      <td align="center">{{$value->brandname}}</td>
                       
                     </tr>
                      

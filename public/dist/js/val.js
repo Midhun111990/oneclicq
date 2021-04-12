@@ -1,3 +1,5 @@
+//VENDOR
+
 $("#obrand").keypress(function (e) {
     var keyCode = e.keyCode || e.which;
 
@@ -17,6 +19,8 @@ $("#obrand").keypress(function (e) {
 
     return isValid;
 });
+
+
 
 
 
@@ -197,14 +201,112 @@ $("#plen").keypress(function (e) {
 
 
 
+$("#mob").keypress(function (e) {
+    var keyCode = e.keyCode || e.which;
+
+    $("#mob").css("background-color", "white");
+    $('#name_error').html("");
+
+    //Regex for Valid Characters i.e. Alphabets.
+    var regex = /^[0-9\.]*$/;
+
+   
+
+    //Validate TextBox value against the Regex.
+    var isValid = regex.test(String.fromCharCode(keyCode));
+    if (!isValid) {
+       $("#mob").css("background-color", "pink");
+       $('#name_error').html("Only Digits allowed.");
+    }
+
+    return isValid;
+});
+
+        $('#mob').keypress(function()
+             {
+                  var phone=$('#mob').val();
+                if((phone.length!=9)||(phone.length>9))
+                {
+                      $("#mob").css("background-color", "pink");
+                      $('#moberror').html("Enter only 10 digit.");
+                }
+                // return true;
+                else{
+                $("#mob").css("background-color", "white");
+                $('#moberror').html("");
+                }
+        });
 
 
 
 
+        $("#otp").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+        
+            $("#otp").css("background-color", "white");
+            $('#name_error').html("");
+        
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[0-9\.]*$/;
+        
+           
+        
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+               $("#otp").css("background-color", "pink");
+               $('#name_error').html("Only Digits allowed.");
+            }
+        
+            return isValid;
+        });
+        
+//ADMIN
+
+
+$("#businessname").keypress(function (e) {
+    var keyCode = e.keyCode || e.which;
+
+    $("#businessname").css("background-color", "white");
+    $('#name_error').html("");
+
+    //Regex for Valid Characters i.e. Alphabets.
+    var regex = /^[A-Za-z\-\s]+$/;
+   
+
+    //Validate TextBox value against the Regex.
+    var isValid = regex.test(String.fromCharCode(keyCode));
+    if (!isValid) {
+       $("#businessname").css("background-color", "pink");
+       $('#name_error').html("Only Alphabets allowed.");
+    }
+
+    return isValid;
+});
 
 
 
 
+$("#catcommission").keypress(function (e) {
+    var keyCode = e.keyCode || e.which;
+
+    $("#catcommission").css("background-color", "white");
+    $('#name_error').html("");
+
+    //Regex for Valid Characters i.e. Alphabets.
+    var regex = /^[0-9\.]*$/;
+
+   
+
+    //Validate TextBox value against the Regex.
+    var isValid = regex.test(String.fromCharCode(keyCode));
+    if (!isValid) {
+       $("#catcommission").css("background-color", "pink");
+       $('#name_error').html("Only Digits allowed.");
+    }
+
+    return isValid;
+});
 
 
 

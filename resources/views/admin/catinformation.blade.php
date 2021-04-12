@@ -29,7 +29,7 @@
 
             <div class="card">
               <div class="card-header">
-              <div class="card-body p-0">
+              <div class="card-body p-12">
              
                 <h3 class="card-title">Add Category +</h3>
               </div>
@@ -49,10 +49,21 @@
                     
                     </tr>
                     <tr>
-                    <td><input type="text" name="catname" id="catname" placeholder="Enter name of category"></td>
-                      <td><input type="text" name="catdes" id="catdes" placeholder="Enter description of category"></td>
-                      <td><input type="file" name="catimage" id="catimage" placeholder="Select Image"></td>
-                      <td><input type="text" name="catcommission" id="catcommission" placeholder="Commision based on category"></td>
+                    <td><input type="text" name="catname" id="catname" placeholder="Enter name of category">
+                    @error("catname")
+<p style="color:red">{{$errors->first("catname","Enter Category name !")}}</p>
+@enderror</td>
+                      <td><input type="text" name="catdes" id="catdes" placeholder="Enter description of category">
+                      @error("catdes")
+<p style="color:red">{{$errors->first("catdes","Enter Category description !")}}</p>
+@enderror</td>
+                      <td><input type="file" name="catimage" id="catimage" placeholder="Select Image">
+                      @error("catimage")
+<p style="color:red">{{$errors->first("catimage","Select image based on category !")}}</p>
+@enderror</td>
+                      <td><input type="text" name="catcommission" id="catcommission" placeholder="Commision based on category">                      @error("catcommission")
+<p style="color:red">{{$errors->first("catcommission","Enter your commission based on category !")}}</p>
+@enderror</td>
                      <td> <input type="submit" name="submit" class="submit btn btn-success" value="+" >   </td>
                     </tr>
                    
@@ -67,7 +78,7 @@
 
 <section class="content">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-12">
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Category</h3>
@@ -76,24 +87,25 @@
               <div class="card-body">
                 <table class="table table-bordered">
                   
-                  <tbody>
+                  <tbody style="color:white;background-color:black;">
                     <tr>
-                    <td>ID</td>
-                      <td>Name</td>
-                      <td>Commission</td>
-                      <td>Add sub</td>
+                    <td align="center"><b><h4>ID</h4></b></td>
+                    <td align="center"><b><h4>Name</h4></b></td>
+                    <td align="center"><b><h4>Commission</h4></b></td>
+                    <td align="center"><b><h4>Add</h4></b></td>
+                     
      
                       </tr>
                       @foreach($result as $value)
                
                       <tr>
-                      <td>{{$loop->iteration}}</td> 
-                      <td>{{$value->catname}}</td>
-                      <td>{{$value->catcommission}}</td>
+                      <td align="center">{{$loop->iteration}}</td> 
+                      <td align="center">{{$value->catname}}</td>
+                      <td align="center">{{$value->catcommission}}</td>
                  
                  
      
-                      <td><a href="/subcatinformation/{{$value->catid}}"><h3> +</h3></a>    </td>
+                      <td align="center"><a href="/subcatinformation/{{$value->catid}}"><h3> +</h3></a>    </td>
                
                     </tr>
                      

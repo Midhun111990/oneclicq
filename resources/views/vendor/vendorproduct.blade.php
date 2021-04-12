@@ -27,17 +27,22 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-12">
             <div class="card">
               <div class="card-header">
               
 
-                <h3 class="card-title">My Products  </h3><a href="/viewproduct/{{session('sesid')}}">
-                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                 Add More +</a>
+                <h3 class="card-title">My Products &nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                
+                 </h3><a href="/viewproduct/{{session('sesid')}}"style="color:blue">
+               
+                 <b><h3>Add More +</h3></b></a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -45,19 +50,22 @@
                   
                   <tbody>
                  
-                    <tr>
+                    <tr style="color:white;background-color:black;">
                     <td>Image</td>
                       <td>Name</td>
                       <td>Description</td>
                       <td>Price</td>
                       <td>Status</td>
+                      <td>Stock</td>
                       <td>About</td>
                 </tr>
                       <tr>
                      
                      
                       @foreach($res as $value)   
-                      <td><img src="{{asset('uploads/images/'.$value->image)}}"height="100px" width="100px" />
+                      <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                      <img src="{{asset('uploads/images/'.$value->image)}}"height="120px" width="180px" />
                    </td>    
                       <td>{{$value->name}}</td>
                       <td>{{$value->description}}</td>
@@ -68,7 +76,7 @@
                       @else
                       ❌
                       @endif</td>
-                      
+                      <td>{{$value->stockunit}}</td>       
                       <td><a href="/vendorsingleproductinformation/{{$value->pid}}">View More.....</a></td>
                
                      

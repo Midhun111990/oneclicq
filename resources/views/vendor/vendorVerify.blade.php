@@ -57,7 +57,10 @@ of modern day shopping. OneClick presents in front of you, a unique
 @csrf
     <input type="text" class="form-control"  name="mob" id="mob" value="{{$result->phone}}">
 
-    <input type="text" class="form-control" placeholder="Enter the otp Number" name="otp">
+    <input type="text" class="form-control" placeholder="Enter the otp Number" name="otp" id="otp">
+    @error("otp")
+<p style="color:red">{{$errors->first("Otp","Enter One Time Password !")}}</p>
+@enderror
     <input type="submit" class="btn btn-warning btn-lg btn-block" value="Confirm OTP" id="otpbtn">
     </form>
 </div>
@@ -109,5 +112,6 @@ of modern day shopping. OneClick presents in front of you, a unique
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<script src="dist/js/val.js"></script>
 </body>
 </html> -->

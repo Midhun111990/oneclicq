@@ -36,6 +36,9 @@ class admincontroller extends Controller
 
     public function addcat(Request $r1)
     {
+        request()->validate(['catname'=>'required','catdes'=>'required',
+        'catimage'=>'required|image','catcommission'=>'required']
+    );
         $data['catname']=$r1->input('catname');
         $data['catdes']=$r1->input('catdes');
     
@@ -65,6 +68,8 @@ class admincontroller extends Controller
     
     public function addbrand(Request $r1)
     {
+        request()->validate(['brandname'=>'required','brandimage'=>'required|image']
+    );
         $data['brandname']=$r1->input('brandname');
         
         $file= $r1->file('brandimage');
@@ -82,6 +87,8 @@ class admincontroller extends Controller
 
     public function addbusiness(Request $r1)
     {
+        request()->validate(['businessname'=>'required']
+    );
         $data['name']=$r1->input('businessname');
         $data['active']=$r1->input('status');
         
@@ -132,6 +139,9 @@ class admincontroller extends Controller
 
     public function addsubcat(Request $r1,$id)
     {
+
+        request()->validate(['subcatname'=>'required','subcatimage'=>'required|image']
+    );
         $data['catid']=$id;
        
         $data['subcatname']=$r1->input('subcatname');

@@ -33,14 +33,14 @@
               <table class="table table-bordered">
                   
               <tbody>
-<tr>
-<td><b>Sr.no</b></td>
-<td><b>Name</b></td>
-    <td><b>Mobile no</b></td>
-    <td><b>E-mail</b></td>
-    <td><b>Status</b></td>
-    <td><b>Permitted</b></td>
-     <td><b>View More....</b></td>
+<tr style="color:white;background-color:black;">
+<td align="center"><b><h4>Sr.no</h4></b></td>
+<td align="center"><b><h4>Name</h4></b></td>
+    <td align="center"><b><h4>Mobile no</h4></b></td>
+    <td align="center"><b><h4>E-mail</h4></b></td>
+    <td align="center"><b><h4>Status</h4></b></td>
+    <td align="center"><b><h4>Permitted</h4></b></td>
+     <td align="center"><b><h4>View More....</h4></b></td>
 </tr>
 
 @foreach($result as $value)

@@ -27,7 +27,7 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-0">
+          <div class="col-md-12">
             <div class="card">
               <div class="card-header">
               
@@ -43,34 +43,36 @@
                 </h3></center>
                 <table class="table table-bordered">
                   
-                  <tbody>
+                <tbody style="color:white;background-color:black;">
                  
                     <tr>
-                    <td>Sr no.</td>
-                      <td>Image</td>
-                      <td>Name</td>
-                      <td>Description</td>
-                      <td>Price</td>
-                      <td>Status</td>
-                      <td>View</td>
+                    <td align="center"><b><h4>Sr no.</h4></b></td>
+                    <td align="center"><b><h4>Image</h4></b></td>
+                    <td align="center"><b><h4>Name</h4></b></td>
+                    <td align="center"><b><h4>Description</h4></b></td>
+                    <td align="center"><b><h4>Price</h4></b></td>
+                    <td align="center"><b><h4>Status</h4></b></td>
+                    <td align="center"><b><h4>View</h4></b></td>
+                    
+                    
                       </tr>
                       <tr>
                      
                      
                       @foreach($result as $value)       
-                      <td>{{$loop->iteration}}</td> 
-                      <td><img src="{{asset('uploads/images/'.$value->image)}}"height="100px" width="100px" /></td>
+                      <td align="center">{{$loop->iteration}}</td> 
+                      <td align="center"><img src="{{asset('uploads/images/'.$value->image)}}"height="100px" width="100px" /></td>
            
-                      <td>{{$value->name}}</td>
-                      <td>{{$value->description}}</td>
-                      <td>{{$value->price}}</td>
-                      <td>
+                      <td align="center">{{$value->name}}</td>
+                      <td align="center">{{$value->description}}</td>
+                      <td align="center">{{$value->price}}</td>
+                      <td align="center">
                       @if($value->status==1)
                       <font color="Green"><b><h4>✔</h4></b></font> 
                       @else
                       ❌
                       @endif</td>
-                      <td><a href="/singleproductinformation/{{$value->pid}}">More</td>
+                      <td align="center"><a href="/singleproductinformation/{{$value->pid}}">More</td>
                     </tr>
                     </html>
                     @endforeach                   

@@ -56,14 +56,28 @@ of modern day shopping. OneClick presents in front of you, a unique
 
 <form method="get" action="/vendordetails"enctype="multipart/form-data">
     @csrf
-    <input type="text" class="form-control" placeholder="Name" name="name">
+    <input type="text" class="form-control" placeholder="Name" name="name" id="name">
+    @error("name")
+<p style="color:red">{{$errors->first("name","Enter your name !")}}</p>
+@enderror
+
     @foreach($result as $value)
     <input type="text" class="form-control" placeholder="Mobile no" name="mob"value=' {{$value->phone}}' readonly>
     @endforeach
 
-    <input type="text" class="form-control" placeholder="E-mail" name="email">
-    <input type="text" class="form-control" placeholder="Password" name="pass">
-        <input type="text" class="form-control" placeholder="Confirm Password" name="cpass">
+    <input type="text" class="form-control" placeholder="E-mail" name="email"id="email">
+    @error("email")
+<p style="color:red">{{$errors->first("email","Enter your E-mail id !")}}</p>
+@enderror
+    <input type="text" class="form-control" placeholder="Password" name="pass" id="pass">
+    @error("pass")
+<p style="color:red">{{$errors->first("pass","Enter strong password !")}}</p>
+@enderror
+        <input type="text" class="form-control" placeholder="Confirm Password" name="cpass" id="cpass">
+        @error("cpass")
+<p style="color:red">{{$errors->first("cpass","Enter your password again !")}}</p>
+@enderror
+
         <input type="hidden" class="form-control"name="regstatus" value="0">
     
     
@@ -120,5 +134,7 @@ of modern day shopping. OneClick presents in front of you, a unique
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<script src="dist/js/val.js"></script>
+
 </body>
 </html>
