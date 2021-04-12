@@ -198,7 +198,37 @@ public function viewmyinfo($id)
     
  }
 
-   
+
+ 
+public function deletecatinformation($id) {
+    $this->md1->deletecat('category',$id);
+    return redirect('/catinformation');
+  
+    }
+    public function updatecatinformation(Request $r1,$id) {
+        $file= $r1->file('catimage');
+        $data['catname']=$r1->input('catname');
+        $data['catdes']=$r1->input('catdes');
+        
+        $data['catcommission']=$r1->input('catcommission');
+        $filename = $file->getClientOriginalName();
+    $file->move(public_path().'/uploads/images', $filename);
+    $data['catimage']=$filename;
+    $this->md1->updatecat('category',$data,$id);
+    return redirect('/catinformation');
+
+
+    }    
+ 
+
+
+
+
+
+
+
+
+
 
 }
 ?>

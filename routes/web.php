@@ -35,6 +35,10 @@ Route::get('/vendorsinformation', [admincontroller::class,'vinfo']);
 Route::get('/catinformation', [admincontroller::class,'catinfo']);
 Route::post('/addcat', [admincontroller::class,'addcat']);
 
+Route::get('/deletecatinformation/{id}', [admincontroller::class,'deletecatinformation']);
+Route::get('/updatecatinformation/{id}', [admincontroller::class,'updatecatinformation']);
+
+
 Route::get('/subcatinformation', [admincontroller::class,'subcatinfo']);
 Route::post('/addsubcat/{id}', [admincontroller::class,'addsubcat']);
 

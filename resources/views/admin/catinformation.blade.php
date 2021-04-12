@@ -90,23 +90,37 @@
                   <tbody style="color:white;background-color:black;">
                     <tr>
                     <td align="center"><b><h4>ID</h4></b></td>
+                    <td align="center"><b><h4>Change image</h4></b></td>
+                   <td align="center"><b><h4>Image</h4></b></td>
+                  
                     <td align="center"><b><h4>Name</h4></b></td>
-                    <td align="center"><b><h4>Commission</h4></b></td>
+                    <td align="center"><b><h4>Description</h4></b></td>
+                    <td align="center"><b><h4>Commi.</h4></b></td>
+                    <td align="center"><b><h4>Update</h4></b></td>
+                    <td align="center"><b><h4>Del</h4></b></td>
                     <td align="center"><b><h4>Add</h4></b></td>
-                     
-     
+                    
                       </tr>
                       @foreach($result as $value)
                
                       <tr>
                       <td align="center">{{$loop->iteration}}</td> 
-                      <td align="center">{{$value->catname}}</td>
-                      <td align="center">{{$value->catcommission}}</td>
-                 
-                 
+                      <td align="center"><input type="file" maxlength="4" size="5"name="catimage" id="catimage"value="{{$value->catimage}}" /></td>
+                      
+                      <td align="center">
+                      <img src="{{asset('uploads/images/'.$value->catimage)}}"height="50px" width="50px" />
+                      </td>
+                      <td align="center"><input type="text"  maxlength="4" size="5" name="catname" id="catname"value="{{$value->catname}}"/></td>
+                      <td align="center"><input type="text"  maxlength="50" size="9" name="catdes" id="catdes"value="{{$value->catdes}}"/></td>
+                      
+                      <td align="center"><input type="text"  maxlength="4" size="2" name="catcommission" id="catcommission"value="{{$value->catcommission}}"/></td>
+                      
+                      <td align="center"><a href="/updatecatinformation/{{$value->catid}}"><h3>(-_-)</h3></a>    </td>
+                      
      
+                      <td align="center"><a href="/deletecatinformation/{{$value->catid}}"><h3> -</h3></a>    </td>
                       <td align="center"><a href="/subcatinformation/{{$value->catid}}"><h3> +</h3></a>    </td>
-               
+                    
                     </tr>
                      
 @endforeach    

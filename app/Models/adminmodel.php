@@ -140,7 +140,16 @@ class adminmodel extends Model
 }
    
 
+function deletecat($table,$id)
+{
+    DB::table($table)->where('catid',$id)->delete();
+}
 
+public function updatecat(Request $r1,$id)
+    {
+        DB::table($table)->where('catid',$id)->update($data);
+     
+    }
 
 
 
