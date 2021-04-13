@@ -29,6 +29,11 @@ use App\Http\Controllers\customercontroller;
 
 //ADMIN
 
+Route::get('/A', [admincontroller::class,'aindex']);
+Route::post('/asignin', [admincontroller::class,'asignin']);
+
+
+
 Route::get('/admin', [admincontroller::class,'adminindex']);
 Route::get('/vendorsinformation', [admincontroller::class,'vinfo']);
 
@@ -36,7 +41,7 @@ Route::get('/catinformation', [admincontroller::class,'catinfo']);
 Route::post('/addcat', [admincontroller::class,'addcat']);
 
 Route::get('/deletecatinformation/{id}', [admincontroller::class,'deletecatinformation']);
-Route::get('/updatecatinformation/{id}', [admincontroller::class,'updatecatinformation']);
+Route::post('/updatecatinformation/{id}', [admincontroller::class,'updatecatinformation']);
 
 
 Route::get('/subcatinformation', [admincontroller::class,'subcatinfo']);
@@ -71,7 +76,7 @@ Route::get('/pendingproduct', [admincontroller::class,'pendingproduct']);
 //VENDOR
 
 
-Route::get('/', [vendorcontroller::class,'index']);
+Route::get('/V', [vendorcontroller::class,'index']);
 Route::get('/vendorRegister', [vendorcontroller::class,'vendorlog']);
 Route::post('/signin', [vendorcontroller::class,'vendorsignin']);
 

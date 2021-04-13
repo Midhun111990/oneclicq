@@ -206,11 +206,11 @@ public function deletecatinformation($id) {
   
     }
     public function updatecatinformation(Request $r1,$id) {
-        $file= $r1->file('catimage');
-        $data['catname']=$r1->input('catname');
-        $data['catdes']=$r1->input('catdes');
+        $file= $r1->file('categoryimage');
+        $data['catname']=$r1->input('categoryname');
+        $data['catdes']=$r1->input('categorydes');
         
-        $data['catcommission']=$r1->input('catcommission');
+        $data['catcommission']=$r1->input('categorycommission');
         $filename = $file->getClientOriginalName();
     $file->move(public_path().'/uploads/images', $filename);
     $data['catimage']=$filename;
@@ -223,7 +223,41 @@ public function deletecatinformation($id) {
 
 
 
+    public function aindex()
+    {
+        return view('admin.adminsignin');
+    }
 
+
+    public function asignin(Request $r1)
+  {
+
+    request()->validate([
+      'email'=>'required|email',
+      'pass'  =>'required']
+  );
+
+    
+        $email=$r1->input('email');
+        $pass=$r1->input('pass');
+    
+        
+       $data=$this->md1->logcheck('adminlog',$email,$pass);//function call from model to insert
+       
+       if(isset($data))
+
+   {
+   
+       return redirect('/admin');
+          
+    }
+   else
+       
+   return back()->with('error', 'Incorrect username/ password!');
+        
+
+    }
+        
 
 
 

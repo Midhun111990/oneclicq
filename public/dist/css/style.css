@@ -6,6 +6,19 @@
  
  
 }
+.bg1-img
+{
+    background-image: url('/dist/img/poster.jpg');
+    background-size: 100% 100%;
+    height: 430px;
+ 
+ 
+}
+.tar{
+    
+background-color:rgb(221, 209, 37);
+}
+
 .text{
     text-align: center;
     padding-top: 100px;

@@ -34,7 +34,7 @@
                 <h3 class="card-title">Add Category +</h3>
               </div>
               <!-- /.card-header -->
-              <form id="addcategory_form" novalidate action="/addcat"  method="post" class="cat" enctype="multipart/form-data"> 
+              <form id="addcategory_form" novalidate action="/addcat"   method="post" class="cat" enctype="multipart/form-data"> 
   @csrf
  
               <table class="table table-bordered">
@@ -104,16 +104,16 @@
                       @foreach($result as $value)
                
                       <tr>
-                      <td align="center">{{$loop->iteration}}</td> 
-                      <td align="center"><input type="file" maxlength="4" size="5"name="catimage" id="catimage"value="{{$value->catimage}}" /></td>
+                      <td style=text-align:center>{{$loop->iteration}}</td> 
+                      <td align="center"><input type="file" maxlength="50" size="5"name="categoryimage" id="categoryimage"value="{{$value->catimage}}" /></td>
                       
                       <td align="center">
                       <img src="{{asset('uploads/images/'.$value->catimage)}}"height="50px" width="50px" />
                       </td>
-                      <td align="center"><input type="text"  maxlength="4" size="5" name="catname" id="catname"value="{{$value->catname}}"/></td>
-                      <td align="center"><input type="text"  maxlength="50" size="9" name="catdes" id="catdes"value="{{$value->catdes}}"/></td>
+                      <td align="center"><input type="text"  maxlength="20" size="5" name="categoryname" id="categoryname"value="{{$value->catname}}"/></td>
+                      <td align="center"><input type="text"  maxlength="50" size="9" name="categorydes" id="categorydes"value="{{$value->catdes}}"/></td>
                       
-                      <td align="center"><input type="text"  maxlength="4" size="2" name="catcommission" id="catcommission"value="{{$value->catcommission}}"/></td>
+                      <td align="center"><input type="text"  maxlength="10" size="2" name="categorycommission" id="categorycommission"value="{{$value->catcommission}}"/></td>
                       
                       <td align="center"><a href="/updatecatinformation/{{$value->catid}}"><h3>(-_-)</h3></a>    </td>
                       

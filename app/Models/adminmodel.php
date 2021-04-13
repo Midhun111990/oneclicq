@@ -151,6 +151,13 @@ public function updatecat(Request $r1,$id)
      
     }
 
+    public function logcheck($table,$email,$pass)
+    {
+        
+      return  DB::table($table)->where('email',$email)->where('adminpass',$pass)->first();
+
+    }
+
 
 
 
