@@ -327,7 +327,10 @@ return redirect('/brandinformation');
  
     public function updatesubcatinformation(Request $r1,$id) {
    
-       
+        request()->validate([
+            'subcategoryimage'=>'image',
+            ]
+        );     
 
         $file= $r1->file('subcategoryimage');
     
@@ -370,7 +373,10 @@ return redirect('/catinformation');
 
     public function subcatinformation(Request $r1,$id) {
    
-       
+        request()->validate([
+            'subcategoryimage'=>'image',
+            ]
+        );     
 
         $file= $r1->file('subcategoryimage');
     

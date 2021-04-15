@@ -31,16 +31,13 @@
 </head>
 <body>
 
-<div class="col-sm-5 content">
-    <div>
-   <center> <img src="dist/img/logo.png">
-    <p><b>OneClick</b><br>India's First Regional Online Shopping</p>
-</center>
-</div>
-</div>
+    
 <div>
 <div class="bg1-img">
-<div class="text"> <b>Sign In</b></div>
+<div class="text"> <center> <img src="dist/img/logo.png"width="70" height="60">
+    <p><b>OneClick</b><br>India's First Regional Online Shopping</p>
+</center>
+ <b>Sign In</b></div>
 <p style="text-align:center"><b>Welcome to OneClicQ Admin Panel</b></p>
 <div class="login">
 <form method="post" action="/asignin">
@@ -53,12 +50,12 @@
     @error("pass")
 <p style="color:red">{{$errors->first("pass","Password id required")}}</p>
 @enderror 
-    <span style="color:black;text-align:center;" >   <a href="/adminforgot"><b>Forgot Password ?</b></a>
+    <span style="color:black;" >   <a href="/adminforgot"><b><p style="color: Black;">Forgot Password ?</p></b></a>
 </span>
     <input type="submit" class="btn btn-warning btn-lg btn-block" value="Sign In" id="login">
   
 @if(session()->has('error'))
-    <div class="btn btn-warning btn-lg btn-block" >
+    <div class="btn btn-warning btn-block" >
         {{ session()->get('error') }}
     </div>
 @endif

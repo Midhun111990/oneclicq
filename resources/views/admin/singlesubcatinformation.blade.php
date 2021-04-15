@@ -58,7 +58,7 @@
 @enderror</td>
               
                       
-                      <td align="center"><input type="text"  maxlength="20" size="20" name="subcategoryname" id="subcategoryname"value="{{$value->subcatname}}"/>      
+                      <td align="center"><input type="text"  maxlength="20" size="20" name="subcategoryname" id="subcategoryname"value="{{$value->subcatname}}"/>        
                       @error("subcategoryname")
 <p style="color:red">{{$errors->first("subcategoryname","Enter Sub category name !")}}</p>
 @enderror</td>
