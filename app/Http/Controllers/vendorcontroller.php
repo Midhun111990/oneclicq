@@ -30,13 +30,9 @@ class vendorcontroller extends Controller
 
     public function vendorotp(Request $r1)
     {
-<<<<<<< HEAD
-      request()->validate(['mob'=>'required']
-=======
       request()->validate([
         'mob'=>'required',
         'otp_num'=>'required']
->>>>>>> 385eb42a4f0780f5a9c4a8af70bb241b884d95c8
     );
 
       $data['phone']=$r1->input('mob');
