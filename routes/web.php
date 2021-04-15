@@ -41,6 +41,22 @@ Route::get('/catinformation', [admincontroller::class,'catinfo']);
 Route::post('/addcat', [admincontroller::class,'addcat']);
 
 Route::get('/deletecatinformation/{id}', [admincontroller::class,'deletecatinformation']);
+Route::get('/singlecatinformation/{id}', [admincontroller::class,'singlecatinformation']);
+
+
+Route::get('/deletebrandinformation/{id}', [admincontroller::class,'deletebrandinformation']);
+Route::get('/singlebrandinformation/{id}', [admincontroller::class,'singlebrandinformation']);
+
+Route::post('/updatebrandinformation/{id}', [admincontroller::class,'updatebrandinformation']);
+
+
+
+
+Route::get('/singlesubcatinformation/{id}', [admincontroller::class,'singlesubcatinformation']);
+
+// Route::post('/updatesubcatinformation/{id}', [admincontroller::class,'viewsinglesubcatinformation']);
+
+
 Route::post('/updatecatinformation/{id}', [admincontroller::class,'updatecatinformation']);
 
 
@@ -49,6 +65,8 @@ Route::post('/addsubcat/{id}', [admincontroller::class,'addsubcat']);
 
 Route::get('/subcatinformation/{id}', [admincontroller::class,'subcatinfo']);
 
+
+Route::get('/deletesubcatinformation/{id}', [admincontroller::class,'deletesubcatinformation']);
 
 
 Route::get('/brandinformation', [admincontroller::class,'brandinfo']);
@@ -88,6 +106,8 @@ Route::get('/logincheck', [vendorcontroller::class,'/logincheck']);
 Route::post('/vendorotp', [vendorcontroller::class,'vendorotp']);
 Route::get('/vendorVerify', [vendorcontroller::class,'verifyotp']);
 Route::post('/otpcheck', [vendorcontroller::class,'otpcheck']);
+Route::get('/vedetails', [vendorcontroller::class,'vedetails']);
+
 Route::get('/vendordetails', [vendorcontroller::class,'vendordetails']);
 
 Route::post('/businessdetails/{id}', [vendorcontroller::class,'businessdetails']);

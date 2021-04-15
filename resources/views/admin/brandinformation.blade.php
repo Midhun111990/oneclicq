@@ -79,16 +79,23 @@
                 <tbody style="color:white;background-color:black;">
                  <tr>
                     <td align="center"><b><h4>ID</h4></b></td>
+                    <td align="center"><b><h4>LOGO</h4></b></td>
                       <td align="center"><b><h4>Brand Name</h4></b></td>
+                      <td align="center"><b><h4>Update</h4></b></td>
+                    <td align="center"><b><h4>Delete</h4></b></td>
+                    
                       </tr>
                       @foreach($result as $value)
                
                       <tr>
-                      <td align="center">{{$value->brandid}}</td>
+                      <td style=text-align:center>{{$loop->iteration}}</td> 
+                      <td align="center"> <img src="{{asset('uploads/images/'.$value->brandlogo)}}"height="120px" width="180px" /></td>
                       <td align="center">{{$value->brandname}}</td>
+                      <td align="center"><a href="/singlebrandinformation/{{$value->brandid}}"><h3>(-_-)</h3></a>    </td>
+                      <td align="center"><a href="/deletebrandinformation/{{$value->brandid}}"><h3> -</h3></a>    </td>
                       
                     </tr>
-                     
+                      
 @endforeach    
                   </tbody>
                 </table>

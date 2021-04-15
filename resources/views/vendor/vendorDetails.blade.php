@@ -56,20 +56,18 @@ of modern day shopping. OneClick presents in front of you, a unique
 
 <form method="get" action="/vendordetails"enctype="multipart/form-data">
     @csrf
-    <input type="text" class="form-control" placeholder="Name" name="name" id="name">
+    <input type="text" class="form-control" placeholder="Name" name="name" id="name" value="{{old('name')}}" >
     @error("name")
 <p style="color:red">{{$errors->first("name","Enter your name !")}}</p>
 @enderror
 
-    @foreach($result as $value)
-    <input type="text" class="form-control" placeholder="Mobile no" name="mob"value=' {{$value->phone}}' readonly>
-    @endforeach
+    <input type="text" class="form-control" placeholder="Mobile no" name="mob"value="{{session('mob')}} "readonly>
 
-    <input type="text" class="form-control" placeholder="E-mail" name="email"id="email">
+    <input type="text" class="form-control" placeholder="E-mail" name="email"id="email" value="{{old('email')}}" >
     @error("email")
-<p style="color:red">{{$errors->first("email","Enter your E-mail id !")}}</p>
+<p style="color:red">{{$errors->first("email","Enter E-mail id !")}}</p>
 @enderror
-    <input type="text" class="form-control" placeholder="Password" name="pass" id="pass">
+    <input type="text" class="form-control" placeholder="Password" name="pass" id="pass" value="{{old('pass')}}" >
     @error("pass")
 <p style="color:red">{{$errors->first("pass","Enter strong password !")}}</p>
 @enderror

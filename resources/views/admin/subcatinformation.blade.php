@@ -89,7 +89,10 @@
                     <tr>
                     <td align="center"><b><h4>ID</h4></b></td>
                     <td align="center"><b><h4>Sub Category</h4></b></td>
-                      
+                    <td align="center"><b><h4>Image</h4></b></td>
+                    <td align="center"><b><h4>Update</h4></b></td>
+                    <td align="center"><b><h4>Delete</h4></b></td>
+                    
                       </tr>
                       @foreach($res as $values)
                
@@ -97,6 +100,13 @@
                       <td align="center">{{$loop->iteration}}</td> 
                       
                       <td align="center">{{$values->subcatname}}</td>
+                      
+                      <td align="center"><img src="{{asset('uploads/images/'.$values->subcatimage)}}"height="50px" width="50px" />
+                     </td>
+                     <td align="center"><a href="/singlesubcatinformation/{{$values->subcatid}}"><h3>(-_-)</h3></a>    </td>
+                      
+     
+                      <td align="center"><a href="/deletesubcatinformation/{{$values->catid}}"><h3> -</h3></a>    </td>
                       
                     </tr>
                      

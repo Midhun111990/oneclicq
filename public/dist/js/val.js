@@ -24,6 +24,51 @@ $("#obrand").keypress(function (e) {
 
 
 
+$("#subcatname").keypress(function (e) {
+    var keyCode = e.keyCode || e.which;
+
+    $("#subcatname").css("background-color", "white");
+    $('#name_error').html("");
+
+    //Regex for Valid Characters i.e. Alphabets.
+    var regex = /^[A-Za-z\-\s]+$/;
+   
+
+    //Validate TextBox value against the Regex.
+    var isValid = regex.test(String.fromCharCode(keyCode));
+    if (!isValid) {
+       $("#subcatname").css("background-color", "pink");
+       $('#name_error').html("Only Alphabets allowed.");
+    }
+
+    return isValid;
+});
+
+
+$("#catname").keypress(function (e) {
+    var keyCode = e.keyCode || e.which;
+
+    $("#catname").css("background-color", "white");
+    $('#name_error').html("");
+
+    //Regex for Valid Characters i.e. Alphabets.
+    var regex = /^[A-Za-z\-\s]+$/;
+   
+
+    //Validate TextBox value against the Regex.
+    var isValid = regex.test(String.fromCharCode(keyCode));
+    if (!isValid) {
+       $("#catname").css("background-color", "pink");
+       $('#name_error').html("Only Alphabets allowed.");
+    }
+
+    return isValid;
+});
+
+
+
+
+
 $("#pgst").keypress(function (e) {
     var keyCode = e.keyCode || e.which;
 
@@ -260,7 +305,52 @@ $("#mob").keypress(function (e) {
         
             return isValid;
         });
+       
         
+
+
+
+        $("#name").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+        
+            $("#obrand").css("background-color", "white");
+            $('#name_error').html("");
+        
+            //Regex for Valid Characters i.e. Alphabets.
+            var regex = /^[A-Za-z\-\s]+$/;
+           
+        
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+               $("#name").css("background-color", "pink");
+               $('#name_error').html("Only Alphabets allowed.");
+            }
+        
+            return isValid;
+        });
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //ADMIN
 
 

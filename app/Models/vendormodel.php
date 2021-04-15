@@ -44,16 +44,17 @@ class vendormodel extends Model
  public function otpcheck($table,$mobileno,$otp)
     {
         
-      $data= DB::table($table)->where('phone',$mobileno)->where('otp',$otp)->get();
-$count=$data->count();
-if($count==0)
-{
- return false; 
-}
-else
-{
-  return $data;
-}
+      $data= DB::table($table)->where('phone',$mobileno)->where('otp',$otp)->first();
+      return $data;
+      // $count=$data->count();
+// if($count==0)
+// {
+//  return false; 
+// }
+// else
+// {
+//   return $data;
+// }
 
     }
 

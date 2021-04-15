@@ -36,7 +36,6 @@
               <!-- /.card-header -->
               <form id="addcategory_form" novalidate action="/addcat"   method="post" class="cat" enctype="multipart/form-data"> 
   @csrf
- 
               <table class="table table-bordered">
                   
                   
@@ -61,7 +60,8 @@
                       @error("catimage")
 <p style="color:red">{{$errors->first("catimage","Select image based on category !")}}</p>
 @enderror</td>
-                      <td><input type="text" name="catcommission" id="catcommission" placeholder="Commision based on category">                      @error("catcommission")
+                      <td><input type="text" name="catcommission" id="catcommission" placeholder="Commision based on category">                    
+                      @error("catcommission")
 <p style="color:red">{{$errors->first("catcommission","Enter your commission based on category !")}}</p>
 @enderror</td>
                      <td> <input type="submit" name="submit" class="submit btn btn-success" value="+" >   </td>
@@ -71,8 +71,6 @@
 
                   </tbody>
                 </table>
-</form>
-
 
 
 
@@ -90,32 +88,29 @@
                   <tbody style="color:white;background-color:black;">
                     <tr>
                     <td align="center"><b><h4>ID</h4></b></td>
-                    <td align="center"><b><h4>Change image</h4></b></td>
                    <td align="center"><b><h4>Image</h4></b></td>
                   
                     <td align="center"><b><h4>Name</h4></b></td>
-                    <td align="center"><b><h4>Description</h4></b></td>
                     <td align="center"><b><h4>Commi.</h4></b></td>
                     <td align="center"><b><h4>Update</h4></b></td>
-                    <td align="center"><b><h4>Del</h4></b></td>
+                    <td align="center"><b><h4>Delete</h4></b></td>
                     <td align="center"><b><h4>Add</h4></b></td>
                     
                       </tr>
+       
                       @foreach($result as $value)
                
                       <tr>
                       <td style=text-align:center>{{$loop->iteration}}</td> 
-                      <td align="center"><input type="file" maxlength="50" size="5"name="categoryimage" id="categoryimage"value="{{$value->catimage}}" /></td>
                       
                       <td align="center">
                       <img src="{{asset('uploads/images/'.$value->catimage)}}"height="50px" width="50px" />
                       </td>
-                      <td align="center"><input type="text"  maxlength="20" size="5" name="categoryname" id="categoryname"value="{{$value->catname}}"/></td>
-                      <td align="center"><input type="text"  maxlength="50" size="9" name="categorydes" id="categorydes"value="{{$value->catdes}}"/></td>
+                      <td align="center">{{$value->catname}}</td>
                       
-                      <td align="center"><input type="text"  maxlength="10" size="2" name="categorycommission" id="categorycommission"value="{{$value->catcommission}}"/></td>
+                      <td align="center">{{$value->catcommission}}</td>
                       
-                      <td align="center"><a href="/updatecatinformation/{{$value->catid}}"><h3>(-_-)</h3></a>    </td>
+                      <td align="center"><a href="/singlecatinformation/{{$value->catid}}"><h3>(-_-)</h3></a>    </td>
                       
      
                       <td align="center"><a href="/deletecatinformation/{{$value->catid}}"><h3> -</h3></a>    </td>
@@ -150,6 +145,8 @@
 
    
 </div>
+
+</form>
 
 
 </body>

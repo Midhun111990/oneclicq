@@ -55,17 +55,26 @@ return redirect('/vendorVerify');
 
         
       
-       $data['result']=$this->md1->otpcheck('vendorotp',$mobileno,$otp);//function call from model to insert
-   if($data['result']==false)
+       $data=$this->md1->otpcheck('vendorotp',$mobileno,$otp);//function call from model to insert
+   
+       if(!isset($data))
    {
      return redirect('/vendorVerify');
    }
    else{
-       return view('vendor.vendorDetails',$data);
+     $r1->session()->put(array('mob'=>$data->phone));
+       return redirect('/vedetails');
    }        
 
     }
   
+    public function vedetails()
+    {
+     return view('vendor.vendorDetails');
+      
+    }
+    
+
   
   public function vendorbody()
   {
@@ -146,7 +155,7 @@ return redirect('/vendorVerify');
     public function vendordetails(Request $r1)
     {
       request()->validate(
-        ['name'=>'required','email'=>'required'
+        ['name'=>'required','email'=>'required|email'
         ,'pass'=>'required','cpass'=>'required'
         ]
     );
@@ -175,55 +184,47 @@ return redirect('/vendorVerify');
     {
     //  $id=$r1->input('pno');
 
-
+    request()->validate(
+      ['companyname'=>'required','officeno'=>'required'
+      ,'state'=>'required','district'=>'required','location'=>'required','businesstype'=>'required'
+      ,'tradelicenceno'=>'required','tradedocument'=>'required','gstnumber'=>'required','gstdocument'=>'required'
+      ,'panno'=>'required','pandocument'=>'required','iddocument'=>'required','shippingmode'=>'required'
+      ,'storename'=>'required','gstnumber'=>'required','sellingcat'=>'required'
+      ,'storelogo'=>'required','nameinbank'=>'required','accounttype'=>'required','accountno'=>'required'
+      ,'ifsccode'=>'required','cancelledcheque'=>'required','signature'=>'required','sellingcat'=>'required'
      
 
-    
-  $data['companyname']=$r1->input('companyname');
-      
+      ]
+  );   
+  $data['companyname']=$r1->input('companyname'); 
   $data['officeno']=$r1->input('officeno');
-  $data['state']=$r1->input('state');
+  $data['state']=$r1->input('state'); 
   $data['district']=$r1->input('district');
-  $data['location']=$r1->input('location');
-  $data['businesstype']=$r1->input('businesstype');
-   
-  $data['tradelicenceno']=$r1->input('tradelicenceno');
-
-
-  
+  $data['location']=$r1->input('location'); 
+  $data['businesstype']=$r1->input('businesstype');   
+  $data['tradelicenceno']=$r1->input('tradelicenceno'); 
   $file= $r1->file('tradedocument');
-  $filename = $file->getClientOriginalName();
+  $filename = $file->getClientOriginalName();  
   $file->move(public_path().'/uploads/images', $filename);
   $data['tradedocument']=$filename;
-
-  $data['gstno']=$r1->input('gstnumber');
-  
+  $data['gstno']=$r1->input('gstnumber'); 
   $file= $r1->file('gstdocument');
-  $filename = $file->getClientOriginalName();
+  $filename = $file->getClientOriginalName(); 
   $file->move(public_path().'/uploads/images', $filename);
-  $data['gstdocument']=$filename;
-
-  
+  $data['gstdocument']=$filename; 
   $data['panno']=$r1->input('panno');
-
   $file= $r1->file('pandocument');
   $filename = $file->getClientOriginalName();
   $file->move(public_path().'/uploads/images', $filename);
-  $data['pandocument']=$filename;
-
-  $file= $r1->file('iddocument');
+  $data['pandocument']=$filename;  $file= $r1->file('iddocument');
   $filename = $file->getClientOriginalName();
   $file->move(public_path().'/uploads/images', $filename);
-  $data['iddocument']=$filename;
-
+  $data['iddocument']=$filename;  
   $data['fssaino']=$r1->input('fssailicno');
-  $data['shipping']=$r1->input('shippingmode');
-
-
+  $data['shipping']=$r1->input('shippingmode'); 
   $data['storename']=$r1->input('storename');
-  $data['sellingcat']=$r1->input('sellingcat');
-
-  $file= $r1->file('storelogo');
+  $data['sellingcat']=$r1->input('sellingcat'); 
+   $file= $r1->file('storelogo');
   $filename = $file->getClientOriginalName();
   $file->move(public_path().'/uploads/images', $filename);
   $data['storelogo']=$filename;

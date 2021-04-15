@@ -66,6 +66,13 @@ class adminmodel extends Model
 
        }
 
+       function subcatinformation($table,$id)
+       {
+           $data=DB::table($table)->where('subcatid',$id)->get();
+        return $data;   
+   
+          }
+   
     
 
     function addbrandinfo($table,$data)
@@ -139,15 +146,38 @@ class adminmodel extends Model
     
 }
    
+function deletebrand($table,$id)
+{
+    DB::table($table)->where('brandid',$id)->delete();
+}
 
 function deletecat($table,$id)
 {
     DB::table($table)->where('catid',$id)->delete();
 }
 
-public function updatecat(Request $r1,$id)
+function deletesubcat($table,$id)
+{
+    DB::table($table)->where('subcatid',$id)->delete();
+}
+
+
+public function updatecat($table,$data,$id)
     {
         DB::table($table)->where('catid',$id)->update($data);
+     
+    }
+
+    
+public function updatebrand($table,$data,$id)
+{
+    DB::table($table)->where('brandid',$id)->update($data);
+ 
+}
+
+    public function updatesubcat($table,$data,$id)
+    {
+        DB::table($table)->where('subcatid',$id)->update($data);
      
     }
 
@@ -158,7 +188,24 @@ public function updatecat(Request $r1,$id)
 
     }
 
+    function viewsinglecat($table,$id)
+    {
+       $data=DB::table($table)->where('catid',$id)->get();
+        return $data;
+    }
 
+    function viewsinglebrand($table,$id)
+    {
+       $data=DB::table($table)->where('brandid',$id)->get();
+        return $data;
+    }
+
+
+    function viewsinglesubcat($table,$id)
+    {
+       $data=DB::table($table)->where('subcatid',$id)->get();
+        return $data;
+    }
 
 
 

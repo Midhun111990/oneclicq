@@ -58,7 +58,7 @@ of modern day shopping. OneClick presents in front of you, a unique
 <form method="post" action="/vendorotp">
 @csrf
 <i style="color:white" id="moberror"></i>
-    <input type="text" class="form-control" placeholder="Enter your Mobile Number"id="mob" name="mob">
+    <input type="text" class="form-control" placeholder="Enter your Mobile Number"id="mob" name="mob" maxlength="10">
     @error("mob")
 <p style="color:red">{{$errors->first("mob","Enter your mobile number !")}}</p>
 @enderror

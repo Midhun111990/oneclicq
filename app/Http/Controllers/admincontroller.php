@@ -128,7 +128,8 @@ class admincontroller extends Controller
     public function subcatinfo($id)
     {
    
-        
+        //  $data['resu']=$this->md1->subcatinformation('subcategory',$id);
+       
         $data['result']=$this->md1->subcatdetails('category',$id);
        
         $data['res']=$this->md1->catnamecall('subcategory',$id);
@@ -158,6 +159,14 @@ class admincontroller extends Controller
    return redirect()->back();
 
 }
+
+
+
+
+
+
+
+
 
 public function  productinformation()
 {
@@ -198,6 +207,14 @@ public function viewmyinfo($id)
     
  }
 
+ public function deletebrandinformation($id) {
+    $this->md1->deletebrand('addbrand',$id);
+    return redirect('/brandinformation');
+  
+    }
+
+
+
 
  
 public function deletecatinformation($id) {
@@ -205,17 +222,143 @@ public function deletecatinformation($id) {
     return redirect('/catinformation');
   
     }
+    public function  deletesubcatinformation($id) {
+        $this->md1->deletesubcat('subcategory',$id);
+        return redirect('/subcatinformation');
+      
+        }
+     
+   
+
+
+    public function singlecatinformation($id) {
+    
+        $data['result']=$this->md1->viewsinglecat('category',$id);
+     
+     
+        return view('admin.singlecatinformation',$data);
+    }  
+
+    public function singlebrandinformation($id) {
+    
+        $data['result']=$this->md1->viewsinglebrand('addbrand',$id);
+     
+     
+        return view('admin.singlebrandinformation',$data);
+    }
+
+    public function singlesubcatinformation($id) {
+    
+        $data['result']=$this->md1->viewsinglesubcat('subcategory',$id);
+     
+     
+        return view('admin.singlesubcatinformation',$data);
+    }  
+
     public function updatecatinformation(Request $r1,$id) {
+   
+        request()->validate(['categoryname'=>'required','categorydes'=>'required',
+        'categoryimage'=>'image','categorycommission'=>'required']);
+       
+
         $file= $r1->file('categoryimage');
+    
+if($file=="")
+{
+        
         $data['catname']=$r1->input('categoryname');
         $data['catdes']=$r1->input('categorydes');
-        
         $data['catcommission']=$r1->input('categorycommission');
-        $filename = $file->getClientOriginalName();
-    $file->move(public_path().'/uploads/images', $filename);
-    $data['catimage']=$filename;
-    $this->md1->updatecat('category',$data,$id);
-    return redirect('/catinformation');
+    
+    }
+else
+{
+    $data['catname']=$r1->input('categoryname');
+    $data['catdes']=$r1->input('categorydes');
+    
+    $data['catcommission']=$r1->input('categorycommission');
+    $filename = $file->getClientOriginalName();
+$file->move(public_path().'/uploads/images', $filename);
+$data['catimage']=$filename;
+
+}
+$this->md1->updatecat('category',$data,$id);
+return redirect('/catinformation');
+
+
+    }    
+
+    
+    public function updatebrandinformation(Request $r1,$id) {
+   
+       
+
+        $file= $r1->file('brandimage');
+    
+if($file=="")
+{
+        
+        $data['brandname']=$r1->input('brandname');
+    
+    }
+else
+{
+    $data['brandname']=$r1->input('brandname');
+    $filename = $file->getClientOriginalName();
+$file->move(public_path().'/uploads/images', $filename);
+$data['brandlogo']=$filename;
+
+}
+$this->md1->updatebrand('addbrand',$data,$id);
+return redirect('/brandinformation');
+
+
+
+
+
+
+    }    
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    public function subcatinformation(Request $r1,$id) {
+   
+       
+
+        $file= $r1->file('subcategoryimage');
+    
+if($file=="")
+{
+        
+        $data['subcatname']=$r1->input('subcategoryname');
+}
+else
+{
+    $data['subcatname']=$r1->input('subcategoryname');
+    
+    $filename = $file->getClientOriginalName();
+$file->move(public_path().'/uploads/images', $filename);
+$data['subcatimage']=$filename;
+
+}
+$this->md1->updatesubcat('subcategory',$data,$id);
+return redirect('/subcatinformation');
+
+
+
+
 
 
     }    

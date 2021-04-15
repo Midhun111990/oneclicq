@@ -57,7 +57,7 @@ of modern day shopping. OneClick presents in front of you, a unique
 @csrf
     <input type="text" class="form-control"  name="mob" id="mob" value="{{$result->phone}}">
 
-    <input type="text" class="form-control" placeholder="Enter the otp Number" name="otp" id="otp">
+    <input type="text" class="form-control" placeholder="Enter the otp Number" name="otp" id="otp"maxlength="6">
     @error("otp")
 <p style="color:red">{{$errors->first("Otp","Enter One Time Password !")}}</p>
 @enderror
