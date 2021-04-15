@@ -59,7 +59,10 @@
                       <td>Description</td>
                       <td>Price</td>
                       <td>Status</td>
+<<<<<<< HEAD
                       <td>Stock</td>
+=======
+>>>>>>> 385eb42a4f0780f5a9c4a8af70bb241b884d95c8
                       <td>About</td>
                 </tr>
                       <tr>
@@ -79,7 +82,11 @@
                       @else
                       ❌
                       @endif</td>
+<<<<<<< HEAD
                       <td>{{$value->stockunit}}</td>       
+=======
+                      
+>>>>>>> 385eb42a4f0780f5a9c4a8af70bb241b884d95c8
                       <td><a href="/vendorsingleproductinformation/{{$value->pid}}">View More.....</a></td>
                
                      

@@ -94,9 +94,9 @@ class vendormodel extends Model
 
     }
 
-    function busdetail($table,$id)
+    function busdetail($table)
     {
-        $data=DB::table($table)->where('id',$id)->get();
+        $data=DB::table($table)->get();
         return $data;
 
     }
