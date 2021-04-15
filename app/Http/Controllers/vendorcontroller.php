@@ -262,9 +262,28 @@ $name['result']=  $this->md1->vendet('vendordetails',$id);
    
 // return redirect('/vendorVerify');
   }
+  
+  
+  public function viewsubproduct($id)
+  
+ {
+  $data=$this->md1->selectDataById('subcategory',$id);
+  
+  foreach($data as $val)
+  {
+  ?>
+   <option value="<?php echo $val->subcatid;?>">
+   
+   <?php echo $val->subcatname;?></option>
+  
+   <?php
+  }
+}
 
   public function viewproduct($id)
     {
+
+
      
       $data['result']=$this->md1->viewp('vendordetails',$id);
      
@@ -312,6 +331,11 @@ $name['result']=  $this->md1->vendet('vendordetails',$id);
         $stock=$r1->input('pstock');
 
         $data1=$this->md1->stockcheck('product',$name,$price);//function call from model to update
+       
+       
+       
+       
+       
         if(!isset($data1))
           {
                  
@@ -381,6 +405,9 @@ $ven=session('sesid');
        $data['result']=$this->md1->vendet('vendordetails',$ven);
    
       $data['res']=$this->md1->viewsingleproduct('product',$id);
+     
+      $data['catres']=$this->md1->showcatname('product','category','subcategory',$id);
+     
      
      
       return view('vendor.vendorsingleproductinformation',$data);

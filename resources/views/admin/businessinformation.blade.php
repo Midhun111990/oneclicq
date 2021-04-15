@@ -15,7 +15,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="/admin">Home</a></li>
               <li class="breadcrumb-item active">Business type</li>
             </ol>
           </div>
@@ -46,14 +46,14 @@
                     <td>Add</td>
                     </tr>
                     <tr>
-                    <td><input type="text" name="businessname" id="businessname" placeholder="Business type">
+                    <td><input type="text" name="businessname" id="businessname" placeholder="Business type" style="font-size : 20px; width: 100%; height: 70px;" >
                     @error("businessname")
 <p style="color:red">{{$errors->first("businessname","Enter business type name !")}}</p>
 @enderror
 </td>
                     <input type="hidden" name="status" id="status"value="0">
                      
-                     <td> <input type="submit" name="submit" class="submit btn btn-success" value="+" >   </td>
+                     <td> <input type="submit" name="submit" class="submit btn btn-success" value="+" style="font-size : 20px; width: 100%; height: 70px;" >   </td>
                     </tr>
                    
 
@@ -75,18 +75,20 @@
                 <tbody style="color:white;background-color:black;">
                   
                     <tr>
-                    <td align="center"><b><h4>ID</h4></b></td>
+                    <td style="height:0.50px;width:100px"align="center"><b><h4>ID</h4></b></td>
                     <td align="center"><b><h4>Name</h4></b></td>
+                    <td align="center"><b><h4>Remove</h4></b></td>
                     
                     
                       
                       </tr>
                       @foreach($result as $value)
                
-                      <tr>
+                      <tr style="height:25px;">
                       <td align="center">{{$loop->iteration}}</td> 
                       <td align="center">{{$value->name}}</td>
-                      
+                      <td align="center"><a href="/deletebusiness/{{$value->id}}"><h1>-</h1></a>    </td>
+                  
                     </tr>
                      
 @endforeach    

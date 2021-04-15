@@ -78,6 +78,9 @@ class vendormodel extends Model
     }
 
 
+
+
+    
     function vdetails($table,$data)
 
     {
@@ -111,9 +114,22 @@ class vendormodel extends Model
     }
 
 
+    function showcatname($table,$table1,$table2,$id)
+    {
+      $data= DB::table($table)->join($table1,'product.catid','=','category.catid')->join($table2,'product.subcatid','=','subcategory.subcatid')->where('product.pid',$id)->get();
+      return $data;
+    }
+
+
     function viewp($table,$id)
     {
       $data= DB::table($table)->where('id',$id)->get();
+      return $data;
+    }
+
+    function selectDataById($table,$id)
+    {
+      $data= DB::table($table)->where('catid',$id)->get();
       return $data;
     }
 

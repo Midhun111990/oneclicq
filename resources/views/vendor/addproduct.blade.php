@@ -73,7 +73,7 @@
                       @error("pcat")
 <p style="color:red">{{$errors->first("pcat")}}</p>
 @enderror</td>
-                     
+     
                       
                       </select></td>
                     </tr>
@@ -82,17 +82,40 @@
                       <td>Sub Category</td>
                       <td><select name="ptype" id="ptype" class="form-control">
                       <option> Choose</option>
-                      @foreach($resl as $vall) 
-                      
-                      <option value="{{$vall->subcatid}}">{{$vall->subcatname}}</option>
-                      @endforeach</select>
+                     </select>
                       @error("ptype")
 <p style="color:red">{{$errors->first("ptype")}}</p>
-@enderror
-</td>
+@enderror</td>
+
+ <script>
+     
+     $(document).ready(function(){
+    $("#pcat").on('change', function()
+    {
+      var catid=$("#pcat").val();
+      alert(catid);    // alert('hi');
+    
+    $.ajax({
+        type:"get",
+        url:"/prdSubCat/"+catid,
+        success:function(result)
+        
+        {
+          
+          $('#ptype').html(result);
+
+        }
+      });
+      // $("#sub").show();
+  });
+     });
+    </script>      
                      
-                    </tr>
-                   
+               </tr>
+
+
+
+
                     <tr>
                       <td>5.</td>
                       <td>Brand</td>

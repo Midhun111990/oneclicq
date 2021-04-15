@@ -56,7 +56,8 @@
                     <tr>  
                       <td>3.</td>
                       <td>Category</td>
-                      <td>{{$value->catid}}</td>
+                      @foreach($catres as $valu )
+                      <td>{{$valu->catname}}</td>
                        </td>
                      
                       
@@ -65,8 +66,8 @@
                     <tr>  
                       <td>4.</td>
                       <td>Sub Category</td>
-                      <td>{{$value->subcatid}}</td>
-                     
+                      <td>{{$valu->subcatname}}</td>
+                       @endforeach
                       
                       </select></td>
                     </tr>
