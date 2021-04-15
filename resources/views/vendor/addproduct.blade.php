@@ -282,7 +282,11 @@
                       <td><input type="checkbox" name="pret" id="pret" value="0"> NO </td>
                     </tr>
 
+<<<<<<< HEAD
                     <td align ="center"colspan="4"><input type="submit" name="submit" class="submit btn btn-success" value="Add +" style="height:307px;width:490px;font-size: 100px;"></td>
+=======
+                    <td colspan="3"><center><input type="submit" name="submit" style="height:200px;width:200px"class="submit btn btn-success" value="Add +" ></center></td>
+>>>>>>> 385eb42a4f0780f5a9c4a8af70bb241b884d95c8
 
                    
                   </tbody>
