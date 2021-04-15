@@ -54,7 +54,7 @@ Route::post('/updatebrandinformation/{id}', [admincontroller::class,'updatebrand
 
 Route::get('/singlesubcatinformation/{id}', [admincontroller::class,'singlesubcatinformation']);
 
-// Route::post('/updatesubcatinformation/{id}', [admincontroller::class,'viewsinglesubcatinformation']);
+Route::post('/updatesubcatinformation/{id}', [admincontroller::class,'updatesubcatinformation']);
 
 
 Route::post('/updatecatinformation/{id}', [admincontroller::class,'updatecatinformation']);
@@ -67,6 +67,10 @@ Route::get('/subcatinformation/{id}', [admincontroller::class,'subcatinfo']);
 
 
 Route::get('/deletesubcatinformation/{id}', [admincontroller::class,'deletesubcatinformation']);
+
+
+Route::get('/deletebusiness/{id}', [admincontroller::class,'deletebusiness']);
+
 
 
 Route::get('/brandinformation', [admincontroller::class,'brandinfo']);

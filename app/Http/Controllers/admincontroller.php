@@ -213,7 +213,11 @@ public function viewmyinfo($id)
   
     }
 
-
+    public function deletebusiness($id) {
+        $this->md1->deletebus('business',$id);
+        return redirect('/businessinformation');
+      
+        }
 
 
  
@@ -222,9 +226,11 @@ public function deletecatinformation($id) {
     return redirect('/catinformation');
   
     }
+
+
     public function  deletesubcatinformation($id) {
         $this->md1->deletesubcat('subcategory',$id);
-        return redirect('/subcatinformation');
+        return redirect('/catinformation');
       
         }
      
@@ -319,7 +325,36 @@ return redirect('/brandinformation');
 
     }    
  
+    public function updatesubcatinformation(Request $r1,$id) {
+   
+       
 
+        $file= $r1->file('subcategoryimage');
+    
+if($file=="")
+{
+        
+        $data['subcatname']=$r1->input('subcategoryname');
+    
+    }
+else
+{
+    $data['subcatname']=$r1->input('subcategoryname');
+    $filename = $file->getClientOriginalName();
+$file->move(public_path().'/uploads/images', $filename);
+$data['subcatimage']=$filename;
+
+}
+$this->md1->updatesubcat('subcategory',$data,$id);
+return redirect('/catinformation');
+
+
+
+
+
+
+    }    
+ 
 
 
 

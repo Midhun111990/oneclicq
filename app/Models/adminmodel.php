@@ -151,6 +151,11 @@ function deletebrand($table,$id)
     DB::table($table)->where('brandid',$id)->delete();
 }
 
+function deletebus($table,$id)
+{
+    DB::table($table)->where('id',$id)->delete();
+}
+
 function deletecat($table,$id)
 {
     DB::table($table)->where('catid',$id)->delete();

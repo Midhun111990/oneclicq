@@ -15,7 +15,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="/admin">Home</a></li>
               <li class="breadcrumb-item active">Brand</li>
             </ol>
           </div>
@@ -63,7 +63,7 @@
 @enderror</td>
 </tr>
 <tr>
-    <td colspan="2"> <input type="submit" name="submit" class="submit btn btn-success" style="height:200px;width:700px"value="+" ><a href="/deletebrandinformation/{{$value->brandid}}"><h1 align="center"><b>Remove</b> </h1></a>   
+    <td colspan="2"> <input type="submit" name="submit" class="submit btn btn-success" style="height:200px;width:700px;font-size : 100px"value="+" ><a href="/deletebrandinformation/{{$value->brandid}}"><h1 align="center"><b>Remove</b> </h1></a>   
 </td>
                       <td style=text-align:center colspan="1"> 
                          <img src="{{asset('uploads/images/'.$value->brandlogo)}}"height="250px" width="270px" />
