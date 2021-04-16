@@ -172,12 +172,8 @@ return redirect('/vendorVerify');
         $this->md1->vdetails('vendordetails',$data);//function call from model to insert
     //    $name['resultname']=$this->md1->nocheck('vendordetails',$name);
         $pno['result']=$this->md1->nocheck('vendordetails',$mobileno);//function call from model to insert
-<<<<<<< HEAD
-        $pno['res']=$this->md1->busdet('business');
-=======
         $pno['res']=$this->md1->busdetail('business');
     
->>>>>>> 385eb42a4f0780f5a9c4a8af70bb241b884d95c8
         return view('vendor.vendorBusinessdetails',$pno);
      }
     

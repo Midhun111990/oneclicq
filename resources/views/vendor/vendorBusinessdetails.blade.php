@@ -144,14 +144,9 @@ of modern day shopping. OneClick presents in front of you, a unique
     <label for="businesstype">Business Type</label>
 
 <select name="businesstype" id="businesstype" class="form-control">
-<<<<<<< HEAD
 @error("businesstype")
 <p style="color:red">{{$errors->first("businesstype","Select business type!")}}</p>
 @enderror
-<option>Choose..</option>
-=======
-  
-  <option>Choose..</option>
 >>>>>>> 385eb42a4f0780f5a9c4a8af70bb241b884d95c8
   @foreach($res as $val) <option value="{{$val->id}}">{{$val->name}}</option>
                       @endforeach

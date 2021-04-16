@@ -76,15 +76,6 @@ of modern day shopping. OneClick presents in front of you, a unique
 <p style="color:red">{{$errors->first("cpass","Enter your password again !")}}</p>
 @enderror
 
-<<<<<<< HEAD
-=======
-    <input type="text" class="form-control" placeholder="E-mail" name="email">
-    <input type="text" class="form-control" placeholder="Password" name="pass">
-        <input type="text" class="form-control" placeholder="Confirm Password" name="cpass">
-    <!-- confirmed
-    -->
-    
->>>>>>> 385eb42a4f0780f5a9c4a8af70bb241b884d95c8
         <input type="hidden" class="form-control"name="regstatus" value="0">
     
     
