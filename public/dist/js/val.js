@@ -20,6 +20,71 @@ $("#obrand").keypress(function (e) {
     return isValid;
 });
 
+//business details
+
+
+$("#companyname").keypress(function (e) {
+    var keyCode = e.keyCode || e.which;
+
+    $("#companyname").css("background-color", "white");
+    $('#name_error').html("");
+
+    //Regex for Valid Characters i.e. Alphabets.
+    var regex = /^[A-Za-z\-\s]+$/;
+   
+
+    //Validate TextBox value against the Regex.
+    var isValid = regex.test(String.fromCharCode(keyCode));
+    if (!isValid) {
+       $("#companyname").css("background-color", "pink");
+       $('#name_error').html("Only Alphabets allowed.");
+    }
+
+    return isValid;
+});
+
+
+$("#officeno").keypress(function (e) {
+    var keyCode = e.keyCode || e.which;
+
+    $("#officeno").css("background-color", "white");
+    $('#name_error').html("");
+
+    //Regex for Valid Characters i.e. Alphabets.
+    var regex = /^[0-9\.]*$/;
+
+   
+
+    //Validate TextBox value against the Regex.
+    var isValid = regex.test(String.fromCharCode(keyCode));
+    if (!isValid) {
+       $("#officeno").css("background-color", "pink");
+       $('#name_error').html("Only Digits allowed.");
+    }
+
+    return isValid;
+});
+
+
+$("#nameinbank").keypress(function (e) {
+    var keyCode = e.keyCode || e.which;
+
+    $("#nameinbank").css("background-color", "white");
+    $('#name_error').html("");
+
+    //Regex for Valid Characters i.e. Alphabets.
+    var regex = /^[A-Za-z\-\s]+$/;
+   
+
+    //Validate TextBox value against the Regex.
+    var isValid = regex.test(String.fromCharCode(keyCode));
+    if (!isValid) {
+       $("#nameinbank").css("background-color", "pink");
+       $('#name_error').html("Only Alphabets allowed.");
+    }
+
+    return isValid;
+});
 
 
 

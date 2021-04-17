@@ -268,8 +268,16 @@
                     <tr>
                     <td></td>
                     
-<td>       <center>          <input type="submit" name="submit" class="submit btn btn-success" value="Approve" >
-</center></td>
+<td colspan="3">                <input type="submit" name="submit" class="submit btn btn-success" style="height:60px;width:1000px;font-size : 20px"value="Approve" >
+<center> 
+<h2>  <p style="color:red"><b>REJECT</b>⚡</p></h2>
+
+<textarea id="reason" name="reason" rows="2" cols="80" placeholder="Type the reason for rejecting the application"></textarea>
+</center>
+
+<input type="submit" name="submit" class="submit btn btn-success" style="color:red;height:60px;width:1000px;font-size : 20px;"value="Submit" >
+</td>
+
 </tr>
                   </tbody>
                 </table>

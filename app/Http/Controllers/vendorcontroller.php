@@ -82,7 +82,11 @@ return redirect('/vendorVerify');
   {
       
     $id=session('sesid');
-      $data['result']=$this->md1->vendorname('vendordetails',$id);
+       $data['result']=$this->md1->vendorname('vendordetails',$id);
+
+      $data['res']=$this->md1->mytotalproduct('product',$id);
+      // $data['re']=$this->md1->totalsales('purchase',$id);
+
 
       return view('vendor.vendorbody',$data);
   }
@@ -158,7 +162,7 @@ return redirect('/vendorVerify');
     {
       request()->validate(
         ['name'=>'required','email'=>'required|email'
-        ,'pass'=>'required','cpass'=>'required'
+        ,'pass'=>'required','cpass'=>'required|same:pass'
         ]
     );
   
@@ -183,18 +187,36 @@ return redirect('/vendorVerify');
     {
     //  $id=$r1->input('pno');
 
-    request()->validate(
-      ['companyname'=>'required','officeno'=>'required'
-      ,'state'=>'required','district'=>'required','location'=>'required','businesstype'=>'required'
-      ,'tradelicenceno'=>'required','tradedocument'=>'required','gstnumber'=>'required','gstdocument'=>'required'
-      ,'panno'=>'required','pandocument'=>'required','iddocument'=>'required','shippingmode'=>'required'
-      ,'storename'=>'required','gstnumber'=>'required','sellingcat'=>'required'
-      ,'storelogo'=>'required','nameinbank'=>'required','accounttype'=>'required','accountno'=>'required'
-      ,'ifsccode'=>'required','cancelledcheque'=>'required','signature'=>'required','sellingcat'=>'required'
+     request()->validate(
+     ['companyname'=>'required'
+     ,'officeno'=>'required|numeric'
+     ,'district'=>'required'
+     ,'location'=>'required'
+     ,'businesstype'=>'required'
+      ,'tradelicenceno'=>'required'
+      ,'tradedocument'=>'required'
+      ,'gstnumber'=>'required'
+     ,'gstdocument'=>'required'
+      ,'panno'=>'required'
+      ,'pandocument'=>'required'
+      ,'iddocument'=>'required'
+      ,'shippingmode'=>'required'
+      ,'storename'=>'required'
+  ,'gstnumber'=>'required'
+       ,'sellingcat'=>'required'
+        ,'storelogo'=>'required|image'
+      ,'nameinbank'=>'required'
+      //  ,'accounttype'=>'required'
+       ,'accountno'=>'required'
+        ,'ifsccode'=>'required'
+        ,'cancelledcheque'=>'required'
+        ,'signature'=>'required'
+        ,'sellingcat'=>'required'
+      ]);   
+     //  
+      //  
+      //        //
      
-
-      ]
-  );   
   $data['companyname']=$r1->input('companyname'); 
   $data['officeno']=$r1->input('officeno');
   $data['state']=$r1->input('state'); 

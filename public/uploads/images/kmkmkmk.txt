@@ -1,0 +1,144 @@
+@extends('admin.admindas')
+@section('body')
+@foreach($result as $value)
+
+<form id="approve_form" novalidate action="/approved/{{$value->id}}"  method="post" class="reg" enctype="multipart/form-data"> 
+@csrf 
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark"></h1>
+          </div><!-- /.col -->
+        
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+ 
+    
+<div class="col-sm-7">
+    <div class="login" align="center">
+<fieldset>
+<h2>Personal Informations:</h2>
+    <div class="form-group" >
+    <label >Name</label>
+    <input type="text" class="form-control" value="{{$value->name}}">
+    </div>
+    <div class="form-group" >
+    <label >Personal number</label>
+    <input type="text" class="form-control" value="{{$value->mob}}">
+    </div>
+    <div class="form-group" >
+    <label >E-mail</label>
+    <input type="text" class="form-control" value="{{$value->email}}">
+    </div>
+    </fieldset>
+
+<fieldset>
+<h2>Business Informations:</h2>
+
+    <div class="form-group" >
+    <label >Trade Licence number</label>
+    <input type="text" class="form-control" value="{{$value-> 	tradelicenceno}}">
+    </div>
+    <div class="form-group" >
+    <label >Trade License Document</label>
+    <input type="text" class="form-control" value="{{$value->tradedocument}}">
+    </div>
+    <div class="form-group" >
+    <label >GST Number</label>
+    <input type="text" class="form-control" value="{{$value->gstno}}">
+    </div><div class="form-group" >
+    <label >GST Document</label>
+    <input type="text" class="form-control" value="{{$value->gstdocument}}">
+    </div><div class="form-group" >
+    <label >PAN Number</label>
+    <input type="text" class="form-control" value="{{$value->panno}}">
+    </div><div class="form-group" >
+    <label >PAN Document</label>
+    <input type="text" class="form-control" value="{{$value->pandocument}}">
+    </div><div class="form-group" >
+    <label >ID Proof</label>
+    <input type="text" class="form-control" value="{{$value->iddocument }}">
+    </div><div class="form-group" >
+    <label >FSSAI LIC.No</label>
+    <input type="text" class="form-control" value="{{$value->fssaino }}">
+    </div><div class="form-group" >
+    <label >Shipping Mode</label>
+    <input type="text" class="form-control" value="{{$value->shipping }}">
+    </div>    
+</fieldset>
+
+<fieldset>
+<h2>Bank Details:</h2>
+
+<div class="form-group" >
+    <label >Name in bank documents</label>
+    <input type="text" class="form-control" value="{{$value->nameinbank}}">
+    </div>    
+    <div class="form-group" >
+    <label >Account type</label>
+    <input type="text" class="form-control" value="{{$value->accounttype}}">
+    </div>    
+    <div class="form-group" >
+    <label >Bank account number</label>
+    <input type="text" class="form-control" value="{{$value->accountno}}">
+    </div>    
+    <div class="form-group" >
+    <label >IFSC code</label>
+    <input type="text" class="form-control" value="{{$value->ifsccode}}">
+    </div>    
+    <div class="form-group" >
+    <label >Canceled cheque</label>
+    <input type="text" class="form-control" value="{{$value->cancelledcheque}}">
+    </div>    
+    <div class="form-group" >
+    <label >Signature</label>
+    <input type="text" class="form-control" value="{{$value->signature}}">
+    </div>    
+</fieldset>
+
+
+
+    <fieldset>
+    <h2>Company Informations:</h2>
+    <div class="form-group" >
+    <label for="companyname">Company Name</label>
+    <input type="text" class="form-control" value="{{$value->companyname}}">
+    </div>
+    <div class="form-group">
+    <label for="officeno">Office Number</label>
+    <input type="text"class="form-control" value="{{$value->officeno}}">
+    </div>
+    <div class="form-group">
+    <label for="state">State</label>
+    <input value="KERALA" class="form-control"readonly>
+    </div>
+    <div class="form-group">
+    <label for="district">District</label>
+    <input type="text" class="form-control"value="{{$value->district}}">
+    </div>
+    <div class="form-group">
+    <label for="location">Location</label>
+    <input type="text" class="form-control"value="{{$value->location}}">
+    </div>
+    <div class="form-group">
+    <label for="businesstype">Business Type</label>
+    <input type="text"class="form-control" value="{{$value->businesstype}}">
+    </div>
+    </div><center>
+    <input type="submit" name="submit" class="submit btn btn-success" value="Submit" />
+    </center>
+  </fieldset>
+
+</form>
+
+
+
+
+
+@endforeach
+@endsection

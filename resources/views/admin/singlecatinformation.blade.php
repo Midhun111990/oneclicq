@@ -60,7 +60,7 @@
 @enderror</td>
               
                       
-                      <td align="center"><input type="text"  maxlength="20" size="20" name="categoryname" id="categoryname"value="{{$value->catname}}"/>      
+                      <td align="center"><input type="text"  maxlength="80" size="20" name="categoryname" id="categoryname"value="{{$value->catname}}"/>      
                       @error("categoryname")
 <p style="color:red">{{$errors->first("categoryname","Enter Category name !")}}</p>
 @enderror</td>

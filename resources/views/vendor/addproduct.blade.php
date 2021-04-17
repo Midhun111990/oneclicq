@@ -93,7 +93,7 @@
     $("#pcat").on('change', function()
     {
       var catid=$("#pcat").val();
-      alert(catid);    // alert('hi');
+         // alert('hi');
     
     $.ajax({
         type:"get",
@@ -160,7 +160,7 @@
                     <tr>
                       <td>1.</td>
                       <td>GST</td>
-                      <td><input type="text" name="pgst" id="pgst"class="form-control"value="{{old('pgst')}}">
+                      <td><input type="text" name="pgst"placeholder="in %" id="pgst"class="form-control"value="{{old('pgst')}}">
                       @error("pgst")
 <p style="color:red">{{$errors->first("pgst")}}</p>
 @enderror</td>
@@ -168,7 +168,7 @@
                       <tr>
                       <td>2.</td>
                       <td>Price</td>
-                      <td><input type="text" name="pprice" id="pprice"class="form-control"value="{{old('pprice')}}">
+                      <td><input type="text" name="pprice" placeholder="in ₹"id="pprice"class="form-control"value="{{old('pprice')}}">
                       @error("pprice")
 <p style="color:red">{{$errors->first("pprice")}}</p>
 @enderror</td>
@@ -176,7 +176,7 @@
                     <tr>
                       <td>3.</td>
                       <td>MRP</td>
-                      <td><input type="text" name="pmrp" id="pmrp"class="form-control"value="{{old('pmrp')}}">
+                      <td><input type="text" name="pmrp"  placeholder="in ₹"id="pmrp"class="form-control"value="{{old('pmrp')}}">
                       @error("pmrp")
 <p style="color:red">{{$errors->first("pmrp")}}</p>
 @enderror</td>
@@ -228,7 +228,7 @@
                     <tr>
                       <td>1.</td>
                       <td>Height</td>
-                      <td><input type="text" name="pheight" id="pheight"class="form-control"value="{{old('pheight')}}">
+                      <td><input type="text" name="pheight" placeholder="in CM" id="pheight"class="form-control"value="{{old('pheight')}}">
                       @error("pheight")
 <p style="color:red">{{$errors->first("pheight")}}</p>
 @enderror</td>
@@ -236,7 +236,7 @@
                       <tr>
                       <td>2.</td>
                       <td>Weight</td>
-                      <td><input type="text" name="pweight" id="pweight"class="form-control"value="{{old('pweight')}}">
+                      <td><input type="text" name="pweight"  placeholder="in Pounds"id="pweight"class="form-control"value="{{old('pweight')}}">
                       @error("pweight")
 <p style="color:red">{{$errors->first("pweight")}}</p>
 @enderror</td>
@@ -244,7 +244,7 @@
                     <tr>
                       <td>3.</td>
                       <td>Width</td>
-                      <td><input type="text" name="pwidth" id="pwidth"class="form-control"value="{{old('pwidth')}}">
+                      <td><input type="text" name="pwidth"  placeholder="in CM"id="pwidth"class="form-control"value="{{old('pwidth')}}">
                       @error("pwidth")
 <p style="color:red">{{$errors->first("pwidth")}}</p>
 @enderror</td>
@@ -252,7 +252,7 @@
                     <tr>
                       <td>4.</td>
                       <td>Length</td> 
-                      <td><input type="text" name="plen" id="plen"class="form-control"value="{{old('plength')}}">
+                      <td><input type="text" name="plen" id="plen" placeholder="in CM"class="form-control"value="{{old('plength')}}">
                       @error("plen")
 <p style="color:red">{{$errors->first("plen")}}</p>
 @enderror</td>
@@ -305,11 +305,7 @@
                       <td><input type="checkbox" name="pret" id="pret" value="0"> NO </td>
                     </tr>
 
-<<<<<<< HEAD
                     <td align ="center"colspan="4"><input type="submit" name="submit" class="submit btn btn-success" value="Add +" style="height:307px;width:490px;font-size: 100px;"></td>
-=======
-                    <td colspan="3"><center><input type="submit" name="submit" style="height:200px;width:200px"class="submit btn btn-success" value="Add +" ></center></td>
->>>>>>> 385eb42a4f0780f5a9c4a8af70bb241b884d95c8
 
                    
                   </tbody>

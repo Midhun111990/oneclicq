@@ -16,6 +16,14 @@ class vendormodel extends Model
         DB::table($table)->insert($data);
 
     }
+    public function mytotalproduct($table,$id)
+    {
+      $data=DB::table($table)->where('vendorid','<=',$id)->get();
+      return $data->count();
+       
+   //condition remaining
+    }
+   
  public function verifyVendor($table)
  {
     

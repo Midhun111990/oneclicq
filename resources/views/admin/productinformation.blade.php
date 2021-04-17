@@ -46,7 +46,6 @@
                 <tbody style="color:white;background-color:black;">
                  
                     <tr>
-<<<<<<< HEAD
                     <td align="center"><b><h4>Sr no.</h4></b></td>
                     <td align="center"><b><h4>Image</h4></b></td>
                     <td align="center"><b><h4>Name</h4></b></td>
@@ -56,15 +55,6 @@
                     <td align="center"><b><h4>View</h4></b></td>
                     
                     
-=======
-                    <td>Sr no.</td>
-                      <td>Image</td>
-                      <td>Name</td>
-                      <td>Description</td>
-                      <td>Price</td>
-                      <td>Status</td>
-                      <td>View</td>
->>>>>>> 385eb42a4f0780f5a9c4a8af70bb241b884d95c8
                       </tr>
                       <tr>
                      
@@ -73,27 +63,16 @@
                       <td align="center">{{$loop->iteration}}</td> 
                       <td align="center"><img src="{{asset('uploads/images/'.$value->image)}}"height="100px" width="100px" /></td>
            
-<<<<<<< HEAD
                       <td align="center">{{$value->name}}</td>
                       <td align="center">{{$value->description}}</td>
                       <td align="center">{{$value->price}}</td>
                       <td align="center">
-=======
-                      <td>{{$value->name}}</td>
-                      <td>{{$value->description}}</td>
-                      <td>{{$value->price}}</td>
-                      <td>
->>>>>>> 385eb42a4f0780f5a9c4a8af70bb241b884d95c8
                       @if($value->status==1)
                       <font color="Green"><b><h4>✔</h4></b></font> 
                       @else
                       ❌
                       @endif</td>
-<<<<<<< HEAD
                       <td align="center"><a href="/singleproductinformation/{{$value->pid}}">More</td>
-=======
-                      <td><a href="/singleproductinformation/{{$value->pid}}">More</td>
->>>>>>> 385eb42a4f0780f5a9c4a8af70bb241b884d95c8
                     </tr>
                     </html>
                     @endforeach                   

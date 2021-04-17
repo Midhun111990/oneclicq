@@ -26,7 +26,9 @@
             <!-- small box -->
             <div class="small-box" style="background-color: darkviolet">
               <div class="inner">
-                <h3>150</h3>
+                <h3>
+0
+                </h3>
 
                 <p>Total sales</p>
               </div>
@@ -40,7 +42,15 @@
             <!-- small box -->
               <div class="small-box" style="background-color: #53c653">
               <div class="inner">
-                <h3>150</h3>
+                <h3>
+
+            <!-- //ERROR occruing while view when product =0-->
+
+               {{$res}}
+ 
+
+
+                </h3>
 
                 <p>Total Products</p>
               </div>

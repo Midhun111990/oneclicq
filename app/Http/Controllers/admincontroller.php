@@ -16,7 +16,12 @@ class admincontroller extends Controller
 
     public function adminindex()
     {
-        return view('admin.adminbody');
+        $data['re']=$this->md1->mytotalproduct('product');
+        $data['vpro']=$this->md1->myvproduct('product');
+     
+        $data['res']=$this->md1->mytotalvendor('vendordetails');
+     
+        return view('admin.adminbody',$data);
     }
 
     public function vinfo()

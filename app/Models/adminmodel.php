@@ -57,7 +57,27 @@ class adminmodel extends Model
         DB::table($table)->insert($data);
 
     }
-
+    public function mytotalproduct($table)
+    {
+      $data=DB::table($table)->get();
+      return $data->count();
+       
+   //condition remaining
+    }
+    public function mytotalvendor($table)
+    {
+      $data=DB::table($table)->where('adminstatus',2)->get();
+      return $data->count();
+       
+   //condition remaining
+    }
+    public function myvproduct($table)
+    {
+      $data=DB::table($table)->where('status',1)->get();
+      return $data->count();
+       
+   //condition remaining
+    }
 
    function catnamecall($table,$id)
     {

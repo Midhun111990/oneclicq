@@ -34,7 +34,7 @@
     
 <div>
 <div class="bg1-img">
-<div class="text"> <center> <img src="dist/img/logo.png"width="70" height="60">
+<div class="text"> <center> <img src="dist/img/logo.png"width="80" height="80">
     <p><b>OneClick</b><br>India's First Regional Online Shopping</p>
 </center>
  <b>Sign In</b></div>

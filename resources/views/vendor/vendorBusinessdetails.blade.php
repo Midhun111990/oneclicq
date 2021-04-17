@@ -92,7 +92,7 @@ of modern day shopping. OneClick presents in front of you, a unique
     </div>
     <div class="form-group">
     <label for="officeno">Office Number</label>
-    <input type="text"class="form-control" placeholder="Number..." name="officeno"value="{{old('officeno')}}">
+    <input type="text"class="form-control" placeholder="Number..."id="officeno" name="officeno" maxlength="10"value="{{old('officeno')}}">
     @error("officeno")
 <p style="color:red">{{$errors->first("officeno","Enter your office no !")}}</p>
 @enderror
@@ -135,7 +135,7 @@ of modern day shopping. OneClick presents in front of you, a unique
   
   <div class="form-group">
     <label for="location">Location</label>
-  <input type="text" placeholder="Location..." id="location" name="location"class="form-control"value="{{old('location')}}">
+  <textarea type="text" placeholder="Company location..." id="location" name="location"class="form-control"value="{{old('location')}}"></textarea>
   @error("location")
 <p style="color:red">{{$errors->first("location","Enter your office location !")}}</p>
 @enderror
@@ -143,11 +143,11 @@ of modern day shopping. OneClick presents in front of you, a unique
 <div class="form-group">
     <label for="businesstype">Business Type</label>
 
-<select name="businesstype" id="businesstype" class="form-control">
+<select name="businesstype" id="businesstype" class="form-control" required>
 @error("businesstype")
 <p style="color:red">{{$errors->first("businesstype","Select business type!")}}</p>
 @enderror
->>>>>>> 385eb42a4f0780f5a9c4a8af70bb241b884d95c8
+<option>Choose..</option>
   @foreach($res as $val) <option value="{{$val->id}}">{{$val->name}}</option>
                       @endforeach
   </select>
@@ -238,15 +238,11 @@ of modern day shopping. OneClick presents in front of you, a unique
 @enderror
     </div>
     <div class="form-group">
-    <label for="sellingcat">Your Selling Categories</label>
-    <select name="sellingcat" id="sellingcat" class="form-control"value="{{old('sellingcat')}}">
+    <label for="sellingcat">Selling focused on</label>
+    <input type="text" name="sellingcat" id="sellingcat" class="form-control"value="{{old('sellingcat')}}">
     @error("sellingcat")
 <p style="color:red">{{$errors->first("sellingcat","Select your selling category !")}}</p>
 @enderror 
-  <option>Choose..</option>
-  <option value="menswardrobe">Mens Wardrobe</option>
-  
-  </select>
 </div>
     <div class="form-group">
     <label for="storelogo">Store Logo</label>
@@ -264,7 +260,7 @@ of modern day shopping. OneClick presents in front of you, a unique
   <fieldset>
     <h2>Step 4: Bank Details</h2>
     <div class="form-group">
-    <label for="nameinbank">Your name in bank documents</label>
+    <label for="nameinbasnk">Your name in bank documents</label>
     <input type="text" class="form-control" id="nameinbank" placeholder="Name..." name="nameinbank"value="{{old('nameinbank')}}">
     @error("nameinbank")
 <p style="color:red">{{$errors->first("nameinbank","Enter your name in bank document !")}}</p>
@@ -378,6 +374,7 @@ of modern day shopping. OneClick presents in front of you, a unique
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<script src="dist/js/val.js"></script>
 </body>
 </html>
 <body>

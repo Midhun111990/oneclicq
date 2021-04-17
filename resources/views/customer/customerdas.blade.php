@@ -67,15 +67,20 @@
          <div class="header_section">
             <div class="container">
                <div class="containt_main">
-               Categories
                   <div id="mySidenav" class="sidenav">
                      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                     <a href="index.html">Home</a>
-                     <a href="fashion.html">Fashion</a>
-                     <a href="electronic.html">Electronic</a>
-                     <a href="jewellery.html">Jewellery</a>
+                     <a href="/customer">Home</a>
+                     
+                     @foreach($result as $value)
+
+                     <a href="/laptop/{{$value->catid}}">{{$value->catname}}</a>
+
+                     @endforeach
+
+
+
                   </div>
-                  <span class="toggle_icon" onclick="openNav()"><img src="/dist/img/toggle-icon.png"></span>
+                  <span class="toggle_icon" onclick="openNav()"><p style="color:Black"><h2><b><u>View Category</u></b></h2></p></span>
                   <div class="dropdown">
                      
                      
@@ -96,14 +101,14 @@
                      </div>
                      <div class="login_menu">
                         <ul>
-                           <li><a href="#">
+                           <!-- <li><a href="#">
                               <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                            <a href="">   <h3>Cart</h3></a>
                            </li>
                            <li><a href="#">
                               <i class="fa fa-user" aria-hidden="true"></i>
                               <span class="padding_10">Cart</span></a>
-                           </li>
+                           </li> -->
                         </ul>
                      </div>
                   </div>
@@ -126,14 +131,14 @@
                      <div class="carousel-item">
                         <div class="row">
                            <div class="col-sm-12">
-                              <img src="images/banner1.jpg">
+                           <img src="/dist/img/ban2.jpg">
                            </div>
                         </div>
                      </div>
                      <div class="carousel-item">
                         <div class="row">
                            <div class="col-sm-12">
-                             <img src="images/banner2.jpg">
+                           <img src="/dist/img/ban3.jpg">
                            </div>
                         </div>
                      </div>
