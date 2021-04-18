@@ -449,9 +449,26 @@ return redirect('/subcatinformation');
         
 
 
+    public function rejectapplication($id)
+    {
+        $data['result']=$this->md1->selectveninfo('vendordetails',$id);
+        
+       
+        return view('admin.rejectapplication',$data);
+          
+    }
+    
 
-
-
+    public function rejectapp(Request $r1,$id)
+    {
+        $data['reason']=$r1->input('reason');
+        $this->md1->rejectreason('vendordetails',$data,$id);
+        
+       
+        return redirect('/vendorsinformation');
+          
+    }
+    
 
 }
 ?>

@@ -233,8 +233,11 @@ public function updatebrand($table,$data,$id)
     }
 
 
-
-
+    function rejectreason($table,$data,$id)
+    {
+        DB::table($table)->where('id',$id)->update($data);
+      
+    }
 
 
 

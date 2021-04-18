@@ -95,6 +95,16 @@ Route::get('/pendingproduct', [admincontroller::class,'pendingproduct']);
 
 
 
+Route::get('/rejectapplication/{id}', [admincontroller::class,'rejectapplication']);
+
+Route::post('/rejectapp/{id}', [admincontroller::class,'rejectapp']);
+
+
+
+
+
+
+
 //VENDOR
 
 

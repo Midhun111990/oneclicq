@@ -46,10 +46,7 @@
 
             <!-- //ERROR occruing while view when product =0-->
 
-               {{$res}}
  
-
-
                 </h3>
 
                 <p>Total Products</p>

@@ -25,8 +25,10 @@
     </section>
     <form id="agreevendor_form" novalidate action="/approved/{{$value->id}}"  method="post" class="brand" enctype="multipart/form-data"> 
   @csrf
-
-    <!-- Main content -->
+  <div>
+  <textarea rows="3" cols="125" style=color:red>{{$value->reason}}</textarea>
+    
+    </div><!-- Main content -->
     <section class="content">
       <div class="container-fluid">
         <div class="row">
@@ -253,7 +255,7 @@
                     <tr>
                       <td>7.</td>
                       <td>ID Proof</td>
-                      <td>{{$value->iddocument}}</td>
+                      <td><a href="{{asset('uploads/images/'.$value->iddocument)}}">VIEW</a></td>
                     </tr>
                     <tr>
                       <td>8.</td>
