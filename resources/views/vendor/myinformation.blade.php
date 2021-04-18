@@ -23,7 +23,7 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
-    <form id="agreevendor_form" novalidate action="/approved/{{$value->id}}"  method="post" class="brand" enctype="multipart/form-data"> 
+    <form id="modifymydetail_form" novalidate action="/modify/{{$value->id}}"  method="post" class="brand" enctype="multipart/form-data"> 
   @csrf
   <div>
   <textarea rows="3" cols="125" style=color:red>{{$value->reason}}</textarea>
@@ -45,18 +45,18 @@
                     <tr>
                       <td>1.</td>
                       <td>Name</td>
-                      <td>{{$value->name}}</td>
+                      <td><input type="text"class="form-control" id="name" name="name"value="{{$value->name}}"></td>
                       </tr>
                       <tr>
                       <td>2.</td>
                       <td>Mobile No.</td>
-                      <td>{{$value->mob}}</td>
-                    </tr>
+                      <td><input type="text"class="form-control" id="mob" maxlength="10"name="mob"value="{{$value->mob}}"></td>
+                     </tr>
                     <tr>
                       <td>3.</td>
                       <td>E-mail</td>
-                      <td>{{$value->email}}</td>
-                    </tr>
+                      <td><input type="text"class="form-control" id="email" name="email"value="{{$value->email}}"></td>
+                     </tr>
 
                   </tbody>
                 </table>
@@ -82,39 +82,50 @@
                     <tr>
                       <td>1.</td>
                       <td>Company name</td>
-                      <td>{{$value->companyname}}</td>
-                      </tr>
-                      <tr>
+                      <td><input type="text"class="form-control" id="companyname" name="companyname"value="{{$value->companyname}}"></td>
+                     </tr>
+                    <tr>
                       <td>2.</td>
                       <td>Office nuber</td>
-                      <td>{{$value->officeno}}</td>
-                    </tr>
-                    <tr>
+                      <td><input type="text"class="form-control" id="officeno" name="officeno"maxlength="10"value="{{$value->officeno}}"></td>
+                     </tr>
+                     <tr>
                       <td>3.</td>
                       <td>State</td>
-                      <td>{{$value->state}}</td>
+                     <td>{{$value->state}}</td>
                     </tr>
                     <tr>
                       <td>4.</td>
                       <td>District</td>
-                      <td>{{$value->district}}</td>
-                    </tr>
-                    <tr>
+                      <td><input type="text"class="form-control" id="district" name="district"value="{{$value->district}}"></td>
+                     </tr>
+                     <tr>
                       <td>5.</td>
                       <td>Location</td>
-                      <td>{{$value->location}}</td>
-                    </tr>
+                      <td><input type="text"class="form-control" id="location" name="location"value="{{$value->location}}"></td>
+                     </tr>
                     <tr>
                       <td>6.</td>
                       <td>Business type</td>
-                      <td>{{$value->businesstype}}</td>
-                    </tr>
-                   
+                      <td><select name="businesstype" id="businesstype" class="form-control" required>
+@error("businesstype")
+<p style="color:red">{{$errors->first("businesstype","Select business type!")}}</p>
+@enderror
+<option>{{$value->businesstype}}</option>
+  @foreach($res as $val) <option value="{{$val->id}}">{{$val->name}}</option>
+                      @endforeach
+  </select>
+
+                      </td>
+                     </tr>                   
                   </tbody>
                 </table>
               </div>
               <!-- /.card-body -->
             </div>
+            
+<input type="submit" name="submit" class="submit btn btn-success" style="height:100px;width:520px;font-size : 25px"value="MODIFY ⚡" >
+
             <!-- /.card -->
           </div>
           <!-- /.col -->
@@ -140,17 +151,20 @@
                     <tr>
                       <td>1.</td>
                       <td>Store Name</td>
-                      <td>{{$value->storename}}</td>
-                      </tr>
+                      <td><input type="text"class="form-control" id="storename" name="storename"value="{{$value->storename}}"></td>
+                     </tr>                   
                       <tr>
                       <td>2.</td>
                       <td>Selling Categories</td>
-                      <td>{{$value->sellingcat}}</td>
-                    </tr>
+                      <td><input type="text"class="form-control" id="sellingcat" name="sellingcat"value="{{$value->sellingcat}}"></td>
+                     </tr>
                     <tr>
                       <td>3.</td>
                       <td>Store Logo</td>
-                      <td><a href="{{asset('uploads/images/'.$value->storelogo)}}">VIEW</a></td>
+                      <td><a href="{{asset('uploads/images/'.$value->storelogo)}}"><h4 align="center">VIEW👁</h4></a>
+                      <input type="file" class="form-control" name="storelogo" id="storelogo">
+                      
+   </td>
                     </tr>
                     
                   </tbody>
@@ -176,32 +190,57 @@
                     <tr>
                       <td>1.</td>
                       <td>Name in bank documents</td>
-                      <td>{{$value->storename}}</td>
-                      </tr>
+                      <td><input type="text"class="form-control" id="nameinbank" name="nameinbank"value="{{$value->nameinbank}}"></td>
+                     </tr>
                       <tr>
                       <td>2.</td>
                       <td>Account type</td>
-                      <td>{{$value->accounttype}}</td>
-                    </tr>
+                     <td> <select name="accounttype" id="accounttype" class="form-control"value="{{$value->accounttype}}">
+    @error("accounttype")
+<p style="color:red">{{$errors->first("accounttype","Select your account type !")}}</p>
+@enderror
+  <option> {{$value->accounttype}}</option>
+  <option value="current">Current account</option>
+  <option value="saving">Savings account</option>
+  <option value="salary">Salary account</option>
+  <option value="fixed">Fixed deposit account</option>
+  <option value="deposit">Recurring deposit account</option>
+  <option value="nri">NRI accounts</option>
+  <option value="nro">Non-resident ordinary (NRO) savings accounts</option>
+  <option value="nre">Non-resident external (NRE) savings accounts </option>
+  <option value="fcnr">Foreign currency non-resident (FCNR) account </option>
+  
+  </select></td>
+                      </tr>
                     <tr>
                       <td>3.</td>
                       <td>Bank account number</td>
-                      <td>{{$value->accountno}}</td>
-                    </tr>
+                      <td><input type="text"class="form-control" id="accountno" name="accountno"value="{{$value->accountno}}"></td>
+                     </tr>
                     <tr>
                       <td>4.</td>
                       <td>IFSC Code</td>
-                      <td>{{$value->ifsccode}}</td>
-                    </tr>
+                      <td><input type="text"class="form-control" id="ifsccode" name="ifsccode"value="{{$value->ifsccode}}"></td>
+                     </tr>
                     <tr>
                       <td>5.</td>
                       <td>Canceled cheque</td>
-                     <td><a href="{{asset('uploads/images/'.$value->cancelledcheque)}}">VIEW</a></td>
+                     <td><a href="{{asset('uploads/images/'.$value->cancelledcheque)}}"><h4 align="center">VIEW👁</h4></a>
+                     <input type="file" class="form-control" name="cancelledcheque" id="cancelledcheque">
+    @error("cancelledcheque")
+<p style="color:red">{{$errors->first("cancelledcheque","Select a cancelled cheque !")}}</p>
+@enderror
+                     </td>
                     </tr>
                     <tr>
                       <td>6.</td>
                       <td>Signature</td>
-                      <td><a href="{{asset('uploads/images/'.$value->signature)}}">VIEW</a></td>
+                      <td><a href="{{asset('uploads/images/'.$value->signature)}}"><h4 align="center">VIEW👁</h4></a>
+                      <input type="file" class="form-control" name="signature" id="signature">
+    @error("signature")
+<p style="color:red">{{$errors->first("signature","Select a cancelled cheque !")}}</p>
+@enderror 
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -225,47 +264,77 @@
                     <tr>
                       <td>1.</td>
                       <td>Trade Licence no.</td>
-                      <td>{{$value->tradelicenceno}}</td>
-                      </tr>
+                      <td><input type="text"class="form-control" id="tradelicenceno" name="tradelicenceno"value="{{$value->tradelicenceno}}"></td>
+                     </tr>
                       <tr>
                       <td>2.</td>
                       <td>Trade Licence Document</td>
-                      <td><a href="{{asset('uploads/images/'.$value->tradedocument)}}">VIEW</a></td>
+                      <td><a href="{{asset('uploads/images/'.$value->tradedocument)}}"><h4 align="center">VIEW👁</h4></a>
+                      <input type="file" class="form-control" name="tradedocument" id="tradedocument">
+    @error("tradedocument")
+<p style="color:red">{{$errors->first("tradedocument","Select a cancelled cheque !")}}</p>
+@enderror             
+                      </td>
                     </tr>
                     <tr>
                       <td>3.</td>
                       <td>GST no.</td>
-                      <td>{{$value->gstno}}</td>
-                    </tr>
-                    <tr>
+                      <td><input type="text"class="form-control" id="gstno" name="gstno"value="{{$value->gstno}}"></td>
+                     </tr>
+                     <tr>
                       <td>4.</td>
                       <td>GST Document</td>
-                      <td><a href="{{asset('uploads/images/'.$value->gstdocument)}}">VIEW</a></td>
+                      <td><a href="{{asset('uploads/images/'.$value->gstdocument)}}"><h4 align="center">VIEW👁</h4></a>
+                      <input type="file" class="form-control" name="gstdocument" id="gstdocument">
+    @error("gstdocument")
+<p style="color:red">{{$errors->first("gstdocument","Select gstdocument !")}}</p>
+@enderror             
+                      </td>
                     </tr>
                     <tr>
                       <td>5.</td>
                       <td>PAN no.</td>
-                      <td>{{$value->panno}}</td>
-                    </tr>
+                      <td><input type="text"class="form-control" id="panno" name="panno"value="{{$value->panno}}"></td>
+                     </tr>
                     <tr>
                       <td>6.</td>
                       <td>PAN Document</td>
-                      <td><a href="{{asset('uploads/images/'.$value->pandocument)}}">VIEW</a></td>
+                      <td><a href="{{asset('uploads/images/'.$value->pandocument)}}"><h4 align="center">VIEW👁</h4></a>
+                      <input type="file" class="form-control" name="pandocument" id="pandocument">
+    @error("pandocument")
+<p style="color:red">{{$errors->first("pandocument","Select pandocument !")}}</p>
+@enderror             
+                      </td>
                     </tr>
                     <tr>
                       <td>7.</td>
                       <td>ID Proof</td>
-                      <td><a href="{{asset('uploads/images/'.$value->iddocument)}}">VIEW</a></td>
+                      <td><a href="{{asset('uploads/images/'.$value->iddocument)}}"><h4 align="center">VIEW👁</h4></a>
+                      <input type="file" class="form-control" name="iddocument" id="iddocument">
+    @error("iddocument")
+<p style="color:red">{{$errors->first("iddocument","Select iddocument !")}}</p>
+@enderror             
+                      </td>
                     </tr>
                     <tr>
                       <td>8.</td>
                       <td>FSSAI LIC.No</td>
-                      <td>{{$value->fssaino}}</td>
-                    </tr>
+                      <td><input type="text"class="form-control" id="fssaino" name="fssaino"value="{{$value->fssaino}}"></td>
+                     </tr>
                     <tr>
                       <td>9.</td>
                       <td>Shipping Mode</td>
-                      <td>{{$value->shipping }}</td>
+                      <td>              
+                      <select name="shippingmode" id="shippingmode" class="form-control">
+    @error("shippingmode")
+<p style="color:red">{{$errors->first("shippingmode","Select shipping mode !")}}</p>
+@enderror
+  
+  <option value="Cash on delivery">Cash On delivery</option>
+  <option value="Online">Online</option>
+  
+  </select>
+  </td>
                     </tr>
                     <tr>
                     <td></td>

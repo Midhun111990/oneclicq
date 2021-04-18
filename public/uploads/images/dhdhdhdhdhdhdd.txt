@@ -1,0 +1,9 @@
+brand
+category
+business type
+vendor details
+customer detail(total customer)
+product view
+pending product
+view customer order detail(how much sold)
+

@@ -107,6 +107,8 @@ Route::post('/rejectapp/{id}', [admincontroller::class,'rejectapp']);
 
 //VENDOR
 
+Route::post('/modify/{id}', [vendorcontroller::class,'modifyinfo']);
+
 
 Route::get('/V', [vendorcontroller::class,'index']);
 Route::get('/vendorRegister', [vendorcontroller::class,'vendorlog']);

@@ -23,6 +23,19 @@ class vendormodel extends Model
        
    //condition remaining
     }
+
+
+
+    function modifyinfo($table,$data,$id)
+    {
+        DB::table($table)->where('id',$id)->update($data);
+      
+    }
+
+    
+
+
+
    
  public function verifyVendor($table)
  {
