@@ -65,13 +65,13 @@ of modern day shopping. OneClick presents in front of you, a unique
 
     <input type="text" class="form-control" placeholder="E-mail" name="email"id="email" value="{{old('email')}}" >
     @error("email")
-<p style="color:red">{{$errors->first("email","Enter E-mail id !")}}</p>
+<p style="color:red">{{$errors->first("email","Enter Your E-mail id !")}}</p>
 @enderror
-    <input type="text" class="form-control" placeholder="Password" name="pass" id="pass" value="{{old('pass')}}" >
+    <input type="password" class="form-control" placeholder="Password" name="pass" id="pass" value="{{old('pass')}}" >
     @error("pass")
 <p style="color:red">{{$errors->first("pass","Enter strong password !")}}</p>
 @enderror
-        <input type="text" class="form-control" placeholder="Confirm Password" name="cpass" id="cpass">
+        <input type="password" class="form-control" placeholder="Confirm Password" name="cpass" id="cpass">
         @error("cpass")
 <p style="color:red">{{$errors->first("cpass","Enter your password again !")}}</p>
 @enderror

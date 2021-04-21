@@ -31,7 +31,7 @@ class vendorcontroller extends Controller
     public function vendorotp(Request $r1)
     {
       request()->validate([
-        'mob'=>'required',
+        'mob'=>'required|unique:vendorotp,phone',
         'otp_num'=>'required']
     );
 
@@ -84,12 +84,20 @@ return redirect('/vendorVerify');
     $id=session('sesid');
        $data['result']=$this->md1->vendorname('vendordetails',$id);
 
-      $data['res']=$this->md1->mytotalproduct('product',$id);
+      $data1['res']=$this->md1->mytotalproduct('product',$id);
       // $data['re']=$this->md1->totalsales('purchase',$id);
 
+      if(isset($data1))
+{
+  return view('vendor.vendorbody',$data,$data1);
+ 
+}
+else{
 
-      return view('vendor.vendorbody',$data);
-  }
+  $data1['res']=0;
+      return view('vendor.vendorbody',$data,$data1);
+}
+    }
 
   public function vendorproduct()
   {
@@ -170,7 +178,9 @@ return redirect('/vendorVerify');
       $file4= $r1->file('gstdocument');
       $file5= $r1->file('pandocument');
       $file6= $r1->file('iddocument');
-      
+     
+      $data['state']='KERALA';
+      $data['district']=$r1->input('district');
       if($file==""&&$file1==""&&$file2==""&&$file3==""&&$file4==""&&$file5==""&&
       $file6=="")
 {
@@ -201,6 +211,8 @@ return redirect('/vendorVerify');
 
 else if($file1==""&&$file2==""&&$file3==""&&$file4==""&&$file5==""&&$file6=="")
 {
+  if($file1==""&&$file2==""&&$file3==""&&$file4==""&&$file5==""&&$file6=="")
+  {
 $data['name']=$r1->input('name');
 $data['mob']=$r1->input('mob');
 $data['email']=$r1->input('email');
@@ -225,7 +237,11 @@ $file= $r1->file('storelogo');
 $filename = $file->getClientOriginalName();
 $file->move(public_path().'/uploads/images', $filename);
 $data['storelogo']=$filename;
-
+  }
+  else
+  {
+    echo "HII";
+  }
 
 
 }
@@ -1422,7 +1438,7 @@ $data['iddocument']=$filename;
 
 
 
-else
+else if($file!==""&&$file1!==""&&$file2!==""&&$file3!==""&&$file!==""&&$file5!==""&&$file6!=="")
 {
 
         $data['name']=$r1->input('name');
@@ -1482,6 +1498,15 @@ else
   $data['iddocument']=$filename;
 }
 
+
+else {
+  $this->md1->modifyinfo('vendordetails',$data,$id);
+        
+       
+  return redirect('/myinformation/{$id}');
+
+}
+$data['adminstatus']=1;
         $this->md1->modifyinfo('vendordetails',$data,$id);
         
        
@@ -1495,7 +1520,7 @@ else
     public function vendordetails(Request $r1)
     {
       request()->validate(
-        ['name'=>'required','email'=>'required|email'
+        ['name'=>'required','email'=>'required|email|unique:vendordetails,email'
         ,'pass'=>'required','cpass'=>'required|same:pass'
         ]
     );
@@ -1540,7 +1565,7 @@ else
        ,'sellingcat'=>'required'
         ,'storelogo'=>'required|image'
       ,'nameinbank'=>'required'
-      //  ,'accounttype'=>'required'
+      ,'accounttype'=>'required'
        ,'accountno'=>'required'
         ,'ifsccode'=>'required'
         ,'cancelledcheque'=>'required'
@@ -1586,7 +1611,7 @@ else
 
 
   $data['nameinbank']=$r1->input('nameinbank');
-  $data['accounttype']=$r1->input('actype');
+  $data['accounttype']=$r1->input('accounttype');
   $data['accountno']=$r1->input('accountno');
   $data['ifsccode']=$r1->input('ifsccode');
  
@@ -1602,7 +1627,6 @@ else
   $data['signature']=$filename;
 
 
-
   
   $data['regstatus']=$r1->input('regstatus');
   $data['adminstatus']=$r1->input('adminstatus');
@@ -1611,8 +1635,14 @@ else
              
   $this->md1->bdetails('vendordetails',$data,$id);
 
+  $r1->session()->put(array('sesid'=>$id));
+ 
+
 $name['result']=  $this->md1->vendet('vendordetails',$id);
-   return view('vendor.vendorbody',$name);
+$data1['res']=$this->md1->mytotalproduct('product',$id);
+         
+return view('vendor.vendorbody',$name,$data1);
+
   
    
 // return redirect('/vendorVerify');
@@ -1748,7 +1778,7 @@ else
     {
      
         $request->session()->forget('sesid');
-        return redirect('/');
+        return redirect('/V');
     }
 
     public function  viewmyinformation($id)

@@ -26,7 +26,7 @@
     <form id="modifymydetail_form" novalidate action="/modify/{{$value->id}}"  method="post" class="brand" enctype="multipart/form-data"> 
   @csrf
   <div>
-  <textarea rows="3" cols="125" style=color:red>{{$value->reason}}</textarea>
+  <textarea readonly rows="3" cols="125" style=color:red>{{$value->reason}}</textarea>
     
     </div><!-- Main content -->
     <section class="content">
@@ -92,12 +92,35 @@
                      <tr>
                       <td>3.</td>
                       <td>State</td>
-                     <td>{{$value->state}}</td>
-                    </tr>
+                      <td><input type="text"class="form-control" id="state" name="state"value="KERALA"></td>
+                     </tr>
                     <tr>
                       <td>4.</td>
                       <td>District</td>
-                      <td><input type="text"class="form-control" id="district" name="district"value="{{$value->district}}"></td>
+                      <td>
+                      <select name="district"class="form-control"id="district" class="form-control">
+
+<option>{{$value->district}}</option>
+  
+<option value="Thiruvananthapuram">Thiruvananthapuram</option>
+<option value="Kollam">Kollam</option>
+<option value="Alappuzha">Alappuzha</option>
+<option value="Pathanamthitta">Pathanamthitta</option>
+<option value="Kottayam">Kottayam</option>
+<option value="Idukki">Idukki</option>
+<option value="Ernakulam">Ernakulam</option>
+<option value="Thrissur">Thrissur</option>
+<option value="Palakkad">Palakkad</option>
+<option value="Malappuram">Malappuram</option>
+<option value="Kozhikode">Kozhikode</option>
+<option value="Wayanad">Wayanad</option>
+<option value="Kannur">Kannur</option>
+<option value="Kasaragod">Kasaragod</option>
+  
+  </select>
+
+                      
+                      </td>
                      </tr>
                      <tr>
                       <td>5.</td>
@@ -325,11 +348,12 @@
                       <td>9.</td>
                       <td>Shipping Mode</td>
                       <td>              
-                      <select name="shippingmode" id="shippingmode" class="form-control">
+                      <select name="shippingmode" id="shippingmode" class="form-control" >
     @error("shippingmode")
 <p style="color:red">{{$errors->first("shippingmode","Select shipping mode !")}}</p>
 @enderror
-  
+<option>{{$value->shipping}}</option>
+
   <option value="Cash on delivery">Cash On delivery</option>
   <option value="Online">Online</option>
   

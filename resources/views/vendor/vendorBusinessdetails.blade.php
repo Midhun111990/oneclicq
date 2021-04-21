@@ -31,6 +31,11 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+
   <style>
    #regiration_form fieldset:not(:first-of-type) {
     display: none;
@@ -73,9 +78,8 @@ of modern day shopping. OneClick presents in front of you, a unique
   @foreach($result as $value)
  
 
-  <form id="regiration_form" novalidate action="/businessdetails/{{$value->id}}"  method="post" class="reg" enctype="multipart/form-data"> 
- 
- 
+  <form id="regiration_form" novalidate action="/businessdetails/{{$value->id}}"  method="post" class="brand" enctype="multipart/form-data"> 
+  
   @csrf
   @endforeach
   <fieldset>
@@ -85,7 +89,7 @@ of modern day shopping. OneClick presents in front of you, a unique
     <h2>Step 1: Company Information:</h2>
     <div class="form-group">
     <label for="companyname">Company Name</label>
-    <input type="text" class="form-control" id="companyname" placeholder="Name..." name="companyname"value="{{old('companyname')}}">
+    <input type="text" class="form-control" id="companyname" placeholder="Name..." name="companyname"value="{{old('companyname')}}" >
     @error("companyname")
 <p style="color:red">{{$errors->first("companyname","Enter your company name !")}}</p>
 @enderror
@@ -143,7 +147,7 @@ of modern day shopping. OneClick presents in front of you, a unique
 <div class="form-group">
     <label for="businesstype">Business Type</label>
 
-<select name="businesstype" id="businesstype" class="form-control" required>
+<select name="businesstype" id="businesstype" class="form-control" >
 @error("businesstype")
 <p style="color:red">{{$errors->first("businesstype","Select business type!")}}</p>
 @enderror
@@ -267,10 +271,10 @@ of modern day shopping. OneClick presents in front of you, a unique
 @enderror
     </div>
     <div class="form-group">
-    <label for="actype">Account Type</label>
-    <select name="actype" id="actype" class="form-control"value="{{old('actype')}}">
-    @error("actype")
-<p style="color:red">{{$errors->first("actype","Select your account type !")}}</p>
+    <label for="accounttype">Account Type</label>
+    <select name="accounttype" id="accounttype" class="form-control"value="{{old('accounttype')}}">
+    @error("accounttype")
+<p style="color:red">{{$errors->first("accounttype","Select your account type !")}}</p>
 @enderror
   <option>Choose..</option>
   <option value="current">Current account</option>
@@ -409,7 +413,35 @@ $(document).ready(function(){
       .html(percent+"%");   
   }
 });
+
+
+$(document).on('keypress', '#companyname', function(){
+    $.ajax({
+        url:'/businessdetails/{id}',
+        method:'POST',
+        data:{
+          'companyname_check':1,
+          'companyname':companyname,
+        },
+        success: function(response){
+      	if (response == 'taken' ) {
+          companyname_state = false;
+          $('#companyname').parent().removeClass();
+          $('#companyname').parent().addClass("form_error");
+          $('#companyname').siblings("span").text('Sorry... This no is already taken');
+        }else if (response == 'not_taken') {
+      	  companyname_state = true;
+      	  $('#companyname').parent().removeClass();
+      	  $('#companyname').parent().addClass("form_success");
+      	  $('#companyname').siblings("span").text('Email available');
+      	}
+      }
+ 	});
+ });
+
+
 </script>
+
 
 </body>
 </html>

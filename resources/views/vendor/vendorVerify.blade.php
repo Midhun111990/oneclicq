@@ -55,7 +55,7 @@ of modern day shopping. OneClick presents in front of you, a unique
 <div class="login">
 <form method="post" action="/otpcheck">
 @csrf
-    <input type="text" class="form-control"  name="mob" id="mob" value="{{$result->phone}}">
+    <input type="hidden" readonly class="form-control"  name="mob" id="mob" value="{{$result->phone}}">
 
     <input type="text" class="form-control" placeholder="Enter the otp Number" name="otp" id="otp"maxlength="6">
     @error("otp")

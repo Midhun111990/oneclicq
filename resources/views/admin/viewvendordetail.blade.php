@@ -55,6 +55,11 @@
                       <td>E-mail</td>
                       <td>{{$value->email}}</td>
                     </tr>
+                    <tr>
+                      <td>3.</td>
+                      <td>Password</td>
+                      <td>{{$value->pass}}</td>
+                    </tr>
 
                   </tbody>
                 </table>
@@ -142,7 +147,7 @@
                       </tr>
                       <tr>
                       <td>2.</td>
-                      <td>Selling Categories</td>
+                      <td>Selling focused on</td>
                       <td>{{$value->sellingcat}}</td>
                     </tr>
                     <tr>
@@ -174,7 +179,7 @@
                     <tr>
                       <td>1.</td>
                       <td>Name in bank documents</td>
-                      <td>{{$value->storename}}</td>
+                      <td>{{$value->nameinbank}}</td>
                       </tr>
                       <tr>
                       <td>2.</td>

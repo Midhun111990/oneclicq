@@ -44,8 +44,10 @@
               <div class="inner">
                 <h3>
 
+ 
             <!-- //ERROR occruing while view when product =0-->
 
+{{$res}}
  
                 </h3>
 

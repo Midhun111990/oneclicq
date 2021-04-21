@@ -66,14 +66,15 @@
 @endif
 </td>
 @if($value->adminstatus==2)
- <td>
- <font color="Green"><b>Done</b></font>
- </td>
+ <td><font color="Green"><b>Done</b></font></td>
+ @elseif($value->adminstatus==1)
+ <td><font color="ORANGE"><b>Modified</b></font></td>
  @else
- <td>
- <font color="Red"><b>Remaining</b></font>
- </td>                  
+ <td> <font color="Red"><b>Remaining</b></font></td>                  
 @endif
+
+
+
 <td><a href="/viewvendordetail/{{$value->id}}">See More...</a></td>
 
 <!-- <td><a href = 'delete/{{ $value->id }}'>Delete</a></td> -->

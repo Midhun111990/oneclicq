@@ -17,6 +17,16 @@ class adminmodel extends Model
        $data=DB::table($table)->get();
         return $data;
     }
+
+    function selectvinfor($table)
+    {
+        $data=DB::table($table)->get()->unique('name');
+        
+       
+        return $data;
+        
+    }
+
     function selectveninfo($table,$id)
     {
        $data=DB::table($table)->where('id',$id)->get();

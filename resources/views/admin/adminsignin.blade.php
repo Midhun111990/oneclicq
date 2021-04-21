@@ -34,11 +34,11 @@
     
 <div>
 <div class="bg1-img">
-<div class="text"> <center> <img src="dist/img/logo.png"width="80" height="80">
-    <p><b>OneClick</b><br>India's First Regional Online Shopping</p>
+<div class="text"> <center> <img src="dist/img/logo.png"width="150" height="110">
+    <p><b>OneClick</b><br>India's First Regional Online Shopping Site</p>
 </center>
  <b>Sign In</b></div>
-<p style="text-align:center"><b>Welcome to OneClicQ Admin Panel</b></p>
+<p style="text-align:center"><b>Welcome to OneClicQ Admin's Panel</b></p>
 <div class="login">
 <form method="post" action="/asignin">
 @csrf

@@ -18,7 +18,7 @@ class vendormodel extends Model
     }
     public function mytotalproduct($table,$id)
     {
-      $data=DB::table($table)->where('vendorid','<=',$id)->get();
+      $data=DB::table($table)->where('vendorid','=',$id)->get();
       return $data->count();
        
    //condition remaining

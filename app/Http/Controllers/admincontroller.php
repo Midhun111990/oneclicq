@@ -26,7 +26,7 @@ class admincontroller extends Controller
 
     public function vinfo()
     {
-        $data['result']=$this->md1->selectvinfo('vendordetails');
+        $data['result']=$this->md1->selectvinfor('vendordetails');
         return view('admin.vendorsinformation',$data);
     }
 
@@ -124,6 +124,7 @@ class admincontroller extends Controller
     {
        
         $data['adminstatus']=2;
+        $data['regstatus']=1;
   $this->md1->approved('vendordetails',$data,$id);
 
   return redirect('/vendorsinformation');
@@ -461,6 +462,7 @@ return redirect('/subcatinformation');
 
     public function rejectapp(Request $r1,$id)
     {
+        $data['adminstatus']=0;
         $data['reason']=$r1->input('reason');
         $this->md1->rejectreason('vendordetails',$data,$id);
         

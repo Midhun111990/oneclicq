@@ -126,6 +126,12 @@ Route::get('/vedetails', [vendorcontroller::class,'vedetails']);
 
 Route::get('/vendordetails', [vendorcontroller::class,'vendordetails']);
 
+
+
+
+
+
+
 Route::post('/businessdetails/{id}', [vendorcontroller::class,'businessdetails']);
 Route:: get('/vendorbody',[vendorcontroller::class,'vendorbody']);
 
@@ -162,3 +168,9 @@ Route:: get('/logout',[vendorcontroller::class,'logout']);
 
 
 Route::get('/customer', [customercontroller::class,'customerindex']);
+
+Route::get('/productshow/{id}', [customercontroller::class,'productshow']);
+
+Route::get('/singleproductshow/{id}', [customercontroller::class,'singleproductshow']);
+
+

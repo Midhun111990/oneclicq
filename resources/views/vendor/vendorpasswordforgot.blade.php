@@ -68,14 +68,19 @@ of modern day shopping. OneClick presents in front of you, a unique
     <input type="submit" class="btn btn-warning btn-lg btn-block" value="OK" id="login">
   
 <a href="/"><b>Return to Sign in page !!!</b></a>
+
+
 @if(session()->has('error'))
     <div class="btn btn-warning btn-lg btn-block" >
         {{ session()->get('error') }}
     </div>
 @endif
   </form>
+ <center><p style="background-color:Red;"><b> Or contact us on +91########(WhatsApp)</b></p>
+</center>
 </div>
 </div>
+
 </div>
 </div>
 <script>
