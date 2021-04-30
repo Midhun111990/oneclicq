@@ -92,7 +92,7 @@
                    <td align="center"><b><h4>Image</h4></b></td>
                   
                     <td align="center"><b><h4>Name</h4></b></td>
-                    <td align="center"><b><h4>Commi.</h4></b></td>
+                    <td align="center"><b><h4>Commission</h4></b></td>
                     <td align="center"><b><h4>Update</h4></b></td>
                     <td align="center"><b><h4>Delete</h4></b></td>
                     <td align="center"><b><h4>Add</h4></b></td>

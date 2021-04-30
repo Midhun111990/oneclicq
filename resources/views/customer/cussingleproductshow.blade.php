@@ -1,8 +1,13 @@
 @extends('customer.customerdas')
 @section('body')
-                        @foreach($proresult as $value)
-                       
-                               
+@foreach($proresult as $value)
+
+
+
+<form id="applicationreject_form" novalidate action="/addtocart/{{$value->pid}}"   method="post" class="cat" enctype="multipart/form-data"> 
+  @csrf
+  
+                                
 
                              
 
@@ -60,12 +65,19 @@
 }
 
 </style>
-                                <main class="container">
+<main class="container">
  
  <!-- Left Column / Headphones Image -->
  <div >
-   <img src="{{asset('uploads/images/'.$value->image)}}"height="500px" width="500px"     >
- </div>
+   <img src="{{asset('uploads/images/'.$value->image)}}"height="400px" width="500px"     >
+ 
+   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div>
 
 
  <!-- Right Column -->
@@ -134,11 +146,19 @@
      
      <!-- Cable Configuration -->
      <div class="cable-config">
-       <span>ADD to Cart +</span>
+       <span>ADD to Cart   +</span>
 
-      
+       <input type="hidden" name="pid" id="pid"class="form-control" value="{{$value->pid}}" />
+       
+       @if(session()->has('email'))
+       @foreach($cusres as $val)
+       <input type="hidden" name="userid" id="userid"class="form-control" value="{{$val->userid}}" />
+                
+  @endforeach        
+        @endif   
 
-       <a href="#" style="font-size: 100px;"> ♥ </a>
+       <input type="submit" name="submit" class="submit btn btn-success" value="♥" style="height:50px;width:100px;font-size: 30px;">   
+       
      </div>
    </div>
 
@@ -167,3 +187,6 @@
 
 
 @endsection
+
+
+

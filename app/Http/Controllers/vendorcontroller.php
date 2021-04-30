@@ -70,6 +70,34 @@ return redirect('/vendorVerify');
 
     }
   
+
+    public function deleteproduct($id) {
+      $this->md1->deletepro('product',$id);
+      return redirect('/vendorproduct');
+    
+      }
+
+   
+ public function approvedproduct($id)
+ {
+  $data['result']=$this->md1->vendet('vendordetails',$id);
+  
+  $data['res']=$this->md1->approvedproduct('product',$id);
+           
+  return view('vendor.vendorapprovedproduct',$data);
+ 
+}
+
+    public function pendingproduct($id)
+    {
+     
+      
+  $data['result']=$this->md1->vendet('vendordetails',$id);
+        $data['res']=$this->md1->penproduct('product',$id);
+        return view('vendor.vendorpendingproduct',$data);
+    
+ }
+
     public function vedetails()
     {
      return view('vendor.vendorDetails');
@@ -99,16 +127,82 @@ else{
 }
     }
 
-  public function vendorproduct()
+    public function searchproduct(Request $request)
+    { $id=session('sesid');
+      $data['result']=$this->md1->vendet('vendordetails',$id);
+      $data['res']=$this->md1->productdetails('product',$id);
+   
+      $search = $request->input('term');
+      $posts = DB::table('product')
+      ->where('vendorid',$id)
+        ->where('name', 'LIKE', "%{$search}%")
+        ->orWhere('price', 'LIKE', "%{$search}%")
+        ->get();
+return view('vendor.vendorproduct', compact('posts'),$data);
+
+    }
+
+    public function searchproductof(Request $request)
+    { $id=session('sesid');
+      $data['result']=$this->md1->vendet('vendordetails',$id);
+      $data['res']=$this->md1->productdetails('product',$id);
+      $data['offerresult']=$this->md1->offerresult('offer','product',$id);
+   
+      $search = $request->input('term');
+      $posts = DB::table('product')
+      ->where('vendorid',$id)
+        ->where('name', 'LIKE', "%{$search}%")
+        ->orWhere('price', 'LIKE', "%{$search}%")
+        ->get();
+return view('vendor.vendoroffer', compact('posts'),$data);
+
+    }
+
+   
+
+
+
+
+  public function vendorproduct(Request $request)
   {
+
     $id=session('sesid');
     $data['res']=$this->md1->productdetails('product',$id);
     $data['result']=$this->md1->vendet('vendordetails',$id);
-      
-    return view('vendor.vendorproduct',$data);
+    $search = $request->input('term');
+    $posts = DB::table('product')->where('pid','=','0')
+      ->get();
+
+    
+    return view('vendor.vendorproduct',compact('posts'),$data);
       
   }
   
+  public function vendoroffer(Request $request)
+  {
+    $id=session('sesid');
+    $data['result']=$this->md1->vendet('vendordetails',$id);
+    $data['res']=$this->md1->productdetails('product',$id);
+   
+    $data['offerresult']=$this->md1->offerresult('offer','product',$id);
+    $search = $request->input('term');
+    $posts = DB::table('product')->where('pid','=','0')
+      ->get();
+      return view('vendor.vendoroffer',compact('posts'),$data);
+   
+  }
+  public function offeredproduct()
+  { $id=session('sesid');
+    $data['result']=$this->md1->vendet('vendordetails',$id);
+    $data['offerresult']=$this->md1->offerresult('offer','product',$id);
+ 
+ 
+return view('vendor.offeredproduct',$data);
+
+  }
+
+
+
   public function myinformation()
   {
     $id=session('sesid');
@@ -166,6 +260,23 @@ else{
         
 
     }
+
+    public function viewmyinfo($id)
+    {
+      $ven=session('sesid');
+
+      $data['result']=$this->md1->vendet('vendordetails',$ven);
+  
+     $data['res']=$this->md1->viewsingleproduct('product',$id);
+    
+     $data['catres']=$this->md1->showcatname('product','category','subcategory',$id);
+    
+     $data['resu']=$this->md1->viewcat('category');//view category while adding product
+    
+     $data['brandres']=$this->md1->viewbrand('addbrand');//view brand while adding product
+     return view('vendor.vsingleproductinformation',$data);
+    }
+
 
 
     
@@ -1689,6 +1800,95 @@ return view('vendor.vendorbody',$name,$data1);
   // }
   
   
+  public function updateproduct(Request $r1,$id)
+    {
+      $file= $r1->file('pimage');
+      $file1= $r1->file('pimage1');
+      $file2= $r1->file('pimage2');
+      $file3= $r1->file('pimage3');
+    
+      if($file==""&&$file1==""&&$file2==""&&$file3=="")
+      {
+      
+          
+      $data['name']=$r1->input('pname');
+      $data['description']=$r1->input('pdes');
+      $data['brandid']=$r1->input('pbrand');
+      $data['otherbrand']=$r1->input('obrand');
+      $data['catid']=$r1->input('pcat');
+      
+      $data['subcatid']=$r1->input('ptype');
+      $data['gst']=$r1->input('pgst');
+      $data['price']=$r1->input('pprice');
+      $data['mrp']=$r1->input('pmrp');
+      $data['stockunit']=$r1->input('pstock');
+      $data['warrantydetails']=$r1->input('pwar');
+      $data['height']=$r1->input('pheight');
+      $data['weight']=$r1->input('pweight');
+      $data['width']=$r1->input('pwidth');
+      $data['length']=$r1->input('plen');
+    
+      
+      $data['returnpolicy']=$r1->input('pret');
+      $data['freedelivery']=$r1->input('pdelyes');
+      $data['returnable']=$r1->input('preturn');
+  
+      }
+
+     else
+      {
+        $data['name']=$r1->input('pname');
+        $data['description']=$r1->input('pdes');
+        $data['brandid']=$r1->input('pbrand');
+        $data['otherbrand']=$r1->input('obrand');
+        $data['catid']=$r1->input('pcat');
+        
+        $data['subcatid']=$r1->input('ptype');
+        $data['gst']=$r1->input('pgst');
+        $data['price']=$r1->input('pprice');
+        $data['mrp']=$r1->input('pmrp');
+        $data['stockunit']=$r1->input('pstock');
+        $data['warrantydetails']=$r1->input('pwar');
+        $data['height']=$r1->input('pheight');
+        $data['weight']=$r1->input('pweight');
+        $data['width']=$r1->input('pwidth');
+        $data['length']=$r1->input('plen');
+      
+        
+        $data['returnpolicy']=$r1->input('pret');
+        $data['freedelivery']=$r1->input('pdelyes');
+        $data['returnable']=$r1->input('preturn');
+        
+      $filename = $file->getClientOriginalName();
+      $file->move(public_path().'/uploads/images', $filename);
+      $data['image']=$filename;
+    
+
+      $filename1 = $file1->getClientOriginalName();
+      $file1->move(public_path().'/uploads/images', $filename1);
+      $data['image1']=$filename1;
+    
+      $filename2 = $file2->getClientOriginalName();
+      $file2->move(public_path().'/uploads/images', $filename2);
+      $data['image2']=$filename2;
+    
+      $filename3 = $file3->getClientOriginalName();
+      $file3->move(public_path().'/uploads/images', $filename3);
+      $data['image3']=$filename3;
+    
+
+
+
+
+      }     
+      $this->md1->updateproduct('product',$data,$id);
+ 
+ 
+      return redirect('/vendorproduct');
+
+ 
+    }
+
   
     public function addproduct(Request $r1,$id)
     {
@@ -1708,6 +1908,9 @@ return view('vendor.vendorbody',$name,$data1);
         'pweight'=>'required',
         'plen'=>'required',
         'pimage'=>'required',
+        'pimage1'=>'required',
+        'pimage2'=>'required',
+        'pimage3'=>'required',
         
         'pbrand'=>'required'
         ]);
@@ -1747,6 +1950,21 @@ return view('vendor.vendorbody',$name,$data1);
   $file->move(public_path().'/uploads/images', $filename);
   $data['image']=$filename;
 
+  $file1= $r1->file('pimage1');
+  $filename1 = $file1->getClientOriginalName();
+  $file1->move(public_path().'/uploads/images', $filename1);
+  $data['image1']=$filename1;
+
+  $file2= $r1->file('pimage2');
+  $filename2 = $file2->getClientOriginalName();
+  $file2->move(public_path().'/uploads/images', $filename2);
+  $data['image2']=$filename2;
+
+  $file3= $r1->file('pimage3');
+  $filename3 = $file3->getClientOriginalName();
+  $file3->move(public_path().'/uploads/images', $filename3);
+  $data['image3']=$filename3;
+
   $data['returnpolicy']=$r1->input('pret');
   $data['freedelivery']=$r1->input('pdelyes');
   $data['returnable']=$r1->input('preturn');
@@ -1774,6 +1992,41 @@ else
       }
  
  
+
+
+
+
+      public function addoffer(Request $r1)
+      {
+   
+ 
+          $data['productid']=$r1->input('productid');
+    $data['offerprice']=$r1->input('offprice');
+    $data['offerpercentage']=$r1->input('offpercentage');
+    $data['fromdate']=$r1->input('fromdate');
+    $data['todate']=$r1->input('todate');
+    
+               
+    $this->md1->addoffer('offer',$data);
+    
+  
+          return redirect('/vendoroffer');
+        }
+   
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
         public function logout(Request $request)
     {
      
@@ -1793,11 +2046,62 @@ $ven=session('sesid');
      
       $data['catres']=$this->md1->showcatname('product','category','subcategory',$id);
      
+      $data['resu']=$this->md1->viewcat('category');//view category while adding product
+     
+      $data['brandres']=$this->md1->viewbrand('addbrand');//view brand while adding product
      
      
-      return view('vendor.vendorsingleproductinformation',$data);
+
+
+     
+      return view('vendor.vsingleproductinformation',$data);
     }
   
+
+    public function  viewmyofferinformation($id)
+    {
+     
+
+$ven=session('sesid');
+
+       $data['result']=$this->md1->vendet('vendordetails',$ven);
+   
+      $data['res']=$this->md1->viewsingleproduct('product',$id);
+     
+      $data['catres']=$this->md1->showcatname('product','category','subcategory',$id);
+  
+  
+     
+     
+     
+      return view('vendor.vendorsingleofferinformation',$data);
+    }
+
+    public function  updateoffer($id)
+    {
+     
+
+$ven=session('sesid');
+
+       $data['result']=$this->md1->vendet('vendordetails',$ven);
+   
+       $data['offerresult']=$this->md1->offerresult('offer','product',$id);
+        
+      $data['catres']=$this->md1->showcatname('product','category','subcategory',$id);
+  
+  
+     
+     
+     
+      return view('vendor.vendoroffermodify',$data);
+    }
+
+
+
+
+
+
+
    
    
    

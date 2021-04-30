@@ -213,14 +213,22 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/vendorproduct" class="nav-link">
+          @if ($value->adminstatus==2)
+          <a href="/vendoroffer" class="nav-link">
+                      @else
+                      <script>
+                      alert('Your application is pending');
+                      </script>
+
+                      @endif</tr>
+           
               <i class="nav-icon fas fa-th"></i>
               <p>
-               Offer
+                Offer
               </p>
             </a>
           </li>
-
+          
           <li class="nav-header"><center>Report</center></li>
           <li class="nav-item">
             <a href="/pages/calendar.html" class="nav-link">

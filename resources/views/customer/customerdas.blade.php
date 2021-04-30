@@ -35,7 +35,16 @@
       <link rel="stylesheet" href="/dist/css/owl.carousel.min.css">
       <link rel="stylesheet" href="/dist/css/owl.theme.default.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    </head>
+
+
+
+
+
+
+
+
    <body>
       <!-- banner bg main start -->
       <div class="banner_bg_main">
@@ -52,10 +61,30 @@
                            <li><a href="#">New Releases</a></li>
                            <li><a href="#">Today's Deals</a></li>
                         </ul>
+         
                      </div>
+                     <a href="/customerlog" style="color:White"><h2><b>Login</b></a>
+                     <span class="toggle_icon" onclick="openNav()"><p style="color:White"><h2 style="color:White"><b><center>View all Category🧿 </center></b></h2></p></span>
+                     @if(session()->has('email'))
+                     @foreach($cusres as $value)
+                   <b><center><a href="/customerlog">
+                   <h2 style="color:White">Login by <b>, </b>{{$value->fname}}👶</b> </h2></a></center>
+         
+<a href="/mycart/{{$value->userid}}"><h2 style="color:White">Cart🛒</h2></a> 
+@endforeach        
+       @endif   
+
+<a href="/logoutcus"><h2 style="color:White">Logout</h2></a>      
+
+   </b>
                   </div>
+            
                </div>
+            
             </div>
+                  
+            </div>
+         </div>
          </div>
          <!-- header top section start -->
          <!-- logo section start -->
@@ -71,19 +100,13 @@
                      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                      <a href="/customer">Home</a>
                      
-                     @foreach($result as $value)
+                     @foreach($result as $val)
 
-                     <a href="/productshow/{{$value->catid}}">{{$value->catname}}</a>
+                     <a href="/productshow/{{$val->catid}}">{{$val->catname}}</a>
 
                      @endforeach
 
 
-
-                  </div>
-                  <span class="toggle_icon" onclick="openNav()"><p style="color:Black"><h2><b><u>View Category</u></b></h2></p></span>
-                  <div class="dropdown">
-                     
-                     
 
                   </div>
                   <div class="main">
@@ -137,7 +160,7 @@
 
 
 
-
+      </div>
 
 
  @yield('body')
@@ -151,7 +174,7 @@
             <div class="footer_logo"><a href="/customer"><img src="/dist/img/logo.png" width="100" height="120"></a><p  style="color:white;">ONECLICQ<p></div>
             <div class="location_main"><p style="color:white;"><b>Help Line  Number : +91 ##########></b></p></div>
        
-         </div>
+            </div>  </div>
       </div>
       <!-- copyright section end -->
       <!-- Javascript files-->

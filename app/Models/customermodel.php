@@ -11,6 +11,16 @@ class customermodel extends Model
 {
     use HasFactory;
 
+
+
+    public function viewcus($table,$cus)
+    {
+        
+      return  DB::table($table)->where('email',$cus)->get();
+
+    }
+
+
     public function viewcat($table)
     {
         
@@ -19,7 +29,7 @@ class customermodel extends Model
     }
     function viewproductcat($table,$table1,$id)
     {
-      $data= DB::table($table)->join($table1,'product.catid','=','category.catid')->where('product.catid',$id)->get();
+      $data= DB::table($table)->join($table1,'product.catid','=','category.catid')->where('product.catid',$id)->where('product.status',1)->get();
  
         return $data;
  }
@@ -42,6 +52,45 @@ class customermodel extends Model
       return  DB::table($table)->where('pid',$id)->get();
 
     }
+
+    public function cart($table,$table1,$table2,$id)
+    {
+        
+      return  DB::table($table)->join($table1,'cart.productid','=','product.pid')->join($table2,'cart.customerid','=','user.userid')->where('customerid',$id)->get();
+
+    }
+
+
+    function addtocart($table,$data)
+    {
+        DB::table($table)->insert($data);
+
+    }
+    function cdetails($table,$data)
+
+    {
+        DB::table($table)->insert($data);
+
+    }
+    public function logcheck($table,$email,$pass)
+    {
+        
+      return  DB::table($table)->where('email',$email)->where('password',$pass)->first();
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

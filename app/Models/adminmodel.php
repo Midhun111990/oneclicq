@@ -130,6 +130,10 @@ class adminmodel extends Model
        $data=DB::table($table)->get();
         return $data;
     }
+
+
+
+
     function viewsingleproduct($table,$id)
     {
        $data=DB::table($table)->where('pid',$id)->get();
@@ -174,6 +178,12 @@ class adminmodel extends Model
        $data=DB::table($table)->where('status',0)->get();
         return $data;
     
+}
+function  approvedproduct($table)
+{
+   $data=DB::table($table)->where('status',1)->get();
+    return $data;
+
 }
    
 function deletebrand($table,$id)
@@ -245,7 +255,13 @@ public function updatebrand($table,$data,$id)
 
     function rejectreason($table,$data,$id)
     {
-        DB::table($table)->where('id',$id)->update($data);
+        DB::table($table)->where('pid',$id)->update($data);
+      
+    }
+
+    function productrejectreason($table,$data,$id)
+    {
+        DB::table($table)->where('pid',$id)->update($data);
       
     }
 

@@ -98,8 +98,19 @@ class vendormodel extends Model
       DB::table($table)->where('pid',$stockinc)->increment('stockunit',$stock);
     }
 
-
-
+    function  approvedproduct($table,$id)
+    {
+       $data=DB::table($table)->where('status',1)->where('vendorid','=',$id)->get();
+        return $data;
+    
+    }
+    
+    function  penproduct($table,$id)
+    {
+       $data=DB::table($table)->where('status',0)->where('vendorid','=',$id)->get();
+        return $data;
+    
+}
 
     
     function vdetails($table,$data)
@@ -128,6 +139,19 @@ class vendormodel extends Model
       
     }
    
+    function deletepro($table,$id)
+    {
+        DB::table($table)->where('pid',$id)->delete();
+    }
+    
+    function updateproduct($table,$data,$id)
+    {
+        DB::table($table)->where('pid',$id)->update($data);
+      
+    }
+
+
+
     function prodetails($table,$data)
     {
         DB::table($table)->insert($data);
@@ -141,6 +165,7 @@ class vendormodel extends Model
       return $data;
     }
 
+  
 
     function viewp($table,$id)
     {
@@ -156,6 +181,13 @@ class vendormodel extends Model
 
     
     function addproduct($table,$data)
+
+    {
+        DB::table($table)->insert($data);
+
+    }
+
+    function addoffer($table,$data)
 
     {
         DB::table($table)->insert($data);
@@ -199,6 +231,14 @@ class vendormodel extends Model
 
     }
     
+
+    public function offerresult($table,$table1,$id)
+    {
+        
+      return  DB::table($table)->join($table1,'offer.productid','=','product.pid')->get();
+
+    }
+
     public function vendet($table,$id)
     {
         

@@ -213,6 +213,14 @@ public function viewmyinfo($id)
     
  }
 
+ public function approvedproduct()
+ {
+
+     $data['result']=$this->md1->approvedproduct('product');
+     return view('admin.adminapprovedproduct',$data);
+ 
+}
+
  public function deletebrandinformation($id) {
     $this->md1->deletebrand('addbrand',$id);
     return redirect('/brandinformation');
@@ -448,7 +456,7 @@ return redirect('/subcatinformation');
 
     }
         
-
+    
 
     public function rejectapplication($id)
     {
@@ -470,6 +478,34 @@ return redirect('/subcatinformation');
         return redirect('/vendorsinformation');
           
     }
+    
+    public function rejectproduct($id)
+    {
+        $data['result']=$this->md1->viewsingleproduct('product',$id);
+        
+       
+        return view('admin.rejectproduct',$data);
+          
+    }
+    
+
+
+
+    public function productreason(Request $r1,$id)
+    {
+        $data['status']=0;
+       
+        $data['reason']=$r1->input('reason');
+        $this->md1->rejectreason('product',$data,$id);
+     
+        return redirect('/productinformation');
+          
+    }
+
+
+
+
+
     
 
 }

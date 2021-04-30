@@ -49,6 +49,7 @@ Route::get('/singlebrandinformation/{id}', [admincontroller::class,'singlebrandi
 
 Route::post('/updatebrandinformation/{id}', [admincontroller::class,'updatebrandinformation']);
 
+Route::post('/productresponse/{id}', [admincontroller::class,'productresponse']);
 
 
 
@@ -58,6 +59,15 @@ Route::post('/updatesubcatinformation/{id}', [admincontroller::class,'updatesubc
 
 
 Route::post('/updatecatinformation/{id}', [admincontroller::class,'updatecatinformation']);
+
+
+Route::get('/rejectproduct/{id}', [admincontroller::class,'rejectproduct']);
+
+
+Route::post('/rejecttheproduct/{id}', [admincontroller::class,'productreason']);
+
+
+
 
 
 Route::get('/subcatinformation', [admincontroller::class,'subcatinfo']);
@@ -89,10 +99,11 @@ Route::post('/approved/{id}', [admincontroller::class,'approved']);
 
 Route::post('/proapproved/{id}', [admincontroller::class,'proapproved']);
 
-Route::get('/singleproductinformation/{id}', [admincontroller::class,'viewmyinfo']);
+Route::get('/adminsingleproductinformation/{id}', [admincontroller::class,'viewmyinfo']);
 
 Route::get('/pendingproduct', [admincontroller::class,'pendingproduct']);
 
+Route::get('/approvedproduct', [admincontroller::class,'approvedproduct']);
 
 
 Route::get('/rejectapplication/{id}', [admincontroller::class,'rejectapplication']);
@@ -111,6 +122,13 @@ Route::post('/modify/{id}', [vendorcontroller::class,'modifyinfo']);
 
 
 Route::get('/V', [vendorcontroller::class,'index']);
+Route::get('/searchproduct', [vendorcontroller::class,'searchproduct']);
+
+Route::get('/searchproductof', [vendorcontroller::class,'searchproductof']);
+
+Route::get('/offeredproduct', [vendorcontroller::class,'offeredproduct']);
+
+
 Route::get('/vendorRegister', [vendorcontroller::class,'vendorlog']);
 Route::post('/signin', [vendorcontroller::class,'vendorsignin']);
 
@@ -137,7 +155,17 @@ Route:: get('/vendorbody',[vendorcontroller::class,'vendorbody']);
 
 Route:: get('/vendorproduct',[vendorcontroller::class,'vendorproduct']);
 
+Route:: get('/vendoroffer',[vendorcontroller::class,'vendoroffer']);
+
+
 Route::get('/vendorsingleproductinformation/{id}', [vendorcontroller::class,'viewmyinformation']);
+
+Route::get('/vendorsingleofferinformation/{id}', [vendorcontroller::class,'viewmyofferinformation']);
+
+Route::get('/vendorupdateofferinformation/{id}', [vendorcontroller::class,'updateoffer']);
+
+
+
 
 
 
@@ -148,9 +176,29 @@ Route:: get('/prdSubCat/{id}',[vendorcontroller::class,'viewsubproduct']);
 
 Route:: post('/addproduct/{id}',[vendorcontroller::class,'addproduct']);
 
+Route:: post('/updateproduct/{id}',[vendorcontroller::class,'updateproduct']);
+
+Route:: get('/deleteproduct/{id}',[vendorcontroller::class,'deleteproduct']);
+
+
+
+
+Route:: post('/addoffer',[vendorcontroller::class,'addoffer']);
+
+
 Route:: get('/myinformation/{id}',[vendorcontroller::class,'myinformation']);
     
 Route:: get('/logout',[vendorcontroller::class,'logout']);
+
+
+Route::get('/pendingproduct/{id}', [vendorcontroller::class,'pendingproduct']);
+
+Route::get('/approvedproduct/{id}', [vendorcontroller::class,'approvedproduct']);
+
+Route::get('/vsingleproductinformation/{id}', [vendorcontroller::class,'viewmyinfo']);
+
+
+
 
 // Route:: get('/viewbusiness/{id}',[vendorcontroller::class,'viewbusiness']);
 
@@ -173,4 +221,17 @@ Route::get('/productshow/{id}', [customercontroller::class,'productshow']);
 
 Route::get('/singleproductshow/{id}', [customercontroller::class,'singleproductshow']);
 
+Route::get('/customerlog',[customercontroller::class,'customerlog']);
 
+Route::get('/customerregistration',[customercontroller::class,'customerregistration']);
+
+Route::post('/customerdatasave',[customercontroller::class,'customerdatasave']);
+
+
+Route::post('/customersignin',[customercontroller::class,'customersignin']);
+
+Route:: post('/addtocart/{id}',[customercontroller::class,'addtocart']);
+
+Route:: get('/mycart/{id}',[customercontroller::class,'mycart']);
+
+Route:: get('/logoutcus',[customercontroller::class,'logoutcus']);

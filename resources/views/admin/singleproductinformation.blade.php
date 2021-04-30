@@ -141,9 +141,11 @@
 
 
           <div class="col-md-6">
-          ............................................
-            <img src="{{asset('uploads/images/'.$value->image)}}"height="200px" width="180px" />
-            ...........................................
+            <a href="{{asset('uploads/images/'.$value->image)}}"><img src="{{asset('uploads/images/'.$value->image)}}"height="100px" width="130px" /></a>
+            <a href="{{asset('uploads/images/'.$value->image1)}}"><img src="{{asset('uploads/images/'.$value->image1)}}"height="100px" width="130px" /></a>
+            <a href="{{asset('uploads/images/'.$value->image2)}}"><img src="{{asset('uploads/images/'.$value->image2)}}"height="100px" width="130px" /></a>
+            <a href="{{asset('uploads/images/'.$value->image3)}}"><img src="{{asset('uploads/images/'.$value->image3)}}"height="100px" width="130px" /></a>
+            
             <div class="card">
  
               <div class="card-header">
@@ -221,8 +223,17 @@
                       @else
                       <td>NO</td>
                       @endif</tr>
-                      <td><input type="submit" name="submit" class="submit btn btn-success" value="Approve" >
-                     <!-- <input type="submit" name="submit" class="submit btn btn-success" value="Reject" ></td> -->
+                      <td colspan="3"><input type="submit" name="submit" class="submit btn btn-success" value="Approve" >
+                      <a href="/rejectproduct/{{$value->pid}}"><h2> 
+ <p style="color:red"><b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+ 
+ &nbsp&nbsp&nbsp&nbsp&nbsp
+ &nbsp&nbsp&nbsp&nbsp&nbsp
+ &nbsp&nbsp&nbsp&nbsp&nbsp
+ &nbsp&nbsp
+ REJECT</b>⚡</p></h2></a></div>
+
+<!-- <input type="submit" name="submit" class="submit btn btn-success" value="Reject" ></td> -->
 
                    
                   </tbody>

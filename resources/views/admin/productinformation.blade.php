@@ -72,7 +72,7 @@
                       @else
                       ❌
                       @endif</td>
-                      <td align="center"><a href="/singleproductinformation/{{$value->pid}}">More</td>
+                      <td align="center"><a href="/adminsingleproductinformation/{{$value->pid}}">More</td>
                     </tr>
                     </html>
                     @endforeach                   

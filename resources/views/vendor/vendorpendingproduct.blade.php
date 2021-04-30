@@ -1,5 +1,5 @@
 
-@extends('admin.admindas')
+@extends('vendor.vendordas')
 @section('body')
 
 
@@ -15,7 +15,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+              <li class="breadcrumb-item"><a href="/V">Home</a></li>
               <li class="breadcrumb-item active">Pending products</li>
             </ol>
           </div>
@@ -51,13 +51,13 @@
                       <tr>
                      
                      
-                      @foreach($result as $value)       
+                      @foreach($res as $value)       
                       <td>{{$loop->iteration}}</td> 
                       <!-- Automatically index
                        -->
                       <td>{{$value->name}}</td>
                       <td>{{$value->description}}</td>
-                      <td><a href="/adminsingleproductinformation/{{$value->pid}}">More</td>
+                      <td><a href="/vsingleproductinformation/{{$value->pid}}">More</td>
                     </tr>
                     </html>
                     @endforeach                   

@@ -11,21 +11,22 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Product informations</h1>
+            <h1>Add offer</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/V">Home</a></li>
-              <li class="breadcrumb-item active">Product informations</li>
+              <li class="breadcrumb-item active">Product offer</li>
             </ol>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
+    @foreach($offerresult as $value )
     
-    @foreach($res as $value )
+    <form id="agreeproduct_form" novalidate action="/addoffer"  method="post" class="brand" enctype="multipart/form-data"> 
+  
 
-    <form id="agreeproduct_form"   method="get" class="brand" enctype="multipart/form-data"> 
   @csrf
                    
 
@@ -34,7 +35,7 @@
   
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-5">
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Basic..</h3>
@@ -47,42 +48,16 @@
                     <tr>
                       <td>1.</td>
                       <td>Name</td>
-                      <td>{{$value->name}}</td>
+                      <td>{{$value->name}}</td> 
                          </tr>
                       <tr>
                       <td>2.</td>
                       <td>Description</td>
                       <td>{{$value->description}}</td></tr>
                     <tr>  
-                      <td>3.</td>
-                      <td>Category</td>
-                      @foreach($catres as $valu )
-                      <td>{{$valu->catname}}</td>
-                       </td>
-                     
-                      
-                      </select></td>
-                    </tr>
-                    <tr>  
-                      <td>4.</td>
-                      <td>Sub Category</td>
-                      <td>{{$valu->subcatname}}</td>
-                       @endforeach
-                      
-                      </select></td>
+                   
                     </tr>
                    
-                    <tr>
-                      <td>5.</td>
-                      <td>Brand</td>
-                     
-                      <td>{{$value->brandid}}</td>
-                     
-                    </tr>
-                    <tr>
-                      <td>6.</td>
-                      <td>Other brand</td>
-                      <td>{{$value->otherbrand}}</td>
                     
 
                   </tbody>
@@ -103,7 +78,7 @@
                 
               </div>
               <!-- /.card-header -->
-              <div class="card-body p-0">
+              <div class="card-body p-1">
                <table class="table table-bordered">
                   
                   <tbody>
@@ -115,22 +90,18 @@
                       <tr>
                       <td>2.</td>
                       <td>Price</td>
-                      <td>{{$value->price}}</td>
+                      <td><input readonly type="text"id="price" class="form-control"name="price" value="{{$value->price}}"></td>
                       </tr>
                     <tr>
                       <td>3.</td>
                       <td>MRP</td>
                       <td>{{$value->mrp}}</td> 
+                      
                       </tr>
                     <tr>
-                      <td>4.</td>
-                      <td>Stock Unit</td>
-                      <td>{{$value->stockunit}}</td> </tr>
-                    <tr>
-                      <td>5.</td>
-                      <td>Warranty details</td>
-                      <td>{{$value->warrantydetails}}</td></tr>
-                   
+                    <td colspan="3"><input type="submit" name="submit" class="submit btn btn-success" value="Add offer+" style="height:50px;width:408px;font-size: 25px;"> 
+</td>
+                    </tr>
                   </tbody>
                 </table>
                 
@@ -143,15 +114,18 @@
 
                    
 
-          <div class="col-md-6">
-          ............................................
-            <img src="{{asset('uploads/images/'.$value->image)}}"height="200px" width="180px" />
-            ...........................................
+          <div class="col-md-7">
+          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <img src="{{asset('uploads/images/'.$value->image)}}"height="200px" width="300px" />
             <div class="card">
  
               <div class="card-header">
                 
-                <h3 class="card-title">Other..</h3>
+                <h3 class="card-title">Offer..</h3>
                
                 <div class="card-tools">
                 
@@ -170,23 +144,28 @@
                     <tr>
                     
                       <td>1.</td>
-                      <td>Height</td>
-                      <td>{{$value->height}}</td> </tr>
+                      <td>Offer price</td>
+                      <input type="hidden"id="productid"name="productid"class="form-control" value="{{$value->pid}}">
+                      <td><input type="number"readonly id="offprice"class="form-control"name="offprice"value="{{$value->offerprice}}"></td> </tr>
                       <tr>
                       <td>2.</td>
-                      <td>Weight</td>
-                      <td>{{$value->weight}}</td>  </tr>
+                      <td>Offer percentage</td>
+                      <td><input type="number"id="offpercentage" class="form-control"name="offpercentage"value="{{$value->offerpercentage}}"></td>  </tr>
                     <tr>
                       <td>3.</td>
-                      <td>Width</td>
-                      <td>{{$value->width}}</td></tr>
+                      <td>Valid from</td>
+                      <td><input type="date"id="fromdate" name="fromdate"class="form-control"value="{{$value->fromdate}}"></td></tr>
                     <tr>
                       <td>4.</td>
-                      <td>Length</td> 
-                      <td>{{$value->length}}</td> </tr>
+                      <td>Valid to</td>
+                      <td><input type="date"id="todate" name="todate"class="form-control"value="{{$value->todate}}"></td> 
+                    </tr>
+                  
+                  
                     
                     
                   </tbody>
+               
                 </table>
 
 
@@ -196,44 +175,6 @@
             </div>
             <!-- /.card -->
 
-
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Legal..</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body p-0">
-              <table class="table table-bordered">
-                  
-                  <tbody>
-                    <tr>
-                      <td>1.</td>
-                      <td>Return policy</td>
-                      @if ($value->returnpolicy==1)
-                      <td>YES</td>
-                      @else
-                      <td>NO</td>
-                      @endif</tr>
-                      <tr>
-                      <td>2.</td>
-                      <td>Free delivery</td>
-                      @if ($value->freedelivery==1)
-                      <td>YES</td>
-                      @else
-                      <td>NO</td>
-                      @endif</tr>
-                    <tr>
-                      <td>3.</td>
-                      <td>Returnable</td>
-                      @if ($value->returnable==1)
-                      <td>YES</td>
-                      @else
-                      <td>NO</td>
-                      @endif</tr>
-
-                    <!-- <td><input type="submit" name="submit" class="submit btn btn-success" value="Approve" ></td> -->
-
-                   
                   </tbody>
                 </table>
 </div>
@@ -266,6 +207,16 @@
 
 
 
-
-
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</script>
+<script>
+        $(document).on("change keyup blur", "#offpercentage", function() {
+            var main = $('#price').val();
+            var disc = $('#offpercentage').val();
+            var dec = (disc / 100).toFixed(2); //its convert 10 into 0.10
+            var mult = main * dec; // gives the value for subtract from main value
+            var discont = main - mult;
+            $('#offprice').val(discont);
+        });
+    </script>
 

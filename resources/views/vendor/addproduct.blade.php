@@ -15,7 +15,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="/vendorbody">Home</a></li>
               <li class="breadcrumb-item active">Product informations</li>
             </ol>
           </div>
@@ -259,13 +259,37 @@
                     </tr>
                     <tr>
                       <td>5.</td>
-                      <td>Images</td>
+                      <td>Image</td>
                       <td><input type="file" name="pimage" id="pimage"class="form-control"value="{{old('pimage')}}">
                       @error("pimage")
 <p style="color:red">{{$errors->first("pimage")}}</p>
 @enderror</td>
                     </tr>
-                    
+                    <tr>
+                      <td>6.</td>
+                      <td>Image 1</td>
+                      <td><input type="file" name="pimage1" id="pimage1"class="form-control"value="{{old('pimage1')}}">
+                      @error("pimage1")
+<p style="color:red">{{$errors->first("pimage1")}}</p>
+@enderror</td>
+                    </tr>
+                    <tr>
+                      <td>7.</td>
+                      <td>Image 2</td>
+                      <td><input type="file" name="pimage2" id="pimage2"class="form-control"value="{{old('pimage2')}}">
+                      @error("pimage2")
+<p style="color:red">{{$errors->first("pimage2")}}</p>
+@enderror</td>
+                    </tr>
+                    <tr>
+                      <td>8.</td>
+                      <td>Image 3</td>
+                      <td><input type="file" name="pimage3" id="pimage3"class="form-control"value="{{old('pimage3')}}">
+                      @error("pimage3")
+<p style="color:red">{{$errors->first("pimage3")}}</p>
+@enderror</td>
+                    </tr>
+  
                   </tbody>
                 </table>
 
@@ -305,7 +329,7 @@
                       <td><input type="checkbox" name="pret" id="pret" value="0"> NO </td>
                     </tr>
 
-                    <td align ="center"colspan="4"><input type="submit" name="submit" class="submit btn btn-success" value="Add +" style="height:307px;width:490px;font-size: 100px;"></td>
+                    <td align ="center"colspan="4"><input type="submit" name="submit" class="submit btn btn-success" value="Add +" style="height:120px;width:490px;font-size: 60px;"></td>
 
                    
                   </tbody>
