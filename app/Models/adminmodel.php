@@ -17,7 +17,19 @@ class adminmodel extends Model
        $data=DB::table($table)->get();
         return $data;
     }
+    public function offerresult($table,$table1)
+    {
+        
+      return  DB::table($table)->join($table1,'offer.productid','=','product.pid')->where('offerstatus',1)->get();
 
+    }
+    public function offerresultof($table,$table1,$id)
+    {
+        
+      return  DB::table($table)->join($table1,'offer.productid','=','product.pid')->where('pid',$id)->get();
+
+    }
+  
     function selectvinfor($table)
     {
         $data=DB::table($table)->get()->unique('name');
@@ -37,6 +49,13 @@ class adminmodel extends Model
         DB::table($table)->where('id',$id)->update($data);
       
     }
+
+    function approvedoffer($table,$data,$id)
+    {
+        DB::table($table)->where('offerid',$id)->update($data);
+      
+    }
+
     function catdetails($table)
     {
         $data=DB::table($table)->get();
@@ -137,6 +156,11 @@ class adminmodel extends Model
     function viewsingleproduct($table,$id)
     {
        $data=DB::table($table)->where('pid',$id)->get();
+        return $data;
+    }
+    function viewsingleoffer($table,$id)
+    {
+       $data=DB::table($table)->where('offerid',$id)->get();
         return $data;
     }
 
@@ -259,6 +283,7 @@ public function updatebrand($table,$data,$id)
       
     }
 
+
     function productrejectreason($table,$data,$id)
     {
         DB::table($table)->where('pid',$id)->update($data);
@@ -266,6 +291,11 @@ public function updatebrand($table,$data,$id)
     }
 
 
+function rejectofferreason($table,$data,$id)
+    {
+        DB::table($table)->where('offerid',$id)->update($data);
+      
+    }
 
     
 

@@ -66,7 +66,7 @@
                       <td>3.</td>
                       <td>Category</td>
                       <td><select name="pcat" id="pcat" class="form-control" required>
-                      <option> Choose</option>
+                      <option value="0"> None</option>
                       @foreach($resu as $vallt) 
                      <option value="{{$vallt->catid}}">{{$vallt->catname}}</option>
                       @endforeach</select>
@@ -81,10 +81,11 @@
                       <td>4.</td>
                       <td>Sub Category</td>
                       <td><select name="ptype" id="ptype" class="form-control">
-                      <option> Choose</option>
-                     </select>
+                      </select>
                       @error("ptype")
-<p style="color:red">{{$errors->first("ptype")}}</p>
+                      <option value="0"> None</option>
+                      
+                      <p style="color:red">{{$errors->first("ptype")}}</p>
 @enderror</td>
 
  <script>
@@ -121,7 +122,7 @@
                       <td>Brand</td>
                      
                       <td><select name="pbrand" id="pbrand" class="form-control">
-                      <option> Choose</option>
+                      <option value="0"> None</option>
                       @foreach($res as $val) <option value="{{$val->brandid}}">{{$val->brandname}}</option>
                       @endforeach</select>
                       @error("ptype")

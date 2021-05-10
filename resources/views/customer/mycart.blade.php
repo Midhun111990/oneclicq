@@ -1,124 +1,221 @@
+
 @extends('customer.customerdas')
 @section('body')
-@foreach($cartresult as $val)
+<br>
+<br>
+<br>
                                
 <style>
-.card {
-  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2);
-  max-width: 500px;
-  margin: auto;
-  text-align: center;
-  background-color: GhostWhite;
-  font-family: arial;
-  color: black;
+
+.styled-table {
+    
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 1.1em;
+    font-family: sans-serif;
+    min-width: 400px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 1, 0.12, 0.15);
+    margin-top:10px ;
+    margin-left:50px ;
+
+}
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: center;
+}
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
 }
 
-.price {
-  color: grey;
-  font-size: 22px;
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
 }
 
-.card button {
-  border: none;
-  outline: 0;
-  padding: 12px;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+.styled-tables {
+    
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 1.1em;
+    font-family: sans-serif;
+    min-width: 400px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 1, 0.12, 0.15);
+    margin-top:10px ;
+    margin-left:50px ;
+
+}
+.styled-tables thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: center;
+}
+.styled-tables th,
+.styled-tables td {
+    padding: 12px 15px;
+}
+.styled-tables tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-tables tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-tables tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+.styled-tables tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  margin-left:-5px;
+  margin-right:-5px;
+}
+  
+.column {
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
   width: 100%;
-  font-size: 18px;
-}
-img {
-    border-radius: 40%;
+  border: 1px solid #ddd;
 }
 
-.card button:hover {
-  opacity: 0.7;
+th, td {
+  text-align: left;
+  padding: 16px;
 }
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+
 </style>
-                             
+       
+
+<div class="row">
+  <div class="column">
+    <table>
+      <tr>
+      <th>Product</th>
+    	<th>Image</th>
+		<th>Price</th>
+		<th>Quantity</th>
+		<th>Total Price</th>
+      </tr>
+      @foreach($cartresult as $val)
+
+      <tr>
+
+        <td>{{$val->name}}</td>
+        <td><img src="{{asset('uploads/images/'.$val->image)}}"height="100px" width="100px"></td>
+						<td>
+						  <input type="text" name="tot_price" id="tot_price" class="form-control tot_price" value="{{$val->price}}">
+						</td>
+						<td><input type="number" name="txt_qlty" id="txt_qlty" class="form-control txt_qlty"  value="1" min="1" max="{{$val->stockunit}}"></td>
+						<td> <input type="text" name="tot_pr" class="form-control tot_pr"id="tot_pr" size="4" value="{{$val->price}}">
+     					 </td>
+      </tr>
+      @endforeach
+    </table>
+    
+  </div>
+
+
+  <div class="column">
+    <table>
+      <tr>
+        <th>Coupon</th>
+        <td><input type="text" name="coup" id="coup" class="form-control coup"  ></td>
+      </tr>
+      <tr>
+        <th>Total</th>
+        <td><input type="text" name="total" id="total" class="form-control total"  ></td>
+      </tr>
+      <tr>
+        <th>Grand Total</th>
+        <td><input type="text" name="gtotal" id="gtotal" class="form-control gtotal"  ></td>
+      </tr>
+
+<tr>      
+     <td>&nbsp&nbsp&nbsp&nbsp   <input type="submit" name="submit" class="submit btn btn-success" value="Purchase" style="height:50px;width:180px;font-size: 20px;"> 
+</td></tr>
+    </table>
+  </div>
+</div>
+
+
+
+
+                <br>
+<br><br>
 <br>
 <br>
-                       
-
-<main >
- 
-
- <div class="card">
- <img class ="img"src="{{asset('uploads/images/'.$val->image)}}"height="100px" width="100px">
- <b>{{$val->name}}<br>
- {{$val->description}}📃<br>
-
- <lable><b>Quantity</b></lable><input type="number" class="card" name="quantity" id="quantity"value="0" >   <br>
- <lable><b>Amount</b></lable> <input type="text"  class="form-control" value="{{$val->price}}" id="price"name="price">   <br>
-
- </div>
-
-</main>
-<br><br>
-<br><br>
+<br>
+<br>
+<br>
+    
+                               
+                                              
+                                       
+        
 
 
 
-<main >
- 
 
 
-</main>
-<br><br>
 
-@endforeach
 
-<lable><b>Total</b></lable> <input type="text"  class="form-control" value="0" id="total"name="total">   <br>
+
+
+@endsection
+
 
 
 
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-   
-
-
 <script>
-  
-    $(document).ready(function(){
-    $('#quantity').on('change',function() {
-       
-      var price = $('#price').val();
-      var quantity = +$(this).val();
-      $("#total").text("$" + price * quantity);
-      $quantity.val(Math.min(parseInt($quantity.val()) + 1, 999)).trigger('input');
- 
-        // alert ('hi');
-
-    // var row = $(this).closest('tr');
-    // var p = $('#price').val();
-    // var pid = parseInt(row.find(".pid").val());
-    // var qty = parseInt(row.find(this).val());
-    // var price = parseInt(row.find('#price').val());
-    // // var total =  parseInt(qty)*parseInt(price);
-    // location.reload(true);
-    // //  $("#tot_amount").val(total);
-    //         $.ajax({
-    //                 url: "{% url 'cartupdate' %}",
-    //                 method: 'post',
-    //                 cache: false,
-    //                 data: {
-    //                     pid: pid,
-    //                     qty: qty,
-    //                     price: price,
-    //                 },
-
-    //                 success: function(response) {
-    //                     alert(data.message)
-    //                     console.log(response);
-    //                 }
-    //             });
-
-    });
+$(document).ready(function(){
+  $(".txt_qlty").change(function(){
+    var row = $(this).closest('tr');
+    var price = parseInt(row.find(".tot_price").val()); //get from hidden field  
+    var qty = parseInt(row.find(this).val());
+   var total =  parseInt(qty)*parseInt(price);
+    row.find("#tot_pr").val(total);
+  });
 });
-
-    </script>  
-
-@endsection
+</script>

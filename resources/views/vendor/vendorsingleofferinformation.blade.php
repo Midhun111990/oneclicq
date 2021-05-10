@@ -115,16 +115,15 @@
                    
 
           <div class="col-md-7">
-          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <img src="{{asset('uploads/images/'.$value->image)}}"height="200px" width="300px" />
+          <a href="{{asset('uploads/images/'.$value->image)}}"> <img src="{{asset('uploads/images/'.$value->image)}}"height="150px" width="150px" /></a>
+          <a href="{{asset('uploads/images/'.$value->image1)}}">  <img src="{{asset('uploads/images/'.$value->image1)}}"height="150px" width="150px" /></a>
+          <a href="{{asset('uploads/images/'.$value->image2)}}"> <img src="{{asset('uploads/images/'.$value->image2)}}"height="150px" width="150px" /></a>
+          <a href="{{asset('uploads/images/'.$value->image3)}}"> <img src="{{asset('uploads/images/'.$value->image3)}}"height="150px" width="150px" /></a>
+
             <div class="card">
  
               <div class="card-header">
-                
+              <br><br>                
                 <h3 class="card-title">Offer..</h3>
                
                 <div class="card-tools">
@@ -150,15 +149,28 @@
                       <tr>
                       <td>2.</td>
                       <td>Offer percentage</td>
-                      <td><input type="number"id="offpercentage" class="form-control"name="offpercentage"></td>  </tr>
+                      <td><input type="number"id="offpercentage" class="form-control"name="offpercentage">
+                      @error("offpercentage")
+<p style="color:red">{{$errors->first("offpercentage")}}</p>
+@enderror
+                      </td>  </tr>
                     <tr>
                       <td>3.</td>
                       <td>Valid from</td>
-                      <td><input type="date"id="fromdate" name="fromdate"class="form-control"></td></tr>
+                      <td><input type="date"id="fromdate" name="fromdate"class="form-control">
+                      @error("fromdate")
+<p style="color:red">{{$errors->first("fromdate")}}</p>
+@enderror
+                      </td></tr>
+                    
                     <tr>
                       <td>4.</td>
                       <td>Valid to</td>
-                      <td><input type="date"id="todate" name="todate"class="form-control"></td> 
+                      <td><input type="date"id="todate" name="todate"class="form-control">
+                      @error("todate")
+<p style="color:red">{{$errors->first("todate")}}</p>
+@enderror
+                      </td></tr> 
                     </tr>
                   
                   

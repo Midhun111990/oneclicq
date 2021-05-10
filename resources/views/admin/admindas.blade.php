@@ -83,8 +83,24 @@
             <a href="/vendorsinformation" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Vendors
+                Vendors 👩🏻‍💼👨🏻‍💼
                 <!-- <span class="right badge badge-danger">New</span> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/productinformation" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+          Product 💼   <!-- <span class="right badge badge-danger">New</span> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/offerinformation" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+        Offers 🎁     <!-- <span class="right badge badge-danger">New</span> -->
               </p>
             </a>
           </li>
@@ -92,7 +108,7 @@
             <a href="/vendorsinformation" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-          Purchase
+          Purchase 🛒
                 <!-- <span class="right badge badge-danger">New</span> -->
               </p>
             </a>
@@ -102,16 +118,8 @@
             <a href="/businessinformation" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-           Business Type
+           Business Type 🎭
                 <!-- <span class="right badge badge-danger">New</span> -->
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/productinformation" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-          Product      <!-- <span class="right badge badge-danger">New</span> -->
               </p>
             </a>
           </li>

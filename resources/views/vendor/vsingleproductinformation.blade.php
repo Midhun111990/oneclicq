@@ -11,7 +11,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-          @foreach($res as $val)
+          @foreach($catres as $val)
             <h1>Product informations</h1>
             <textarea readonly rows="3" cols="122" style=color:red>{{$val->reason}}</textarea>
   
@@ -72,7 +72,7 @@
                       <td>4.</td>
                       <td>Sub Category</td>
                       <td><select name="ptype" id="ptype" class="form-control">
-                      <option>{{$val->subcatid}}</option>
+                      <option value="{{$val->subcatid}}">{{$val->subcatname}}</option>
                      </select></td>
                      <script>
      

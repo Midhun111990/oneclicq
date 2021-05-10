@@ -11163,6 +11163,7 @@ body:not(.layout-fixed).layout-navbar-fixed.text-sm .wrapper .main-sidebar .side
   }
   .layout-xl-navbar-fixed .wrapper .content-wrapper {
     margin-top: calc(3.5rem + 1px);
+    
   }
   .text-sm .layout-xl-navbar-fixed .wrapper .main-header ~ .content-wrapper,
   .layout-xl-navbar-fixed .wrapper .main-header.text-sm ~ .content-wrapper {
@@ -11177,6 +11178,7 @@ body:not(.layout-fixed).layout-navbar-fixed.text-sm .wrapper .main-sidebar .side
   }
   .layout-xl-navbar-fixed.text-sm .wrapper .content-wrapper {
     margin-top: calc(2.93725rem + 1px);
+    
   }
   body:not(.layout-fixed).layout-xl-navbar-fixed.text-sm .wrapper .main-sidebar {
     margin-top: calc(calc(2.93725rem + 1px) / -1);
@@ -11190,6 +11192,8 @@ body:not(.layout-fixed).layout-navbar-fixed.text-sm .wrapper .main-sidebar .side
   .layout-xl-navbar-not-fixed .wrapper .sidebar,
   .layout-xl-navbar-not-fixed .wrapper .content-wrapper {
     margin-top: 0;
+    background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+    background: linear-gradient(to right, #9932CC, #FFA500);
   }
   .layout-xl-navbar-not-fixed .wrapper .main-header {
     position: static;

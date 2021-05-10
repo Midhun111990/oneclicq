@@ -30,6 +30,33 @@ class admincontroller extends Controller
         return view('admin.vendorsinformation',$data);
     }
 
+    public function ofinfo()
+    {
+       
+    $data['offerresult']=$this->md1->offerresult('offer','product');
+ 
+        return view('admin.vendorsoffer',$data);
+    }
+    
+    public function approveoffer($id)
+    {
+       
+    $data['offerresult']=$this->md1->offerresultof('offer','product',$id);
+ 
+        return view('admin.singleoffer',$data);
+    }
+    public function approverejectoffer($id)
+    {
+        $data['ofstatus']='1';
+       
+        $this->md1->approvedoffer('offer',$data,$id);
+     
+ 
+        return redirect('/offerinformation');
+    }
+   
+    
+
     public function catinfo()
     {
        
@@ -490,6 +517,16 @@ return redirect('/subcatinformation');
     
 
 
+    public function rejectoffer($id)
+    {
+        $data['result']=$this->md1->viewsingleoffer('offer',$id);
+        
+       
+        return view('admin.rejectoffer',$data);
+          
+    }
+    
+
 
     public function productreason(Request $r1,$id)
     {
@@ -502,6 +539,16 @@ return redirect('/subcatinformation');
           
     }
 
+    public function offerreason(Request $r1,$id)
+    {
+        $data['ofstatus']=0;
+       
+        $data['offerreason']=$r1->input('reason');
+        $this->md1->rejectofferreason('offer',$data,$id);
+     
+        return redirect('/offerinformation');
+          
+    }
 
 
 

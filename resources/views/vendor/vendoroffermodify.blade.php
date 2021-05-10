@@ -24,7 +24,7 @@
     </section>
     @foreach($offerresult as $value )
     
-    <form id="agreeproduct_form" novalidate action="/addoffer"  method="post" class="brand" enctype="multipart/form-data"> 
+    <form id="agreeproduct_form" novalidate action="/updateoffer/{{$value->offerid}}"  method="post" class="brand" enctype="multipart/form-data"> 
   
 
   @csrf
@@ -99,7 +99,7 @@
                       
                       </tr>
                     <tr>
-                    <td colspan="3"><input type="submit" name="submit" class="submit btn btn-success" value="Add offer+" style="height:50px;width:408px;font-size: 25px;"> 
+                    <td colspan="3"><input type="submit" name="submit" class="submit btn btn-success" value="Update" style="height:50px;width:408px;font-size: 25px;"> 
 </td>
                     </tr>
                   </tbody>
@@ -115,16 +115,15 @@
                    
 
           <div class="col-md-7">
-          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <img src="{{asset('uploads/images/'.$value->image)}}"height="200px" width="300px" />
-            <div class="card">
+
+          <a href="{{asset('uploads/images/'.$value->image)}}"> <img src="{{asset('uploads/images/'.$value->image)}}"height="150px" width="150px" /></a>
+          <a href="{{asset('uploads/images/'.$value->image1)}}">  <img src="{{asset('uploads/images/'.$value->image1)}}"height="150px" width="150px" /></a>
+          <a href="{{asset('uploads/images/'.$value->image2)}}"> <img src="{{asset('uploads/images/'.$value->image2)}}"height="150px" width="150px" /></a>
+          <a href="{{asset('uploads/images/'.$value->image3)}}"> <img src="{{asset('uploads/images/'.$value->image3)}}"height="150px" width="150px" /></a>
+          <div class="card">
  
               <div class="card-header">
-                
+              <br><br> 
                 <h3 class="card-title">Offer..</h3>
                
                 <div class="card-tools">

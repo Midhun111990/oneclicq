@@ -55,7 +55,16 @@ class vendormodel extends Model
  public function nocheck($table,$mobileno)
     {
         
-      return  DB::table($table)->where('mob',$mobileno)->get();
+      return  DB::table($table)->where('mob',$mobileno)->latest('id')->get();
+
+    }
+
+   
+
+    public function nochecking($table)
+    {
+        
+      return  DB::table($table)->latest('id')->get();
 
     }
 
@@ -194,6 +203,10 @@ class vendormodel extends Model
 
     }
 
+    function deleteoffer($table,$id)
+    {
+        DB::table($table)->where('offerid',$id)->delete();
+    }
     public function viewbrand($table)
     {
         
@@ -223,7 +236,6 @@ class vendormodel extends Model
 
 
 
-
     public function productdetails($table,$id)
     {
         
@@ -232,11 +244,58 @@ class vendormodel extends Model
     }
     
 
+    public function productdetailsstatus($table,$id)
+    {
+        
+      return  DB::table($table)->where('vendorid',$id)->where('offerstatus',"")->get();
+
+    }
+
     public function offerresult($table,$table1,$id)
     {
         
-      return  DB::table($table)->join($table1,'offer.productid','=','product.pid')->get();
+      return  DB::table($table)->join($table1,'offer.productid','=','product.pid')->where('offerstatus',"1")->get();
 
+    }
+
+    public function offerresultof($table,$table1,$id)
+    {
+        
+      return  DB::table($table)->join($table1,'offer.productid','=','product.pid')->where('pid',$id)->get();
+
+    }
+  
+
+
+
+    public function orderedproduct($table,$table1,$table2,$id)
+    {
+        
+      return  DB::table($table)->join($table1,'ordertable.productid','=','product.pid')->join($table2,'product.vendorid','=','vendordetails.id')->where('id',$id)->get();
+
+    }
+  
+
+
+
+    function subcatdetails($table,$id)
+    {
+        $data=DB::table($table)->where('catid',$id)->get();
+        return $data;
+      
+    }  
+
+    function updateproductstatus($table,$data,$id)
+    {
+        DB::table($table)->where('pid',$id)->update($data);
+      
+    }
+
+
+   function modifyoffer($table,$data,$id)
+    {
+        DB::table($table)->where('offerid',$id)->update($data);
+      
     }
 
     public function vendet($table,$id)

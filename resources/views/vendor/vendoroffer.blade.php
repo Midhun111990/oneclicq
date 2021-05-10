@@ -35,7 +35,7 @@
                 <h3 class="card-title">Add Offer +  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                          
-                      <h1><a href="/offeredproduct">Offered products</a>
+                      <h1><a href="/offeredproduct">👀 Offered Products🎉</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -44,6 +44,7 @@
                   <tbody>
                  
                     <tr style="color:white;background-color:black;">
+                    <td>Sr.no</td>
                     <td>Image</td>
                       <td>Name</td>
                        <td>Price</td>
@@ -52,42 +53,22 @@
                       <tr>
                      
                       @foreach($res as $val)    
+                      <td align="center">{{$loop->iteration}}</td>     
                       
-                      <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                      <img src="{{asset('uploads/images/'.$val->image2)}}"height="120px" width="180px" />
-                      <img src="{{asset('uploads/images/'.$val->image1)}}"height="120px" width="180px" />
-                   </td>    
+                      <td>
+                      <a href="{{asset('uploads/images/'.$val->image)}}"> <img src="{{asset('uploads/images/'.$val->image)}}"height="150px" width="130px" /></a>
+          <a href="{{asset('uploads/images/'.$val->image1)}}">  <img src="{{asset('uploads/images/'.$val->image1)}}"height="150px" width="130px" /></a>
+          <a href="{{asset('uploads/images/'.$val->image2)}}"> <img src="{{asset('uploads/images/'.$val->image2)}}"height="150px" width="130px" /></a>
+          <a href="{{asset('uploads/images/'.$val->image3)}}"> <img src="{{asset('uploads/images/'.$val->image3)}}"height="150px" width="130px" /></a>
+                  </td>    
                       <td>{{$val->name}}</td>
-                      <td>{{$val->price}}</td>
+                      <td><h2 style="background-color:Chartreuse;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{$val->price}}</h2></td>
                       <td><a href="/vendorsingleofferinformation/{{$val->pid}}"><h1>🎉</h1></a></td>
 
                    </tr>                  
                       @endforeach
                 </table>
-
-
-                @foreach($offerresult as $value)
-                      <table>
-                      <tr>
-                      <td>FROM date</td>
-                      <td>Name</td>
-                      
-                      <td>End date</td>
-                      </tr>
-                      <tr>
-                      <td>{{$value->fromdate}}</td>
-                      <td>{{$value->name}}</td>
-
-<td>{{$value->todate}}</td>
-<td></td></tr>
-                                            
-                   
-                      </tr>  
-                     
-                   
-                  </tbody> @endforeach
-    
+                </div></div></div></div></div></div></div>
 
 </body>
 </html>

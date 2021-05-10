@@ -267,7 +267,7 @@
                     <tr>
                       <td>7.</td>
                       <td>ID Proof</td>
-                      <td>{{$value->iddocument}}</td>
+                      <td><a href="{{asset('uploads/images/'.$value->iddocument)}}">VIEW</a></td>
                     </tr>
                     <tr>
                       <td>8.</td>

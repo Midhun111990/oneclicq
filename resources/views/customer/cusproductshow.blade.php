@@ -1,3 +1,8 @@
+
+
+
+
+
 @extends('customer.customerdas')
 @section('body')
 
@@ -13,12 +18,13 @@
                         <div class="row">
                              @foreach($catres as $value)
                                   <h1 class="fashion_taital">{{$value->catname}}</h1>
+                            
                               @endforeach
                               @foreach($resultpro as $value)
                               <div class="col-lg-3 col-sm-0">
                                   <div class="box_main">
-                                     <p style="color:red;font-size:160%;"><b>{{$value->name}}</b></p>
-                                        <div class="electronic_img"><a href="/singleproductshow/{{$value->pid}}"><img src="{{asset('uploads/images/'.$value->image)}}"height="200px" width="180px" /></a>
+                                     <p style="color:red;font-size:160%;"><b>{{$value->subcatname}}</b></p>
+                                        <div class="electronic_img"><a href="/showbysubcat/{{$value->subcatid}}/"><img src="{{asset('uploads/images/'.$value->image)}}"height="200px" width="180px" /></a>
                                         </div>
                                           
                                      </div>

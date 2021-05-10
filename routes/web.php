@@ -36,6 +36,14 @@ Route::post('/asignin', [admincontroller::class,'asignin']);
 
 Route::get('/admin', [admincontroller::class,'adminindex']);
 Route::get('/vendorsinformation', [admincontroller::class,'vinfo']);
+Route::get('/offerinformation', [admincontroller::class,'ofinfo']);
+
+Route::get('/approveofferinformation/{id}', [admincontroller::class,'approveoffer']);
+Route::post('/approveoffer/{id}', [admincontroller::class,'approverejectoffer']);
+
+Route::get('/rejectoffer/{id}', [admincontroller::class,'rejectoffer']);
+Route::post('/rejecttheoffer/{id}', [admincontroller::class,'offerreason']);
+
 
 Route::get('/catinformation', [admincontroller::class,'catinfo']);
 Route::post('/addcat', [admincontroller::class,'addcat']);
@@ -145,7 +153,10 @@ Route::get('/vedetails', [vendorcontroller::class,'vedetails']);
 Route::get('/vendordetails', [vendorcontroller::class,'vendordetails']);
 
 
+Route::get('/busdetail', [vendorcontroller::class,'busdetail']);
 
+
+Route::get('/venbody', [vendorcontroller::class,'venbody']);
 
 
 
@@ -166,6 +177,7 @@ Route::get('/vendorupdateofferinformation/{id}', [vendorcontroller::class,'updat
 
 
 
+Route:: post('/updateoffer/{id}',[vendorcontroller::class,'updateofferinformation']);
 
 
 
@@ -185,6 +197,8 @@ Route:: get('/deleteproduct/{id}',[vendorcontroller::class,'deleteproduct']);
 
 Route:: post('/addoffer',[vendorcontroller::class,'addoffer']);
 
+Route:: get('/deleteoffer/{id}',[vendorcontroller::class,'deleteoffer']);
+
 
 Route:: get('/myinformation/{id}',[vendorcontroller::class,'myinformation']);
     
@@ -203,6 +217,8 @@ Route::get('/vsingleproductinformation/{id}', [vendorcontroller::class,'viewmyin
 // Route:: get('/viewbusiness/{id}',[vendorcontroller::class,'viewbusiness']);
 
 
+Route::get('/ordertable', [vendorcontroller::class,'ordertable']);
+
 
 
 
@@ -219,6 +235,8 @@ Route::get('/customer', [customercontroller::class,'customerindex']);
 
 Route::get('/productshow/{id}', [customercontroller::class,'productshow']);
 
+Route::get('/showbysubcat/{id}', [customercontroller::class,'showbysubcat']);
+
 Route::get('/singleproductshow/{id}', [customercontroller::class,'singleproductshow']);
 
 Route::get('/customerlog',[customercontroller::class,'customerlog']);
@@ -232,6 +250,19 @@ Route::post('/customersignin',[customercontroller::class,'customersignin']);
 
 Route:: post('/addtocart/{id}',[customercontroller::class,'addtocart']);
 
+
+Route::post('/productaddtocart/{id}', [customercontroller::class,'productaddtocart']);
+
+
 Route:: get('/mycart/{id}',[customercontroller::class,'mycart']);
 
 Route:: get('/logoutcus',[customercontroller::class,'logoutcus']);
+
+
+
+Route::post('/updateorderpoint', [customercontroller::class,'updateorderpoint']);
+
+Route::get('/search', [customercontroller::class,'searchpro']);
+
+
+Route:: get('/reducecoin/{id}',[customercontroller::class,'pointreduce']);

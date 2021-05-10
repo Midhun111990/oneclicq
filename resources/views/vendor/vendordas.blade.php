@@ -36,6 +36,7 @@
 
 
 
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -231,19 +232,26 @@
           
           <li class="nav-header"><center>Report</center></li>
           <li class="nav-item">
-            <a href="/pages/calendar.html" class="nav-link">
+            <a href="/ordertable" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
               Order
               </p>
             </a>
           </li>
-     
+          <li class="nav-item">
+            <a href="/mycustomer" class="nav-link">
+              <i class="nav-icon far fa-calendar-alt"></i>
+              <p>
+              Customer
+              </p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="/pages/calendar.html" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
-              Customer
+              Calendar
               </p>
             </a>
           </li>

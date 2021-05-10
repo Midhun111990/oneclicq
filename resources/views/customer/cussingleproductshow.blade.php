@@ -70,7 +70,7 @@
  <!-- Left Column / Headphones Image -->
  <div >
    <img src="{{asset('uploads/images/'.$value->image)}}"height="400px" width="500px"     >
- 
+   
    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -80,35 +80,49 @@
    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div>
 
 
+   <div >
+   <br><br><br><br><br><br><br><br>
+   <img src="{{asset('uploads/images/'.$value->image1)}}"height="80px" width="100px"     >
+   <br>
+   <img src="{{asset('uploads/images/'.$value->image2)}}"height="80px" width="100px"     >
+   <br>
+   <img src="{{asset('uploads/images/'.$value->image3)}}"height="80px" width="100px"     >
+   
+   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div>
+
  <!-- Right Column -->
  <div class="right-column">
 
    <!-- Product Description -->
    <div class="product-description">
-     <span>Headphones</span>{{$value->catid}}
-     <h1>{{$value->name}}</h1>
-     <p>{{$value->description}}</p>
+     <span><h1>{{$value->name}}</h1></span>
+     <p style="color:black;">{{$value->description}}</p>
 
-</div>     <div class="product-configuration">
+</div>    
+ <div>
 
    
-     <p><u>Our Price💰</u>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{$value->price}}₹
+ <p style="color:black;"><u>Our Price💰</u>&nbsp&nbsp{{$value->price}}₹
      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-     &nbsp&nbsp
-     <u> MRP💰</u>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-     &nbsp&nbsp&nbsp<strike>{{$value->mrp}}</strike>₹</p>
-     <p>Height ({{$value->height}}cm)
+     <br>
+    <br>
+     <u> MRP💰</u>
+     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<strike>{{$value->mrp}}</strike>₹</p>
+     <p style="color:black;">Height ({{$value->height}}cm)
      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-     &nbsp&nbsp&nbsp&nbsp
+   
      
      Weight ({{$value->weight}}cm)</p>
-    <p> Width ({{$value->width}}cm)
+     <p style="color:black;"> Width ({{$value->width}}cm)
     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    &nbsp&nbsp  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
      Length ({{$value->length}}cm)</p>
      
      </div>
@@ -118,24 +132,32 @@
       <p><h2>GST &nbsp&nbsp➳<span>&nbsp&nbsp{{$value->gst}}%</span></h2></p> 
      <h3> <u>Warranty details</u><p>✺{{$value->warrantydetails}}</p></h3>
      
-     <p> @if($value->freedelivery==1)
+     <p style="color:black;">  @if($value->freedelivery==1)
      ✪ Free delivery
       @else 
       
       @endif</p>
-      <p> @if($value->returnable==1)
+      <p style="color:black;">  @if($value->returnable==1)
       ✪ Product is returnable
       @else
       
       @endif</p>
-      <p> @if($value->returnpolicy==1)
+      <p style="color:black;">  @if($value->returnpolicy==1)
       ✪ Return policy
       @else 
       
       @endif</p>
     
    
-    
+<input type="hidden" id="time" name="time">
+ 
+<script>
+var today = new Date();
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  document.getElementById("time").value = time;
+</script>
+
+
     
      </div>
 
@@ -146,8 +168,7 @@
      
      <!-- Cable Configuration -->
      <div class="cable-config">
-       <span>ADD to Cart   +</span>
-
+      
        <input type="hidden" name="pid" id="pid"class="form-control" value="{{$value->pid}}" />
        
        @if(session()->has('email'))
@@ -156,9 +177,15 @@
                 
   @endforeach        
         @endif   
-
-       <input type="submit" name="submit" class="submit btn btn-success" value="♥" style="height:50px;width:100px;font-size: 30px;">   
+<div class="row">
+       <input type="submit" name="submit" class="submit btn btn-success" value="Purchase💰  " style="height:40px;width:150px;font-size: 20px;">   
+   <!-- working      -->
+   &nbsp&nbsp&nbsp&nbsp <input type="button" id="cart" name="cart" value="cart">
+      
        
+       &nbsp&nbsp&nbsp&nbsp <a href="/productaddtocart/{{$value->pid}}"><h1>🛒 </h1></a>
+     
+     </div>  
      </div>
    </div>
 
@@ -186,7 +213,46 @@
 @endforeach
 
 
+
+
+
+
+
+
 @endsection
 
 
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+     
+     $(document).ready(function(){
+       
+    $("#cart").on('click', function()
+    
+    {
+      
+      var userid=$("#userid").val();
+      var pid=$("#pid").val();
+    
+    $.ajax({
+        type:"post",
+        url:"/productaddtocart/{{$value->pid}}"+userid+pid,
+
+        success:function(result)
+        {
+          alert('hi');
+        }
+        
+      });
+      // $("#sub").show();
+  });
+     });
+    </script>      
+        
+
+
+
+
+        
