@@ -65,13 +65,13 @@
           <a href="{{asset('uploads/images/'.$val->image2)}}"> <img src="{{asset('uploads/images/'.$val->image2)}}"height="60px" width="40px" /></a>
           <a href="{{asset('uploads/images/'.$val->image3)}}"> <img src="{{asset('uploads/images/'.$val->image3)}}"height="60px" width="40px" /></a>
                   </td>    
-                      <td>{{$val->name}}</td>
+                      <td>{{$val->description}}</td>
                       <td><h2 style="background-color:Chartreuse;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{$val->price}}</h2></td>
                       <td align="center">{{$loop->iteration}}</td>     
 
                       <td><input type="button" id="approve" class="form-control"name="approve" value="Approve"></td>
 
-                      <td><a href="/vendorsingleofferinformation/{{$val->pid}}"><h1>View</h1></a></td>
+                      <td><a href="/vendorsinglecustomerinformation/{{$val->userid}}"><h1>View</h1></a></td>
 
                    </tr>                  
                       @endforeach

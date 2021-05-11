@@ -64,6 +64,43 @@
   line-height: 24px;
 }
 
+div.stars {
+  width: 270px;
+  display: inline-block;
+}
+
+input.star { display: none; }
+
+label.star {
+  float: right;
+  padding: 10px;
+  font-size: 36px;
+  color: #444;
+  transition: all .2s;
+}
+
+input.star:checked ~ label.star:before {
+  content: '\f005';
+  color: #FD4;
+  transition: all .25s;
+}
+
+input.star-5:checked ~ label.star:before {
+  color: #FE7;
+  text-shadow: 0 0 20px #952;
+}
+
+input.star-1:checked ~ label.star:before { color: #F62; }
+
+label.star:hover { transform: rotate(-15deg) scale(1.3); }
+
+label.star:before {
+  content: '\f006';
+  font-family: FontAwesome;
+}
+
+
+
 </style>
 <main class="container">
  
@@ -87,7 +124,7 @@
    <img src="{{asset('uploads/images/'.$value->image2)}}"height="80px" width="100px"     >
    <br>
    <img src="{{asset('uploads/images/'.$value->image3)}}"height="80px" width="100px"     >
-   
+  
    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -127,7 +164,7 @@
      
      </div>
      <div class="product-configuration">
-      <p>{{$value->otherbrand}}</p>  
+      <!-- <p><span>{{$value->otherbrand}}</span></p>   -->
       
       <p><h2>GST &nbsp&nbsp➳<span>&nbsp&nbsp{{$value->gst}}%</span></h2></p> 
      <h3> <u>Warranty details</u><p>✺{{$value->warrantydetails}}</p></h3>
@@ -147,7 +184,8 @@
       @else 
       
       @endif</p>
-    
+  <br>
+  <br>
    
 <input type="hidden" id="time" name="time">
  
@@ -177,9 +215,16 @@ var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds(
                 
   @endforeach        
         @endif   
+
+        <textarea  placeholder="Commentssssssssss" rows="3" cols="60" style="color:Black;" id="comment" name="comment"></textarea>
+        <br>
+        <br>
+  
 <div class="row">
-       <input type="submit" name="submit" class="submit btn btn-success" value="Purchase💰  " style="height:40px;width:150px;font-size: 20px;">   
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="submit" name="submit" class="submit btn btn-success" value="Purchase💰  " style="height:40px;width:150px;font-size: 20px;">   
    <!-- working      -->
+
    &nbsp&nbsp&nbsp&nbsp <input type="button" id="cart" name="cart" value="cart">
       
        
@@ -195,8 +240,14 @@ var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds(
 
       
 
-      
      </div>
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+      
+ 
    </div>
 
 
@@ -209,9 +260,29 @@ var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds(
 
 </div>
 </div>
-</div>
-@endforeach
+</div> 
 
+<div class="stars" id="star" name="star">
+    <input class="star star-5" value="5" id="star-5" type="radio" name="star"/>
+    <label class="star star-5" for="star-5"></label>
+    <input class="star star-4" value="4"id="star-4" type="radio" name="star"/>
+    <label class="star star-4" for="star-4"></label>
+    <input class="star star-3" value="3"id="star-3" type="radio" name="star"/>
+    <label class="star star-3" for="star-3"></label>
+    <input class="star star-2"value="2" id="star-2" type="radio" name="star"/>
+    <label class="star star-2" for="star-2"></label>
+    <input class="star star-1" value="1"id="star-1" type="radio" name="star"/>
+    <label class="star star-1" for="star-1"></label>
+</div>
+<center><h1> <b>Public Comments 📝</b></h1></center>
+@foreach($feedresult as $va)
+<textarea readonly rows="1" cols="260" style="color:Black;" id="pcomment" name="pcomment">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp✏️{{$va->comment}}</textarea>
+    
+
+    
+@endforeach
+@endforeach
 
 
 

@@ -229,6 +229,22 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+          @if ($value->adminstatus==2)
+          <a href="/comment" class="nav-link">
+                      @else
+                      <script>
+                      alert('Your application is pending');
+                      </script>
+
+                      @endif</tr>
+           
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Comments
+              </p>
+            </a>
+          </li>
           
           <li class="nav-header"><center>Report</center></li>
           <li class="nav-item">

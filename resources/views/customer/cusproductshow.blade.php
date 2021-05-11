@@ -25,7 +25,9 @@
                                   <div class="box_main">
                                      <p style="color:red;font-size:160%;"><b>{{$value->subcatname}}</b></p>
                                         <div class="electronic_img"><a href="/showbysubcat/{{$value->subcatid}}/"><img src="{{asset('uploads/images/'.$value->image)}}"height="200px" width="180px" /></a>
+                                       
                                         </div>
+                                       
                                           
                                      </div>
                                </div> @endforeach

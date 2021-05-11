@@ -35,6 +35,7 @@
       <link rel="stylesheet" href="/dist/csss/owl.carousel.min.css">
       <link rel="stylesoeet" href="/dist/csss/owl.theme.default.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
    </head>
 
 
@@ -66,7 +67,7 @@
                      @if(session()->has('email'))
                      @foreach($cusres as $value)
                    <b><center><a href="/customerlog">
-                   <h2 style="color:White"><b> </b>{{$value->fname}}👶</b> @foreach($point as $po) {{$po->points}}💎   @endforeach</h2></a></center>
+                   <h2 style="color:White"><b> </b>{{$value->fname}}👶</b> {{$value->point}}💎   </h2></a></center>
          
 <a href="/mycart/{{$value->userid}}"><h2 style="color:White">Cart🛒</h2></a> 
 @endforeach        

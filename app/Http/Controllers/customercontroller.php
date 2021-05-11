@@ -128,6 +128,9 @@ return view('customer.customerbody', compact('posts'),$data);
       
             $data['proresult']=$this->md1->viewsingleproduct('product',$id);//view category while adding product
          
+            $data['feedresult']=$this->md1->viewfeedback('product','feedback',$id);//view category while adding product
+         
+         
             $data['result']=$this->md1->viewcat('category');//view category while adding product
            
             return view('customer.cussingleproductshow',$data);
@@ -152,6 +155,11 @@ return view('customer.customerbody', compact('posts'),$data);
     }
     public function customersignin(Request $r1)
     {
+        request()->validate([
+            'email'=>'required|email',
+            'pass'  =>'required']
+        );
+      
          
         $data['result']=$this->md1->viewcat('category');//view category while adding product
 
@@ -191,6 +199,15 @@ return view('customer.customerbody', compact('posts'),$data);
 
     public function customerdatasave(Request $r1)
     {
+
+        request()->validate([
+            'fname'=>'required','lname'=>'required','email'=>'required|email',
+            'mobile'=>'required|unique:user,mobile','gender'=>'required','dob'=>'required'
+            ,'address'=>'required','password'=>'required','cpass'=>'required|same:password'
+            
+
+           ]
+        );
         
         $data['fname']=$r1->input('fname');
         $data['lname']=$r1->input('lname');
@@ -252,6 +269,15 @@ return view('customer.customerbody', compact('posts'),$data);
    
         $this->md1->addtoorder('ordertable',$data);
 
+
+
+
+        $data1['productid']=$r1->input('pid');
+        $data1['comment']=$r1->input('comment');
+        $data1['rating']=$r1->input('star');
+
+        $this->md1->addtofeedback('feedback',$data1);
+
         $data['result']=$this->md1->viewcat('category');//view category while adding product
         $data['proresult']=$this->md1->viewsingleproduct('product',$id);//view category while adding product
     
@@ -292,13 +318,18 @@ return view('customer.customerbody', compact('posts'),$data);
     }
 
 
-    public function updateorderpoint(Request $r1)
+    public function updateorderpoint(Request $r1,$id)
     {
         
         $data['userid']=$r1->input('cusid');
         $data['points']=$r1->input('productpoints');
        
+        $data1['point']=$r1->input('productpoints');
+       
+
         $this->md1->points('point',$data);
+
+         $this->md1->updatepointtouser('user',$data1,$id);
         
 
         return redirect('/customer');

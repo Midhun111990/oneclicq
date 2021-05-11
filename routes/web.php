@@ -166,6 +166,9 @@ Route:: get('/vendorbody',[vendorcontroller::class,'vendorbody']);
 
 Route:: get('/vendorproduct',[vendorcontroller::class,'vendorproduct']);
 
+Route:: get('/comment',[vendorcontroller::class,'comment']);
+
+
 Route:: get('/vendoroffer',[vendorcontroller::class,'vendoroffer']);
 
 
@@ -220,6 +223,7 @@ Route::get('/vsingleproductinformation/{id}', [vendorcontroller::class,'viewmyin
 Route::get('/ordertable', [vendorcontroller::class,'ordertable']);
 
 
+Route::get('/vendorsinglecustomerinformation/{id}', [vendorcontroller::class,'customerdetail']);
 
 
 
@@ -260,7 +264,7 @@ Route:: get('/logoutcus',[customercontroller::class,'logoutcus']);
 
 
 
-Route::post('/updateorderpoint', [customercontroller::class,'updateorderpoint']);
+Route::post('/updateorderpoint/{id}', [customercontroller::class,'updateorderpoint']);
 
 Route::get('/search', [customercontroller::class,'searchpro']);
 

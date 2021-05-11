@@ -1,9 +1,17 @@
 
 @extends('customer.customerdas')
 @section('body')
-<form id="agreevendor_form" novalidate action="/updateorderpoint"  method="post" class="brand" enctype="multipart/form-data"> 
+@if(session()->has('email'))
+       @foreach($cusres as $val)
+<form id="agreevendor_form" novalidate action="/updateorderpoint/{{$val->userid}}"  method="post" class="brand" enctype="multipart/form-data"> 
   @csrf
 
+
+  
+       <input type="hidden" name="cusid" id="cusid"class="form-control" value="{{$val->userid}}" />
+                
+  @endforeach        
+        @endif   
 
 
 
@@ -172,11 +180,11 @@ tr:nth-child(even) {
 
         <th>Points</th>
        
-        <td> @foreach($point as $po)
-        @if($po->points==0)
+        <td>  @foreach($cusres as $val)
+        @if($val->point==0)
           <h1>No Coins</h1>
           @else
-          <input type="number"  name="points" id="points" value="0" max="{{$po->points}}" class="form-control coup"  >
+          <input type="number"  name="points" id="points" value="0" max="{{$val->point}}" class="form-control coup"  >
          @endif
           @endforeach
       </td> 
@@ -202,13 +210,6 @@ tr:nth-child(even) {
 
 
 </div>
-
-@if(session()->has('email'))
-       @foreach($cusres as $val)
-       <input type="hidden" name="cusid" id="cusid"class="form-control" value="{{$val->userid}}" />
-                
-  @endforeach        
-        @endif   
 
 
 
@@ -273,7 +274,7 @@ $(document).ready(function(){
         
         {
           
-          alert("Done");
+         
 
         }
       });

@@ -243,6 +243,13 @@ class vendormodel extends Model
 
     }
     
+    public function productdetailswithcomment($table,$table1,$id)
+    {
+        
+      return  DB::table($table)->join($table1,'feedback.productid','=','product.pid')->where('vendorid',$id)->get();
+     
+    }
+
 
     public function productdetailsstatus($table,$id)
     {
@@ -268,10 +275,10 @@ class vendormodel extends Model
 
 
 
-    public function orderedproduct($table,$table1,$table2,$id)
+    public function orderedproduct($table,$table1,$table2,$table3,$id)
     {
         
-      return  DB::table($table)->join($table1,'ordertable.productid','=','product.pid')->join($table2,'product.vendorid','=','vendordetails.id')->where('id',$id)->get();
+      return  DB::table($table)->join($table1,'ordertable.productid','=','product.pid')->join($table2,'product.vendorid','=','vendordetails.id')->join($table3,'ordertable.customerid','=','user.userid')->where('id',$id)->get();
 
     }
   
@@ -304,6 +311,14 @@ class vendormodel extends Model
       return  DB::table($table)->where('id',$id)->get();
 
     }
+
+    public function cusdet($table,$id)
+    {
+        
+      return  DB::table($table)->where('userid',$id)->get();
+
+    }
+
     
     
     public function vendetails($table,$id)

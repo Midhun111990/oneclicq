@@ -178,6 +178,24 @@ return view('vendor.vendoroffer', compact('posts'),$data);
       
   }
   
+
+  public function comment(Request $request)
+  {
+
+    $id=session('sesid');
+    $data['res']=$this->md1->productdetailswithcomment('product','feedback',$id);
+    $data['result']=$this->md1->vendet('vendordetails',$id);
+    $search = $request->input('term');
+    $posts = DB::table('product')->where('pid','=','0')
+      ->get();
+
+    
+    return view('vendor.productcomment',compact('posts'),$data);
+      
+  }
+  
+
+
   public function vendoroffer(Request $request)
   {
     $id=session('sesid');
@@ -2227,6 +2245,27 @@ $ven=session('sesid');
       return view('vendor.vsingleproductinformation',$data);
     }
   
+    
+    public function  customerdetail($id)
+    {
+     
+
+$ven=session('sesid');
+
+       $data['result']=$this->md1->vendet('vendordetails',$ven);
+     
+       $data['cusresult']=$this->md1->cusdet('user',$id);
+   
+
+  
+     
+     print_r( $ven);
+     
+      return view('vendor.viewcustomer',$data);
+    }
+
+
+
 
     public function  viewmyofferinformation($id)
     {
@@ -2291,16 +2330,13 @@ $ven=session('sesid');
          $data['result']=$this->md1->vendet('vendordetails',$id);
          
          
-         $data['res']=$this->md1->orderedproduct('ordertable','product','vendordetails',$id);
+         $data['res']=$this->md1->orderedproduct('ordertable','product','vendordetails','user',$id);
         
-         
-         
-         $search = $request->input('term');
-         $posts = DB::table('ordertable')->where('oid','=','0')
-           ->get();
+        
+        
 
       
-           return view('vendor.vendorordertable',compact('posts'),$data);
+           return view('vendor.vendorordertable',$data);
         
        }
        

@@ -80,6 +80,12 @@ class customermodel extends Model
       return  DB::table($table)->where('pid',$id)->get();
 
     }
+      public function viewfeedback($table,$table1,$id)
+    {
+        
+      return  DB::table($table)->join($table1,'product.pid','=','feedback.productid')->where('pid',$id)->get();
+
+    }
 
     
     
@@ -126,6 +132,17 @@ class customermodel extends Model
     }
 
 
+
+    function addtofeedback($table,$data)
+    {
+        DB::table($table)->insert($data);
+
+    }
+
+
+
+
+
     function points($table,$data)
     {
         DB::table($table)->insert($data);
@@ -143,6 +160,14 @@ class customermodel extends Model
         
       return  DB::table($table)->where('email',$email)->where('password',$pass)->first();
 
+    }
+
+
+    function updatepointtouser($table,$data1,$id)
+    {
+      
+        DB::table($table)->where('userid',$id)->update($data1);
+      
     }
 
 

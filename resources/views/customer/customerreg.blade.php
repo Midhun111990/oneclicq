@@ -47,21 +47,50 @@
 <div >
 <form method="post" action="/customerdatasave">
 @csrf
-<div class="login2"><input type="text" class="form-control" placeholder="First name" name="fname">
-<input type="text" class="form-control" placeholder="Last name" name="lname">
+<div class="login2"><input type="text" class="form-control" id="fname" placeholder="First name" name="fname">
+@error("fname")
+<p style="color:red">{{$errors->first("fname","Name is required")}}</p>
+@enderror  
+<input type="text" class="form-control"id="lname" placeholder="Last name" name="lname">
+@error("lname")
+<p style="color:red">{{$errors->first("lname","Last name is required")}}</p>
+@enderror 
 <input type="text" class="form-control" placeholder="E-mail" name="email">
-
-<input type="text" class="form-control" placeholder="Mobile no." name="mobile">
+@error("email")
+<p style="color:red">{{$errors->first("email","Email is required")}}</p>
+@enderror
+<input type="text" class="form-control" placeholder="Mobile no." maxlength="10" id="mobile" name="mobile">
+@error("mobile")
+<p style="color:red">{{$errors->first("mobile","Mobile number is required")}}</p>
+@enderror
 <input type="radio" id="male" name="gender" value="male">
   <label for="male">Male</label>
   <input type="radio" id="female" name="gender" value="female">
   <label for="female">Female</label><br>
+  @error("gender")
+<p style="color:red">{{$errors->first("gender","Select proper gender")}}</p>
+@enderror
+
 <input type="date" class="form-control" placeholder="Date of Birth" name="dob">
+@error("dob")
+<p style="color:red">{{$errors->first("dob","Select your Date of birth")}}</p>
+@enderror
+
 <textarea class="form-control" placeholder="Address" name="address"></textarea>
+@error("address")
+<p style="color:red">{{$errors->first("address","Enter Your Address")}}</p>
+@enderror
+
 <input type="text" class="form-control" placeholder="Password" name="password">
+@error("password")
+<p style="color:red">{{$errors->first("password","Enter proper password")}}</p>
+@enderror
   
    
-    <input type="password" class="form-control" placeholder="Enter Password" name="pass" id="pass">
+    <input type="password" class="form-control" placeholder="Enter Password" name="cpass" id="cpass">
+    @error("cpass")
+<p style="color:red">{{$errors->first("cpass","Enter password again")}}</p>
+@enderror
     </div>
     <input type="submit" class="btn btn-warning btn-lg btn-block" value="Sign In" id="login">
     <span>   <a href="/customerlog"><b style="color:Black;">Back to signin page !!!</p></b></a>
@@ -122,5 +151,6 @@
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<script src="dist/jss/val.js"></script>
 </body>
 </html>

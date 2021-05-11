@@ -1,12 +1,27 @@
 @extends('customer.customerdas')
 @section('body')
 
+<style>
+.column {
+  float: left;
+  width: 30.33%;
+  padding: 5px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+
 @foreach ($posts as $post)
 @if($posts->isNotEmpty())
 <div class="container">
-                        <div class="row">
+                        <div class="column">
                              
-                              <div class="col-lg-3 col-sm-0">
+                              <div class="col-lg-31 col-sm-0">
                               
 
                                   <div class="box_main">
@@ -17,13 +32,7 @@
                                         <p style="color:red;font-size:120%;"><b> &nbsp&nbsp&nbsp&nbsp{{$post->price}}&nbsp</b></p>
                              </div>
                   
-                                     </div>
-                  
-                           </div>
-                  
-                       </div>
-                  
-                    </div>
+                             </div></div></div></div></div>
                   
                     @else 
                      <h2>No posts found</h2>

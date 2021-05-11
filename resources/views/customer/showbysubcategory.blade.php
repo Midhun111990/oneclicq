@@ -18,10 +18,10 @@
                               <div class="col-lg-3 col-sm-0">
                                   <div class="box_main">
                                      <p style="color:red;font-size:160%;"><b>{{$value->name}}</b></p>
-                                        <div class="electronic_img"><a href="/singleproductshow/{{$value->pid}}"><img src="{{asset('uploads/images/'.$value->image)}}"height="200px" width="180px" /></a>
+                                        <div class="electronic_img"><a href="/singleproductshow/{{$value->pid}}"><img src="{{asset('uploads/images/'.$value->image)}}"height="200px" width="180px" />
                                         <p style="color:red;font-size:120%;"><b> &nbsp&nbsp&nbsp&nbsp{{$value->description}}&nbsp</b></p>
                                         <p style="color:red;font-size:120%;"><b> &nbsp&nbsp&nbsp&nbsp{{$value->price}}&nbsp</b></p>
-                
+                <input type="submit" name="submit" class="submit btn btn-success" value="Purchase💰  " style="height:40px;width:150px;font-size: 20px;">   </a>
                                         @foreach($ofprice as $v) 
                                   
                                   <p style="color:red;font-size:120%;"><b> &nbsp&nbsp&nbsp&nbsp{{$v->offerprice}}&nbsp RS</b></p>
